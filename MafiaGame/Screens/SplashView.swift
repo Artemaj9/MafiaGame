@@ -26,7 +26,7 @@ struct SplashView: View {
                     .offset(y: geo.size.height/12)
             }
         }
-        
+        .preferredColorScheme(.dark)
     }
 }
 

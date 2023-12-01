@@ -12,6 +12,8 @@
 		AC0B24182B1A2BC400BC7FAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0B24172B1A2BC400BC7FAE /* Assets.xcassets */; };
 		AC0B241B2B1A2BC400BC7FAE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0B241A2B1A2BC400BC7FAE /* Preview Assets.xcassets */; };
 		AC0B24222B1A2E7800BC7FAE /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B24212B1A2E7800BC7FAE /* SplashView.swift */; };
+		AC0B24252B1A44AF00BC7FAE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B24242B1A44AF00BC7FAE /* GameView.swift */; };
+		AC0B24272B1A4E8400BC7FAE /* CornerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B24262B1A4E8400BC7FAE /* CornerModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		AC0B24172B1A2BC400BC7FAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC0B241A2B1A2BC400BC7FAE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC0B24212B1A2E7800BC7FAE /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		AC0B24242B1A44AF00BC7FAE /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		AC0B24262B1A4E8400BC7FAE /* CornerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,8 @@
 			children = (
 				AC0B24132B1A2BC200BC7FAE /* MafiaGameApp.swift */,
 				AC0B24152B1A2BC200BC7FAE /* ContentView.swift */,
-				AC0B24212B1A2E7800BC7FAE /* SplashView.swift */,
+				AC0B24232B1A43B700BC7FAE /* Screens */,
+				AC0B24282B1A4EC300BC7FAE /* Extensions */,
 				AC0B24172B1A2BC400BC7FAE /* Assets.xcassets */,
 				AC0B24192B1A2BC400BC7FAE /* Preview Content */,
 			);
@@ -68,6 +73,23 @@
 				AC0B241A2B1A2BC400BC7FAE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AC0B24232B1A43B700BC7FAE /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				AC0B24212B1A2E7800BC7FAE /* SplashView.swift */,
+				AC0B24242B1A44AF00BC7FAE /* GameView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		AC0B24282B1A4EC300BC7FAE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AC0B24262B1A4E8400BC7FAE /* CornerModifier.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +164,8 @@
 			files = (
 				AC0B24162B1A2BC200BC7FAE /* ContentView.swift in Sources */,
 				AC0B24142B1A2BC200BC7FAE /* MafiaGameApp.swift in Sources */,
+				AC0B24272B1A4E8400BC7FAE /* CornerModifier.swift in Sources */,
+				AC0B24252B1A44AF00BC7FAE /* GameView.swift in Sources */,
 				AC0B24222B1A2E7800BC7FAE /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
