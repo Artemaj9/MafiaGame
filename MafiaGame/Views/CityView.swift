@@ -11,55 +11,41 @@ struct CityView: View {
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
-            ZStack {
-                Color("citizenBg")
-                RadialGradient(colors: [.black.opacity(0),.black.opacity(0.2),.black.opacity(0.3) ], center: .center, startRadius: 10, endRadius: 30)
-                    .mask {
-                        Image("citizenRays")
-                            .resizable()
-                            .scaledToFit()
-                            .opacity(1)
+            Color("magicColor")
+                    ZStack {
+                        Color("citizenBg")
+                        RadialGradient(colors: [.black.opacity(0),.black.opacity(0.3) ], center: .center, startRadius: 10, endRadius: 30)
+                            .blur(radius: 10)
+                            .mask {
+                                Image("citizenRays")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .hueRotation(.degrees(75))
+                                    .opacity(1)
+                                
+                            }
+                        
+                       
                     }
-                
-                RadialGradient(colors: [Color("cubeGrad"),Color("cubeGrad").opacity(0.42),Color("cubeGrad").opacity(0) ], center: .center, startRadius: 1, endRadius: 230)
-                    .offset(y: 0)
-                    .mask {
-                        Image("citizenFigure")
-                            .resizable()
-                            .blur(radius: 2)
-                            .scaledToFit()
-                    }
-                //  Radia
-                
-                // .opacity(0.8)
-                
-                //                .opacity(0.2)
-                Image("citizen")
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-                
-                //                .background {
-                //                    RadialGradient(colors: [.gray, .black], center: .center, startRadius: 10, endRadius: 400)
-                //                       .blur(radius: 1)
-                
-                //
-                //                    RadialGradient(colors: [.white, .green.opacity(0.8)], center: .center, startRadius: 10, endRadius: 200)
-                //                        //.blur(radius: 0)
-                //                        .mask {
-                //                            Image("citizenRays")
-                //                                .resizable()
-                //                                .scaledToFill()
-                //                                .opacity(0.8)
-                //                                .colorMultiply(.white)
-                //                        }
-                //                        .padding()
-                //     }
+            Image("citizen")
+                .resizable()
+                .scaledToFit()
+                .padding()
+                .background {
+                    RadialGradient(colors: [Color("cubeGrad"),Color("cubeGrad").opacity(0.42),Color("cubeGrad").opacity(0) ], center: .center, startRadius: 1, endRadius: 230)
+                        .offset(y: 0)
+                        .mask {
+                            Image("citizenFigure")
+                                .resizable()
+                                .blur(radius: 2)
+                                .scaledToFit()
+                        }
+                }
+            
+                }
+               
             }
-        }
-      
     }
-}
 
 struct CityView_Previews: PreviewProvider {
     static var previews: some View {
