@@ -54,8 +54,8 @@ struct CharacterCell: View {
                                 .background {
                                     
                                     ZStack {
-                                        RadialGradient(colors: [Color("citizenBg"),.black], center: .center, startRadius: 80, endRadius: 190)
-                                        Color("citizenBg").opacity(0.4)
+                                        RadialGradient(colors: [Color(character.type + "Bg"),.black], center: .center, startRadius: 80, endRadius: 190)
+                                        Color(character.type + "Bg").opacity(0.4)
                                         
                                         RadialGradient(colors: [.black.opacity(0),.black.opacity(0.3) ], center: .center, startRadius: 10, endRadius: 90)
                                             .mask {
@@ -81,10 +81,10 @@ struct CharacterCell: View {
                             Rectangle()
                                 .fill(
                                     LinearGradient(gradient: Gradient(colors: [
-                                        Color("magicColor2").opacity(0),
-                                        Color("magicColor2"),
-                                        Color("magicColor2"),
-                                        Color("magicColor2").opacity(0)]),
+                                        Color(character.type + "Color2").opacity(0),
+                                        Color(character.type + "Color2"),
+                                        Color(character.type + "Color2"),
+                                        Color(character.type + "Color2").opacity(0)]),
                                                    startPoint: .leading,
                                                    endPoint: .trailing)
                                 )
@@ -117,7 +117,7 @@ struct CharacterCell: View {
                             .padding([.horizontal,.bottom], 16)
                     }
                     .background {
-                        Color("magicColor")
+                        Color(character.type + "Color")
                             .padding(4)
                     }
                 }
@@ -126,8 +126,4 @@ struct CharacterCell: View {
     }
 }
 
-//struct CharacterCellView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CharacterCell()
-//    }
-//}
+#warning("цвет фона карточек надо поправлять!")
