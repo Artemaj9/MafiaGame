@@ -1,8 +1,5 @@
 //
 //  CityView.swift
-//  MafiaGame
-//
-//  Created by Artem on 02.12.2023.
 //
 
 import SwiftUI
@@ -48,10 +45,13 @@ struct CityView: View {
                     
                     Rectangle()
                         .fill(
-                            LinearGradient(gradient: Gradient(colors: [Color("magicColor2").opacity(0), Color("magicColor2"), Color("magicColor2"),Color("magicColor2").opacity(0)]),
-                                                  startPoint: .leading,
-                                                  endPoint: .trailing)
-                          
+                            LinearGradient(gradient: Gradient(colors: [
+                                Color("magicColor2").opacity(0),
+                                Color("magicColor2"),
+                                Color("magicColor2"),
+                                Color("magicColor2").opacity(0)]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
                         )
                         .frame(width: 320, height: 33)
                         .overlay(
@@ -64,14 +64,11 @@ struct CityView: View {
                   
                             Rectangle()
                                 .fill(.white)
-                                .frame(width: 40, height: 33, alignment: .topTrailing)
+                                .frame(width: 40, height: 33)
                                 .overlay(
                                     Text("1")
                                         .font(Font.custom("Roboto-Bold", size: 24)))
                     }
-                       
-                        
-                    
                 }
             }
         }
