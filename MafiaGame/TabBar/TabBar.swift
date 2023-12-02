@@ -38,7 +38,7 @@ struct TabBar: View {
                         TabItem(width: geometry.size.width / 3, height: geometry.size.height / 40, iconName: "tbHelp", text: "Help", tabbarRouter: tabbarRouter, assignedPage: .help)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height / 8)
-                    .background(Color("tabBarBackground2"))
+                    .background(.white)
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
