@@ -9,27 +9,31 @@ struct TabItem: View {
     let width, height: CGFloat
     let iconName: String
     let text: String
+    @State var localSelection: Page
     
     @ObservedObject var tabbarRouter: TabbarRouter
+    @Namespace private var namespace
     let assignedPage: Page
     
     var body: some View {
         VStack {
             ZStack(alignment: .bottom) {
-                Rectangle()
-                    .fill(
-                        LinearGradient(gradient: Gradient(colors: [
-                            Color("tbBlue"),
-                            Color("tbBurgundy")]),
-                                       startPoint: .topLeading,
-                                       endPoint: .bottomTrailing)
-                    )
-                    .cornerRadius(3)
-                    .shadow(color: Color("tbShadow"), radius: 8, x: 0, y: 0)
-                    .frame(width: 75, height: 49)
-                    .offset(y: 4)
-                    .opacity(tabbarRouter.currentPage == assignedPage ? 1 : 0)
-                
+                if tabbarRouter.currentPage == assignedPage {
+                    Rectangle()
+                        .fill(
+                            LinearGradient(gradient: Gradient(colors: [
+                                Color("tbBlue"),
+                                Color("tbBurgundy")]),
+                                           startPoint: .topLeading,
+                                           endPoint: .bottomTrailing)
+                        )
+                        .cornerRadius(3)
+                        .shadow(color: Color("tbShadow"), radius: 8, x: 0, y: 0)
+                        .matchedGeometryEffect(id: "background", in: namespace)
+                        .frame(width: 75, height: 49)
+                        .offset(y: 4)
+                    // .opacity(tabbarRouter.currentPage == assignedPage ? 1 : 0)
+                }
                 VStack {
                     Image(iconName)
                         .renderingMode(.template)

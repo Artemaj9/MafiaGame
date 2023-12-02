@@ -31,6 +31,7 @@ struct TabBar: View {
                 VStack {
                     Spacer()
                     HStack {
+                        
                         TabItem(width: geometry.size.width / 3, height: geometry.size.height / 40, iconName: "tbGame" ,text: "Game", tabbarRouter: tabbarRouter, assignedPage: .game)
                         
                         TabItem(width: geometry.size.width / 3, height: geometry.size.height / 40, iconName: "tbCity", text: "City", tabbarRouter: tabbarRouter, assignedPage: .city)
