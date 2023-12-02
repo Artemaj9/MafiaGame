@@ -37,6 +37,7 @@
 		AC6AA6162B1B2952009B404F /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6AA6152B1B2952009B404F /* HelpView.swift */; };
 		AC6AA6182B1B2A0D009B404F /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6AA6172B1B2A0D009B404F /* TabBarItem.swift */; };
 		AC6AA6392B1BA5B7009B404F /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6AA6382B1BA5B7009B404F /* TabModel.swift */; };
+		AC6AA63D2B1BCD91009B404F /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6AA63C2B1BCD91009B404F /* CharacterModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		AC6AA6152B1B2952009B404F /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		AC6AA6172B1B2A0D009B404F /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		AC6AA6382B1BA5B7009B404F /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
+		AC6AA63C2B1BCD91009B404F /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				AC6AA6092B1A75B9009B404F /* StatCell.swift */,
+				AC6AA63C2B1BCD91009B404F /* CharacterModel.swift */,
 				AC6AA60B2B1A87B0009B404F /* CharacterCell.swift */,
 			);
 			path = Components;
@@ -291,6 +294,7 @@
 				AC6AA6062B1A73E3009B404F /* View+InnerShadow.swift in Sources */,
 				AC6AA60A2B1A75B9009B404F /* StatCell.swift in Sources */,
 				AC6AA6122B1B270C009B404F /* TabBar.swift in Sources */,
+				AC6AA63D2B1BCD91009B404F /* CharacterModel.swift in Sources */,
 				AC0B24252B1A44AF00BC7FAE /* GameView.swift in Sources */,
 				AC0B24222B1A2E7800BC7FAE /* SplashView.swift in Sources */,
 			);
