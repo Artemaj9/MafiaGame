@@ -48,6 +48,7 @@ struct CharacterCell: View {
                                                 .foregroundColor(.black)
                                         }
                                         .padding(12)
+                                        .offset(y: 4)
                                     }
                                 }
                                 .padding()

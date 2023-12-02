@@ -24,18 +24,18 @@ struct CityView: View {
     "A member of the Mafia who carries out the killing. If no Mafioso is present, the Godfather will carry out the kill."),
         CharacterModel(image: "framer", number: "8", role: "FRAMER", type: "mafia", description:
     "A Mafia role that can frame other players, causing them to appear as Mafia when investigated by the Detective."),
-//        CharacterModel(image: "bodyguard", number: "9", role: "BODYGUARD", description:
-//    "Can protect a player from attacks at night. If their protected player is attacked, the Bodyguard and the attacker die instead."),
-//        CharacterModel(image: "executioner", number: "10", role: "EXECUTIONER", description:
-//    "Their goal is to get a specific person lynched. If that person dies at night or survives the game, the Executioner becomes a Jester."),
-//        CharacterModel(image: "mistress", number: "11", role: "MISTRESS", description:
-//    "Can distract a player each night, blocking them from using their ability."),
-//        CharacterModel(image: "jester", number: "12", role: "JESTER", description:
-//    "Their goal is to trick the town into lynching them. If they are killed at night or survive the game, they lose."),
-//        CharacterModel(image: "vigilante", number: "13", role: "VIGILANTE", description:
-//    "A citizen who can choose to kill other players at night. Their ability is usually limited to a certain number of uses. They need to use this power wisely to not accidentally eliminate innocent citizens."),
-//        CharacterModel(image: "skiller", number: "14", role: "SERIAL KILLER", description:
-//    "An independent role that tries to be the last one standing by killing one player every night. Not aligned with either the Mafia or the Citizens."),
+        CharacterModel(image: "bodyguard", number: "9", role: "BODYGUARD", type: "neutral", description:
+    "Can protect a player from attacks at night. If their protected player is attacked, the Bodyguard and the attacker die instead."),
+        CharacterModel(image: "executioner", number: "10", role: "EXECUTIONER", type: "neutral", description:
+    "Their goal is to get a specific person lynched. If that person dies at night or survives the game, the Executioner becomes a Jester."),
+        CharacterModel(image: "mistress", number: "11", role: "MISTRESS", type: "neutral", description:
+    "Can distract a player each night, blocking them from using their ability."),
+        CharacterModel(image: "jester", number: "12", role: "JESTER", type: "neutral", description:
+    "Their goal is to trick the town into lynching them. If they are killed at night or survive the game, they lose."),
+        CharacterModel(image: "vigilante", number: "13", role: "VIGILANTE", type: "neutral", description:
+    "A citizen who can choose to kill other players at night. Their ability is usually limited to a certain number of uses. They need to use this power wisely to not accidentally eliminate innocent citizens."),
+        CharacterModel(image: "skiller", number: "14", role: "SERIAL KILLER", type: "neutral", description:
+    "An independent role that tries to be the last one standing by killing one player every night. Not aligned with either the Mafia or the Citizens."),
         
         
         
