@@ -7,52 +7,31 @@ import SwiftUI
 struct TabItem: View {
     
     let width, height: CGFloat
-    let iconName: String
-    let text: String
-    @State var localSelection: Page
+    let model: TabModel
+//    let iconName: String
+//    let text: String
+//    let assignedPage: Page
     
     @ObservedObject var tabbarRouter: TabbarRouter
-    @Namespace private var namespace
-    let assignedPage: Page
     
     var body: some View {
         VStack {
-            ZStack(alignment: .bottom) {
-                if tabbarRouter.currentPage == assignedPage {
-                    Rectangle()
-                        .fill(
-                            LinearGradient(gradient: Gradient(colors: [
-                                Color("tbBlue"),
-                                Color("tbBurgundy")]),
-                                           startPoint: .topLeading,
-                                           endPoint: .bottomTrailing)
-                        )
-                        .cornerRadius(3)
-                        .shadow(color: Color("tbShadow"), radius: 8, x: 0, y: 0)
-                        .matchedGeometryEffect(id: "background", in: namespace)
-                        .frame(width: 75, height: 49)
-                        .offset(y: 4)
-                    // .opacity(tabbarRouter.currentPage == assignedPage ? 1 : 0)
-                }
-                VStack {
-                    Image(iconName)
-                        .renderingMode(.template)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: width, height: height)
-                        .padding(.top, 16)
-                    
-                    Text(text)
-                        .font(Font.custom("Roboto-Medium", size: 12))
-                }
-            }
+            Image(model.iconname)
+                .renderingMode(.template)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: width, height: height)
+                .padding(.top, 16)
+            
+            Text(model.text)
+                .font(Font.custom("Roboto-Medium", size: 12))
             
             Spacer()
         }
         .onTapGesture {
-            tabbarRouter.currentPage = assignedPage
+            tabbarRouter.currentPage = model.assignedPage
         }
-        .foregroundColor(tabbarRouter.currentPage == assignedPage ? .white : .black)   
+        .foregroundColor(tabbarRouter.currentPage == model.assignedPage ? .white : .black)
         .animation(.easeOut(duration: 0.4), value: tabbarRouter.currentPage)
     }
 }
