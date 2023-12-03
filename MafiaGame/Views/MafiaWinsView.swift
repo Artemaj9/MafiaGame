@@ -1,8 +1,5 @@
 //
 //  MafiaWinsView.swift
-//  MafiaGame
-//
-//  Created by Artem on 04.12.2023.
 //
 
 import SwiftUI
@@ -24,7 +21,7 @@ struct MafiaWinsView: View {
                     .ignoresSafeArea()
                     .animation(.easeInOut(duration: 5), value: radians)
                     .animation(.easeIn(duration: 7), value: saturation)
-                RadialGradient(colors: [Color("cubeGrad").opacity(0.1),Color("cubeGrad").opacity(0.3),Color("cubeGrad").opacity(0)], center: .center, startRadius: 3 * radiusFactor, endRadius: 180 * radiusFactor)
+                RadialGradient(colors: [Color("cubeGrad").opacity(0.01),Color("cubeGrad").opacity(0.1),Color("cubeGrad").opacity(0)], center: .center, startRadius: 3 * radiusFactor, endRadius: 180 * radiusFactor)
                     .blur(radius: 40)
                     .offset(y:  -geo.size.height * 0.3)
                     .animation(.easeInOut(duration: 7), value: radiusFactor)
@@ -35,7 +32,7 @@ struct MafiaWinsView: View {
                             .offset(y:  -geo.size.height * 0.3)
                             .animation(.easeInOut(duration: 12), value: degrees)
                     }
-                RadialGradient(colors: [Color("cubeGrad").opacity(0),Color("cubeGrad").opacity(0.4),Color("cubeGrad").opacity(0)], center: .center, startRadius: 11 * radiusFactor, endRadius: 270 * radiusFactor)
+                RadialGradient(colors: [Color("cubeGrad").opacity(0),Color("cubeGrad").opacity(0.1),Color("cubeGrad").opacity(0)], center: .center, startRadius: 11 * radiusFactor, endRadius: 270 * radiusFactor)
                     .saturation(saturation)
                     .blur(radius: 40)
                     .offset(y:  -geo.size.height * 0.3)
@@ -53,6 +50,7 @@ struct MafiaWinsView: View {
                             .font(Font.custom("Roboto-Black", size: 88))
                     }
                     .foregroundColor(Color("mafiaWinsColor"))
+                    .shadow(color: Color("mafiaWinsColor").opacity(0.64), radius: 60, x: 0, y: 0)
                     .shadow(color: .black.opacity(0.64), radius: 4, x: 0, y: 0)
                     .saturation(saturation)
                     .animation(.easeIn(duration: 3), value: saturation)
@@ -61,13 +59,13 @@ struct MafiaWinsView: View {
                     } label: {
                         Text("Press to continue")
                             .font(Font.custom("Roboto-Black", size: 32))
-                            .foregroundColor(.black.opacity(textOpacity))
+                            .foregroundColor(.white.opacity(textOpacity))
                             .animation(.easeIn(duration: 1), value: textOpacity)
                     }
                 }
                 .offset(y: -geo.size.height * 0.3)
                 Group {
-                    Image("citizen")
+                    Image("framer")
                         .resizable()
                         .scaledToFit()
                         .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
@@ -75,21 +73,21 @@ struct MafiaWinsView: View {
                         .frame(height: geo.size.height/2)
                         .offset(x: geo.size.width/9, y: geo.size.height/12)
                     
-                    Image("doctor")
+                    Image("mafia")
                         .resizable()
                         .scaledToFit()
                         .scaleEffect(0.7)
                         .frame(height: geo.size.height/2)
                         .offset(x: -geo.size.width/2.5, y: geo.size.height/12)
                     
-                    Image("cop")
+                    Image("mafioso")
                         .resizable()
                         .scaledToFit()
                         .scaleEffect(0.9)
                         .frame(height: geo.size.height/2)
                         .offset(x: geo.size.width/2.3, y: geo.size.height/8)
                     
-                    Image("sheriff")
+                    Image("godfather")
                         .resizable()
                         .scaledToFit()
                         .scaleEffect(0.9)
@@ -100,9 +98,9 @@ struct MafiaWinsView: View {
                 VStack {
                     Spacer()
                     LinearGradient(gradient: Gradient(colors: [
-                        Color("floorGradTop"),
-                        Color("floorGradMid"),
-                        Color("floorGradBot")]),
+                        Color("floorMafiaTop"),
+                        Color("floorMafiaMid"),
+                        Color("floorMafiaBot")]),
                                    startPoint: .top,
                                    endPoint: .bottom)
                     .frame(width: geo.size.width, height: geo.size.height/9)
@@ -111,7 +109,7 @@ struct MafiaWinsView: View {
                     .animation(.easeInOut(duration: 7), value: saturation)
                 }
                 
-                Image("citizencar1")
+                Image("mafiacar")
                    
                     .resizable()
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
@@ -126,9 +124,8 @@ struct MafiaWinsView: View {
                     .shadow(color: .black, radius: 40, x: 25, y: 45)
                     .colorMultiply(Color("multiplyColor"))
                 
-                Image("citizencar1")
+                Image("mafiacar")
                     .resizable()
-
                     .frame(width: geo.size.width, height: geo.size.height/4, alignment: .bottomLeading)
                     .scaleEffect(0.9, anchor: .trailing)
                     .offset(x: geo.size.width/8)
@@ -141,7 +138,7 @@ struct MafiaWinsView: View {
                 degrees = -45
                 radiusFactor = 1
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    textOpacity = 0.64
+                    textOpacity = 0.8
                 }
             }
             .preferredColorScheme(.dark)
