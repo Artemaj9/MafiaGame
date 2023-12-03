@@ -1,13 +1,13 @@
 //
-//  GreenWinsView.swift
+//  MafiaWinsView.swift
 //  MafiaGame
 //
-//  Created by Artem on 03.12.2023.
+//  Created by Artem on 04.12.2023.
 //
 
 import SwiftUI
 
-struct GreenWinsView: View {
+struct MafiaWinsView: View {
     @State var radians: Double = 0.5
     @State var saturation: Double = 0
     @State var textOpacity: Double = 0
@@ -17,7 +17,7 @@ struct GreenWinsView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Image("bgday")
+                Image("bgnight")
                     .resizable()
                     .hueRotation(.radians(radians))
                     .saturation(saturation)
@@ -47,13 +47,12 @@ struct GreenWinsView: View {
                     }
                 VStack {
                     Group {
-                        Text("CITIZENS")
+                        Text("MAFIA")
                             .font(Font.custom("Roboto-Black", size: 36))
                         Text("WINS")
                             .font(Font.custom("Roboto-Black", size: 88))
-                        //  Spacer()
                     }
-                    .foregroundColor(Color("citizenWinsColor"))
+                    .foregroundColor(Color("mafiaWinsColor"))
                     .shadow(color: .black.opacity(0.64), radius: 4, x: 0, y: 0)
                     .saturation(saturation)
                     .animation(.easeIn(duration: 3), value: saturation)
@@ -149,10 +148,10 @@ struct GreenWinsView: View {
         }
     }
 }
+    
 
-
-struct GreenWinsView_Previews: PreviewProvider {
+struct MafiaWinsView_Previews: PreviewProvider {
     static var previews: some View {
-        GreenWinsView()
+        MafiaWinsView()
     }
 }

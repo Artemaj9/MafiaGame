@@ -69,7 +69,8 @@ struct TabBar: View {
                         print(geometry.size.height)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height / 8)
-                    .background(.white)
+                    .background( .white.opacity(tabbarRouter.currentPage == .city ? 0.95 : 1))
+                    .animation(.easeInOut, value: tabbarRouter.currentPage)
                 }
                 .onChange(of: tabbarRouter.currentPage, perform: { value in
                     withAnimation(.easeInOut(duration: 0.3)) {

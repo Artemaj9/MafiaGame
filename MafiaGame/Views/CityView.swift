@@ -35,17 +35,14 @@ struct CityView: View {
         CharacterModel(image: "vigilante", number: "13", role: "VIGILANTE", type: "neutral", description:
     "A citizen who can choose to kill other players at night. Their ability is usually limited to a certain number of uses. They need to use this power wisely to not accidentally eliminate innocent citizens."),
         CharacterModel(image: "skiller", number: "14", role: "SERIAL KILLER", type: "neutral", description:
-    "An independent role that tries to be the last one standing by killing one player every night. Not aligned with either the Mafia or the Citizens."),
-        
-        
-        
-        
-                                  ]
+    "An independent role that tries to be the last one standing by killing one player every night. Not aligned with either the Mafia or the Citizens.")
+    ]
+    
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 Text("Characters")
                     .font(Font.custom("Roboto-Bold", size: 33))
                     .foregroundColor(Color("cityTitle"))
@@ -58,9 +55,7 @@ struct CityView: View {
                             )
                     }
                 }
-            
             }
-            
         }
         .preferredColorScheme(.dark)
     }
