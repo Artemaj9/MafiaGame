@@ -5,6 +5,9 @@
 import SwiftUI
 
 struct SplashView: View {
+    
+    @State var saturation = 0.6
+    
     var body: some View {
         ZStack {
             Image("bgsplash")
@@ -18,6 +21,7 @@ struct SplashView: View {
                            height: geo.size.height,
                            alignment: .center)
                     .offset(y: -geo.size.height/12)
+
                 
                 Image("logo")
                     .frame(width: geo.size.width,
@@ -25,8 +29,15 @@ struct SplashView: View {
                            alignment: .center)
                     .offset(y: geo.size.height/12)
             }
+            .saturation(saturation)
+            .animation(.easeIn(duration: 0.8),value: saturation)
+           
+
         }
         .preferredColorScheme(.dark)
+        .onAppear {
+            saturation = 1
+        }
     }
 }
 
