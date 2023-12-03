@@ -69,30 +69,32 @@ struct MafiaWinsView: View {
                         .resizable()
                         .scaledToFit()
                         .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                        .scaleEffect(0.6)
+                        .scaleEffect(0.5)
                         .frame(height: geo.size.height/2)
-                        .offset(x: geo.size.width/9, y: geo.size.height/12)
+                        .offset(x: geo.size.width/9, y: geo.size.height/9)
                     
                     Image("mafia")
                         .resizable()
                         .scaledToFit()
-                        .scaleEffect(0.7)
+                        .scaleEffect(0.6)
                         .frame(height: geo.size.height/2)
-                        .offset(x: -geo.size.width/2.5, y: geo.size.height/12)
+                        .offset(x: -geo.size.width/2.6, y: geo.size.height/10)
+                        .hueRotation(.degrees(-10))
+                        .saturation(1.5)
                     
                     Image("mafioso")
                         .resizable()
                         .scaledToFit()
                         .scaleEffect(0.9)
                         .frame(height: geo.size.height/2)
-                        .offset(x: geo.size.width/2.3, y: geo.size.height/8)
+                        .offset(x: geo.size.width/2.7, y: 0 )
                     
                     Image("godfather")
                         .resizable()
                         .scaledToFit()
-                        .scaleEffect(0.9)
+                        .scaleEffect(1)
                         .frame(height: geo.size.height/2)
-                        .offset(x: -geo.size.width/8, y: geo.size.height/40)
+                        .offset(x: -geo.size.width/8, y: geo.size.height/12)
                 }
                 
                 VStack {
@@ -116,7 +118,8 @@ struct MafiaWinsView: View {
                    
                     .frame(width: geo.size.width, height: geo.size.height/4, alignment: .bottomLeading)
                     .scaleEffect(0.6, anchor: .leading)
-                    .saturation(0.8)
+                    .saturation(1)
+                    .hueRotation(.degrees(-15))
                     
 
                     .offset(x:-geo.size.width/10, y: geo.size.height/4.2)
@@ -131,6 +134,7 @@ struct MafiaWinsView: View {
                     .offset(x: geo.size.width/8)
                     .offset(y: geo.size.height/3.7)
                     .shadow(color: .black, radius: 20, x: 15, y: 35)
+                    .hueRotation(.degrees(10))
             }
             .onAppear {
                 radians = 0
