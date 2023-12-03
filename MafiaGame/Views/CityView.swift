@@ -51,10 +51,11 @@ struct CityView: View {
                     .foregroundColor(Color("cityTitle"))
                     .shadow(color: .white, radius: 2)
                
-                VStack {
+                VStack() {
                     ForEach(characters, id: \.self) { character in
                         CharacterCell(character: character)
-                            .frame(idealHeight: 500, maxHeight: 550)
+                            .frame(minHeight: 450, idealHeight: 500, maxHeight: 550, alignment: .center
+                            )
                     }
                 }
             

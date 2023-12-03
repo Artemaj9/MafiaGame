@@ -16,11 +16,11 @@ struct CharacterCell: View {
     )
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             ZStack {
                 Color.black.ignoresSafeArea()
                 GeometryReader { geo in
-                    VStack {
+                    VStack() {
                         ZStack(alignment: .top) {
                             Image(character.image)
                                 .resizable()
@@ -97,17 +97,6 @@ struct CharacterCell: View {
                                         .shadow(color: .black, radius: 4)
                                 )
                                 .offset(y: 0.75 * geo.size.width)
-                            //                                HStack {
-                            //                                    Spacer()
-                            //                                    Rectangle()
-                            //                                        .fill(.white)
-                            //                                        .frame(width: 40, height: 33)
-                            //                                        .overlay(
-                            //                                            Text(character.number)
-                            //                                                .font(Font.custom("Roboto-Bold", size: 24)))
-                            //                                        .foregroundColor(.black)
-                            //                                }
-                            //                                .padding(28)
                         }
                         
                         Text(character.description)
@@ -117,6 +106,7 @@ struct CharacterCell: View {
                             .shadow(color: .black, radius: 6)
                             .padding([.horizontal,.bottom], 16)
                     }
+                    .frame(maxWidth: .infinity)
                     .background {
                         Color(character.type + "Color")
                             .padding(4)
