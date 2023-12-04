@@ -20,7 +20,7 @@ struct TabBar: View {
     var contentView: some View {
         switch tabbarRouter.currentPage {
         case .game:
-            MafiaWinsView()
+            GameView()
                 .environmentObject(tabbarRouter)
         case .city:
             CityView()
@@ -35,6 +35,7 @@ struct TabBar: View {
         GeometryReader { geometry in
             ZStack {
                 contentView
+                    .animation(.easeIn, value: tabbarRouter.currentPage)
                 VStack {
                     Spacer()
                     
@@ -60,6 +61,7 @@ struct TabBar: View {
                                             .shadow(color: Color("tbShadow"), radius: 8, x: 0, y: 0)
                                             .frame(width: 75, height: 49)
                                             .offset(y: geometry.size.height > 800 ?  -14 : -10)
+                                           // .animation(.easeIn(duration: 1), value: localSelection)
                                     }
                                 }
                             )

@@ -20,48 +20,68 @@ struct MafiaWinsView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Image("bgnight")
+                Group {
+                    Image("bgnight")
+                        .resizable()
+                        .hueRotation(.radians(radians))
+                        .saturation(saturation)
+                        .ignoresSafeArea()
+                        .animation(.easeInOut(duration: 5), value: radians)
+                        .animation(.easeIn(duration: 7), value: saturation)
+                    
+                    RadialGradient(colors: [Color("cubeGrad").opacity(0.01),Color("cubeGrad").opacity(0.1),Color("cubeGrad").opacity(0)], center: .center, startRadius: 3 * radiusFactor, endRadius: 180 * radiusFactor)
+                        .blur(radius: 40)
+                        .offset(y:  -geo.size.height * 0.3)
+                        .animation(.easeInOut(duration: 7), value: radiusFactor)
+                        .mask {
+                            Image("rays")
+                                .rotationEffect(.degrees(degrees), anchor: .center)
+                                .scaleEffect(0.9)
+                                .offset(y:  -geo.size.height * 0.3)
+                                .animation(.easeInOut(duration: 12), value: degrees)
+                        }
+                    RadialGradient(colors: [Color("cubeGrad").opacity(0),Color("cubeGrad").opacity(0.1),Color("cubeGrad").opacity(0)], center: .center, startRadius: 11 * radiusFactor, endRadius: 270 * radiusFactor)
+                        .saturation(saturation)
+                        .blur(radius: 40)
+                        .offset(y:  -geo.size.height * 0.3)
+                        .animation(.easeInOut(duration: 7), value: radiusFactor)
+                        .mask {
+                            
+                            Image("rays")
+                                .offset(y:  -geo.size.height * 0.3)
+                        }
+                }
+                ForEach(vm.backdollars, id: \.self) { dollar in
+                    Image("dollar" + String(dollar.number))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                        .saturation(dollar.saturation)
+                        .hueRotation(Angle(degrees: dollar.hueRotation))
+                        .rotation3DEffect(.degrees(dollarOneDegree * dollar.angularSpeed),
+                                          axis: (
+                                            x: dollar.axisX, y: dollar.axisY, z: dollar.axisZ))
+                        //.shadow(Color.white, radius: 8)
+                        .offset(x: dollar.initialXOffset, y: dollar.initialYOffset + dollarOneOffset * dollar.speed)
+.animation(.easeOut(duration: 175), value: dollarOneOffset)
+.animation(.easeOut(duration: 175), value: dollarOneDegree )
+                 
+                }
+                
+                Image("framer")
                     .resizable()
-                    .hueRotation(.radians(radians))
-                    .saturation(saturation)
-                    .ignoresSafeArea()
-                    .animation(.easeInOut(duration: 5), value: radians)
-                    .animation(.easeIn(duration: 7), value: saturation)
-                RadialGradient(colors: [Color("cubeGrad").opacity(0.01),Color("cubeGrad").opacity(0.1),Color("cubeGrad").opacity(0)], center: .center, startRadius: 3 * radiusFactor, endRadius: 180 * radiusFactor)
-                    .blur(radius: 40)
-                    .offset(y:  -geo.size.height * 0.3)
-                    .animation(.easeInOut(duration: 7), value: radiusFactor)
-                    .mask {
-                        Image("rays")
-                            .rotationEffect(.degrees(degrees), anchor: .center)
-                            .scaleEffect(0.9)
-                            .offset(y:  -geo.size.height * 0.3)
-                            .animation(.easeInOut(duration: 12), value: degrees)
-                    }
-                RadialGradient(colors: [Color("cubeGrad").opacity(0),Color("cubeGrad").opacity(0.1),Color("cubeGrad").opacity(0)], center: .center, startRadius: 11 * radiusFactor, endRadius: 270 * radiusFactor)
-                    .saturation(saturation)
-                    .blur(radius: 40)
-                    .offset(y:  -geo.size.height * 0.3)
-                    .animation(.easeInOut(duration: 7), value: radiusFactor)
-                    .mask {
-                        
-                        Image("rays")
-                            .offset(y:  -geo.size.height * 0.3)
-                    }
-//                ForEach(vm.dollars, id: \.self) { dollar in
-//                    Image("dollar" + String(dollar.number))
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 100, height: 100)
-//                        .rotation3DEffect(.degrees(dollarOneDegree * dollar.angularSpeed),
-//                                          axis: (
-//                                            x: dollar.axisX, y: dollar.axisY, z: dollar.axisZ))
-//                        .offset(x: dollar.initialXOffset, y: dollar.initialYOffset + dollarOneOffset * dollar.speed)
-//.animation(.easeOut(duration: 45), value: dollarOneOffset)
-//                                         .animation(.easeOut(duration: 45), value: dollarOneDegree )
-//                    
-//                }
-                //.rotation3DEffect(180, axis: x: 0, y: 1, z: 1)
+                    .scaledToFit()
+                    .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                    .scaleEffect(0.5)
+                    .frame(height: geo.size.height/2)
+                    .offset(x: geo.size.width/9, y: geo.size.height/9)
+                Image("mafioso")
+                    .resizable()
+                    .scaledToFit()
+                    .scaleEffect(0.9)
+                    .frame(height: geo.size.height/2)
+                    .offset(x: geo.size.width/2.7, y: 0 )
+                
                     
                 VStack {
                     Group {
@@ -84,15 +104,11 @@ struct MafiaWinsView: View {
                             .animation(.easeIn(duration: 1), value: textOpacity)
                     }
                 }
+                .background(.clear)
                 .offset(y: -geo.size.height * 0.3)
+                
                 Group {
-                    Image("framer")
-                        .resizable()
-                        .scaledToFit()
-                        .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                        .scaleEffect(0.5)
-                        .frame(height: geo.size.height/2)
-                        .offset(x: geo.size.width/9, y: geo.size.height/9)
+            
                     
                     Image("mafia")
                         .resizable()
@@ -103,12 +119,7 @@ struct MafiaWinsView: View {
                         .hueRotation(.degrees(-10))
                         .saturation(1.5)
                     
-                    Image("mafioso")
-                        .resizable()
-                        .scaledToFit()
-                        .scaleEffect(0.9)
-                        .frame(height: geo.size.height/2)
-                        .offset(x: geo.size.width/2.7, y: 0 )
+                   
                     
                     Image("godfather")
                         .resizable()
@@ -156,37 +167,38 @@ struct MafiaWinsView: View {
                     .hueRotation(.degrees(10))
                 
                 
-                ForEach(vm.dollars, id: \.self) { dollar in
+                ForEach(vm.avtodollars, id: \.self) { dollar in
                     Image("dollar" + String(dollar.number))
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
+                        .saturation(dollar.saturation)
                         .rotation3DEffect(.degrees(dollarOneDegree * dollar.angularSpeed),
                                           axis: (
                                             x: dollar.axisX, y: dollar.axisY, z: dollar.axisZ))
                         .offset(x: dollar.initialXOffset, y: dollar.initialYOffset + dollarOneOffset * dollar.speed)
-.animation(.easeOut(duration: 45), value: dollarOneOffset)
-                                         .animation(.easeOut(duration: 45), value: dollarOneDegree )
-                    
+.animation(.easeOut(duration: 250), value: dollarOneOffset)
+.animation(.easeOut(duration: 250), value: dollarOneDegree )
+
                 }
             }
+            .drawingGroup()
             .onAppear {
-                radians = 0
+                vm.updateDolars()
+                radians = 1
                 saturation = 1
                 degrees = -45
                 radiusFactor = 1
-                dollarOneOffset = 1300
-                dollarOneDegree = 390
                 dollarAngle = 360
-                dollarOffsetY = 1000
+                dollarOffsetY = 5000
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     textOpacity = 0.8
+                    dollarOneOffset = 1300
+                    dollarOneDegree = 390
+                    radians = 0
                 }
             }
             .preferredColorScheme(.dark)
-        }
-        .onAppear {
-            vm.setUpTimer()
         }
     }
 }
