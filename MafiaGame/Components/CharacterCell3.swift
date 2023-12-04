@@ -25,7 +25,7 @@ struct CharacterCell3: View {
                         ZStack(alignment: .top) {
                             Image(character.image)
                                 .resizable()
-                                .scaledToFit()
+                               // .scaledToFit()
                                // .frame(width: geo.size.width*0.9)
                                 .overlay {
                                     ZStack(alignment: .top) {
@@ -40,6 +40,12 @@ struct CharacterCell3: View {
                                             )
                                             .cornerRadius(1)
                                         HStack {
+                                            Rectangle()
+                                                .fill(.white)
+                                                .frame(width: 33, height: 33)
+                                                .overlay(
+                                                    Image("x"))
+                                               // .foregroundColor(.black)
                                             Spacer()
                                             Rectangle()
                                                 .fill(.white)

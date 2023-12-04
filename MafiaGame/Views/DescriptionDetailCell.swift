@@ -30,7 +30,7 @@ struct DescriptionDetailCell: View {
                     .font(Font.custom("Roboto-Regular", size: 18))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 64)
+                    .padding(.horizontal, 44)
                     .padding(.bottom, 6)
             }
             .background {
