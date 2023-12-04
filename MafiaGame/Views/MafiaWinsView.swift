@@ -5,11 +5,17 @@
 import SwiftUI
 
 struct MafiaWinsView: View {
+    @StateObject var vm = DollarAnimationViewModel()
     @State var radians: Double = 0.5
     @State var saturation: Double = 0
     @State var textOpacity: Double = 0
     @State var degrees: Double = -35
     @State var radiusFactor: Double = 0
+    @State var dollarOneOffset: Double = -700
+    @State var dollarOneDegree: Double = 0
+    @State var dollarOffsetY: Double = 0
+    @State var dollarAngle: Double = 0
+    var dollars = Array(repeating: Int.random(in: 1...4), count: 10)
     
     var body: some View {
         GeometryReader { geo in
@@ -42,6 +48,7 @@ struct MafiaWinsView: View {
                         Image("rays")
                             .offset(y:  -geo.size.height * 0.3)
                     }
+                    
                 VStack {
                     Group {
                         Text("MAFIA")
@@ -120,8 +127,6 @@ struct MafiaWinsView: View {
                     .scaleEffect(0.6, anchor: .leading)
                     .saturation(1)
                     .hueRotation(.degrees(-15))
-                    
-
                     .offset(x:-geo.size.width/10, y: geo.size.height/4.2)
                    
                     .shadow(color: .black, radius: 40, x: 25, y: 45)
@@ -135,12 +140,42 @@ struct MafiaWinsView: View {
                     .offset(y: geo.size.height/3.7)
                     .shadow(color: .black, radius: 20, x: 15, y: 35)
                     .hueRotation(.degrees(10))
+                
+                Image("dollar2")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                    .rotation3DEffect(.degrees(dollarOneDegree), axis: (x: 0, y: 1, z: 1))
+                    .offset(y: dollarOneOffset)
+                    .blur(radius: 1)
+                    .animation(.easeOut(duration: 45), value: dollarOneOffset)
+                    .animation(.easeOut(duration: 45), value: dollarOneDegree)
+                
+                ForEach(dollars, id: \.self) { dollar in
+                    Image("dollar" + String(dollar))
+                        .resizable()
+                        .scaledToFit()
+                        .rotation3DEffect(.degrees(.random(in: -180...180)), axis: (x: .random(in: (0...1)), y: .random(in: 0...1), z: .random(in: 0...1)))
+                        .frame(width: 100, height: 100)
+                        .offset(x: .random(in: -250...250), y: .random(in: -250...250))
+                        .blur(radius: 1)
+                       .animation(.easeInOut(duration: 45), value: dollarOffsetY)
+                        .animation(.easeOut, value: dollarAngle)
+                }
+                
+                
             }
             .onAppear {
                 radians = 0
                 saturation = 1
                 degrees = -45
                 radiusFactor = 1
+                dollarOneOffset = 1000
+                dollarOneDegree = 190
+               // vm.addDollars()
+                dollarAngle = 360
+                dollarOffsetY = 1000
+                //vm.updateDollars()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     textOpacity = 0.8
                 }

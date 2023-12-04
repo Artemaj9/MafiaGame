@@ -40,6 +40,8 @@
 		AC6AA6392B1BA5B7009B404F /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6AA6382B1BA5B7009B404F /* TabModel.swift */; };
 		AC6AA63D2B1BCD91009B404F /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6AA63C2B1BCD91009B404F /* CharacterModel.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
+		ACE9DD4E2B1D413800C5E1D6 /* DollarAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4D2B1D413800C5E1D6 /* DollarAnimationView.swift */; };
+		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		AC6AA6382B1BA5B7009B404F /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
 		AC6AA63C2B1BCD91009B404F /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
+		ACE9DD4D2B1D413800C5E1D6 /* DollarAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationView.swift; sourceTree = "<group>"; };
+		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 				AC6AA5E82B1A6CBE009B404F /* StatsView.swift */,
 				AC6AA60D2B1A87C9009B404F /* CityView.swift */,
 				ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */,
+				ACE9DD4D2B1D413800C5E1D6 /* DollarAnimationView.swift */,
+				ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */,
 				AC448E152B1BEA7D003ACDF3 /* GreenWinsView.swift */,
 			);
 			path = Views;
@@ -296,11 +302,13 @@
 				AC6AA60C2B1A87B0009B404F /* CharacterCell.swift in Sources */,
 				AC0B24272B1A4E8400BC7FAE /* CornerModifier.swift in Sources */,
 				AC6AA6142B1B2896009B404F /* TabbarRouter.swift in Sources */,
+				ACE9DD4E2B1D413800C5E1D6 /* DollarAnimationView.swift in Sources */,
 				AC6AA6392B1BA5B7009B404F /* TabModel.swift in Sources */,
 				AC6AA6062B1A73E3009B404F /* View+InnerShadow.swift in Sources */,
 				AC6AA60A2B1A75B9009B404F /* StatCell.swift in Sources */,
 				AC6AA6122B1B270C009B404F /* TabBar.swift in Sources */,
 				AC6AA63D2B1BCD91009B404F /* CharacterModel.swift in Sources */,
+				ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */,
 				ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */,
 				AC0B24252B1A44AF00BC7FAE /* GameView.swift in Sources */,
 				AC0B24222B1A2E7800BC7FAE /* SplashView.swift in Sources */,
