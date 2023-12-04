@@ -37,18 +37,6 @@ struct CharacterCell2: View {
                                                 lineWidth: 3
                                             )
                                             .cornerRadius(1)
-//                                        HStack {
-//                                            Spacer()
-//                                            Rectangle()
-//                                                .fill(.white)
-//                                                .frame(width: 16, height: 12)
-//                                                .overlay(
-//                                                    Text(character.number)
-//                                                        .font(Font.custom("Roboto-Bold", size: 4)))
-//                                                .foregroundColor(.black)
-//                                        }
-//                                      //  .padding(12)
-//                                        .offset(y: 4)
                                     }
                                 }
                                 .padding()

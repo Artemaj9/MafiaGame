@@ -7,7 +7,7 @@ import SwiftUI
 struct CharacterCell: View {
 
     let character: CharacterModel
-    var myGradient = Gradient(
+    let myGradient = Gradient(
         colors: [
             Color("strokeGrad4"),
             Color("strokeGrad3"),

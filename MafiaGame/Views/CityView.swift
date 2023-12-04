@@ -39,25 +39,34 @@ struct CityView: View {
     ]
     
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            
-            ScrollView(showsIndicators: false) {
-                Text("Characters")
-                    .font(Font.custom("Roboto-Bold", size: 33))
-                    .foregroundColor(Color("cityTitle"))
-                    .shadow(color: .white, radius: 2)
-               
-                VStack() {
-                    ForEach(characters, id: \.self) { character in
-                        CharacterCell(character: character)
-                            .frame(minHeight: 450, idealHeight: 500, maxHeight: 550, alignment: .center
-                            )
+        NavigationView {
+            ZStack {
+                Color.black.ignoresSafeArea()
+                
+                ScrollView(showsIndicators: false) {
+                    Text("Characters")
+                        .font(Font.custom("Roboto-Bold", size: 33))
+                        .foregroundColor(Color("cityTitle"))
+                        .shadow(color: .white, radius: 2)
+                    
+                    VStack() {
+                        ForEach(characters, id: \.self) { character in
+                            NavigationLink {
+                                CharacterDetailView()
+                            } label: {
+                                
+                                CharacterCell(character: character)
+                                    .frame(minHeight: 450, idealHeight: 500, maxHeight: 550, alignment: .center
+                                    )
+                            }
+
+                        }
                     }
                 }
             }
+            .preferredColorScheme(.dark)
         }
-        .preferredColorScheme(.dark)
+        .navigationViewStyle(.stack)
     }
 }
 
