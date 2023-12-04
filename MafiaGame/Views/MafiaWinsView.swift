@@ -11,7 +11,7 @@ struct MafiaWinsView: View {
     @State var textOpacity: Double = 0
     @State var degrees: Double = -35
     @State var radiusFactor: Double = 0
-    @State var dollarOneOffset: Double = -700
+    @State var dollarOneOffset: Double = 0
     @State var dollarOneDegree: Double = 0
     @State var dollarOffsetY: Double = 0
     @State var dollarAngle: Double = 0
@@ -48,6 +48,20 @@ struct MafiaWinsView: View {
                         Image("rays")
                             .offset(y:  -geo.size.height * 0.3)
                     }
+//                ForEach(vm.dollars, id: \.self) { dollar in
+//                    Image("dollar" + String(dollar.number))
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 100, height: 100)
+//                        .rotation3DEffect(.degrees(dollarOneDegree * dollar.angularSpeed),
+//                                          axis: (
+//                                            x: dollar.axisX, y: dollar.axisY, z: dollar.axisZ))
+//                        .offset(x: dollar.initialXOffset, y: dollar.initialYOffset + dollarOneOffset * dollar.speed)
+//.animation(.easeOut(duration: 45), value: dollarOneOffset)
+//                                         .animation(.easeOut(duration: 45), value: dollarOneDegree )
+//                    
+//                }
+                //.rotation3DEffect(180, axis: x: 0, y: 1, z: 1)
                     
                 VStack {
                     Group {
@@ -141,46 +155,38 @@ struct MafiaWinsView: View {
                     .shadow(color: .black, radius: 20, x: 15, y: 35)
                     .hueRotation(.degrees(10))
                 
-                Image("dollar2")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .rotation3DEffect(.degrees(dollarOneDegree), axis: (x: 0, y: 1, z: 1))
-                    .offset(y: dollarOneOffset)
-                    .blur(radius: 1)
-                    .animation(.easeOut(duration: 45), value: dollarOneOffset)
-                    .animation(.easeOut(duration: 45), value: dollarOneDegree)
                 
-                ForEach(dollars, id: \.self) { dollar in
-                    Image("dollar" + String(dollar))
+                ForEach(vm.dollars, id: \.self) { dollar in
+                    Image("dollar" + String(dollar.number))
                         .resizable()
                         .scaledToFit()
-                        .rotation3DEffect(.degrees(.random(in: -180...180)), axis: (x: .random(in: (0...1)), y: .random(in: 0...1), z: .random(in: 0...1)))
                         .frame(width: 100, height: 100)
-                        .offset(x: .random(in: -250...250), y: .random(in: -250...250))
-                        .blur(radius: 1)
-                       .animation(.easeInOut(duration: 45), value: dollarOffsetY)
-                        .animation(.easeOut, value: dollarAngle)
+                        .rotation3DEffect(.degrees(dollarOneDegree * dollar.angularSpeed),
+                                          axis: (
+                                            x: dollar.axisX, y: dollar.axisY, z: dollar.axisZ))
+                        .offset(x: dollar.initialXOffset, y: dollar.initialYOffset + dollarOneOffset * dollar.speed)
+.animation(.easeOut(duration: 45), value: dollarOneOffset)
+                                         .animation(.easeOut(duration: 45), value: dollarOneDegree )
+                    
                 }
-                
-                
             }
             .onAppear {
                 radians = 0
                 saturation = 1
                 degrees = -45
                 radiusFactor = 1
-                dollarOneOffset = 1000
-                dollarOneDegree = 190
-               // vm.addDollars()
+                dollarOneOffset = 1300
+                dollarOneDegree = 390
                 dollarAngle = 360
                 dollarOffsetY = 1000
-                //vm.updateDollars()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     textOpacity = 0.8
                 }
             }
             .preferredColorScheme(.dark)
+        }
+        .onAppear {
+            vm.setUpTimer()
         }
     }
 }
