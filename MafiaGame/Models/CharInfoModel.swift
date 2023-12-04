@@ -30,13 +30,13 @@ struct Character: Hashable {
 }
 
 enum Team: String {
-    case peacefull
+    case citizen
     case mafia
     case neutral
 }
  // MOCKDATA:
 let allCharacters: [Character] = [
-    Character(image: "citizen", title: "CITIZEN", team: .peacefull, num: 1, descriptionArray: [
+    Character(image: "citizen", title: "CITIZEN", team: .citizen, num: 1, descriptionArray: [
         ("Role", "Citizens are ordinary townspeople. Their goal is to survive and identify the Mafia for lynching during the day."),
         ("Abilities", "They don't possess special abilities, but they participate in discussions and vote during the day to decide who to lynch."),
         ("Number of Players", "This varies based on the number of special roles and Mafia in the game. Usually, about half of the total players are Citizens."),
@@ -45,7 +45,7 @@ let allCharacters: [Character] = [
               description:
                 "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
     
-    Character(image: "doctor", title: "DOCTOR", team: .peacefull, num: 2, descriptionArray: [
+    Character(image: "doctor", title: "DOCTOR", team: .citizen, num: 2, descriptionArray: [
         ("Role", "The Doctor is a Citizen who has the power to protect other players from being eliminated by the Mafia at night."),
         ("Abilities", "During the night phase, the Doctor chooses one player to protect. If the Mafia or another harmful role targets this player, they will survive."),
         ("Number of Players", "There's typically one Doctor in a standard game. In larger games, there can be more than one."),
@@ -54,7 +54,7 @@ let allCharacters: [Character] = [
               description:
                 "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
     
-    Character(image: "sheriff", title: "SHERIFF", team: .peacefull, num: 3, descriptionArray: [
+    Character(image: "sheriff", title: "SHERIFF", team: .citizen, num: 3, descriptionArray: [
         ("Role", "The Sheriff is a variant of the Detective. Their role is to investigate other players to find out if they are suspicious (Mafia or Serial Killer) or not."),
         ("Abilities", "Each night, the Sheriff can investigate one player to find out if they are a Mafia member or a Serial Killer."),
         ("Number of Players", "Typically, there is only one Sheriff in a game."),
@@ -63,7 +63,7 @@ let allCharacters: [Character] = [
               description:
                 "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
     
-    Character(image: "cop", title: "COP", team: .peacefull, num: 4, descriptionArray: [
+    Character(image: "cop", title: "COP", team: .citizen, num: 4, descriptionArray: [
         ("Role", "The Detective, also known as the Cop, is a Citizen who can investigate other players to determine their roles."),
         ("Abilities", "During the night phase, the Detective chooses one player to investigate and learns whether they are a Citizen or a member of the Mafia."),
         ("Number of Players", "There's typically one Detective in a standard game. In larger games, there can be more than one."),

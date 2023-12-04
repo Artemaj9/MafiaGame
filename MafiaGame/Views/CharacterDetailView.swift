@@ -8,6 +8,8 @@ struct CharacterDetailView: View {
    
     @Environment(\.presentationMode) var presentation
     var num: Int = 2
+    @State var saturation = 0.0
+
     var body: some View {
           
             ZStack {
@@ -25,6 +27,7 @@ struct CharacterDetailView: View {
                             type: allCharacters[num - 1].team.rawValue,
                             description: "", isDescription: false), presentationMode: presentation)
                         .frame(width: geo.size.width * 0.95, height: geo.size.height/2.3, alignment: .center)
+                        
                         
                         ForEach(allCharacters[num - 1].descriptionArray, id:\.0) { (title, info) in
                             DescriptionDetailCell(title: title , information: info)
@@ -53,6 +56,9 @@ struct CharacterDetailView: View {
                         .offset(x: 5)
                        // .offset(y: -20)
                       
+                }
+                .onAppear {
+                    saturation = 1.0
                 }
                 //.background(Color("citizenBg"))
             }
