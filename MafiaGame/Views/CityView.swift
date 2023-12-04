@@ -52,7 +52,7 @@ struct CityView: View {
                     VStack() {
                         ForEach(characters, id: \.self) { character in
                             NavigationLink {
-                                CharacterDetailView()
+                                CharacterDetailView(num: Int(character.number)!)
                             } label: {
                                 
                                 CharacterCell(character: character)

@@ -43,6 +43,8 @@
 		AC6DBA582B1E536800B2A6C3 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA572B1E536800B2A6C3 /* CharacterDetailView.swift */; };
 		AC6DBA5A2B1E556A00B2A6C3 /* DescriptionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA592B1E556A00B2A6C3 /* DescriptionDetailCell.swift */; };
 		AC6DBA5C2B1E64F900B2A6C3 /* CharacterCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA5B2B1E64F900B2A6C3 /* CharacterCell3.swift */; };
+		AC6DBA5E2B1E7BC700B2A6C3 /* AnimationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA5D2B1E7BC700B2A6C3 /* AnimationStyle.swift */; };
+		AC6DBA612B1E834100B2A6C3 /* CharInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA602B1E834100B2A6C3 /* CharInfoModel.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD4E2B1D413800C5E1D6 /* DollarAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4D2B1D413800C5E1D6 /* DollarAnimationView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
@@ -87,6 +89,8 @@
 		AC6DBA572B1E536800B2A6C3 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		AC6DBA592B1E556A00B2A6C3 /* DescriptionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionDetailCell.swift; sourceTree = "<group>"; };
 		AC6DBA5B2B1E64F900B2A6C3 /* CharacterCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell3.swift; sourceTree = "<group>"; };
+		AC6DBA5D2B1E7BC700B2A6C3 /* AnimationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationStyle.swift; sourceTree = "<group>"; };
+		AC6DBA602B1E834100B2A6C3 /* CharInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharInfoModel.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4D2B1D413800C5E1D6 /* DollarAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				AC6AA60F2B1AA32A009B404F /* Info.plist */,
 				AC0B24132B1A2BC200BC7FAE /* MafiaGameApp.swift */,
 				AC0B24152B1A2BC200BC7FAE /* ContentView.swift */,
+				AC6DBA5F2B1E832700B2A6C3 /* Models */,
 				AC6AA6102B1B26FC009B404F /* TabBar */,
 				AC6AA6072B1A7579009B404F /* Views */,
 				AC0B24232B1A43B700BC7FAE /* Screens */,
@@ -160,6 +165,7 @@
 			children = (
 				AC0B24262B1A4E8400BC7FAE /* CornerModifier.swift */,
 				AC6AA6052B1A73E3009B404F /* View+InnerShadow.swift */,
+				AC6DBA5D2B1E7BC700B2A6C3 /* AnimationStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +226,14 @@
 				AC6AA6132B1B2896009B404F /* TabbarRouter.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		AC6DBA5F2B1E832700B2A6C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AC6DBA602B1E834100B2A6C3 /* CharInfoModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,8 +323,10 @@
 				AC6DBA582B1E536800B2A6C3 /* CharacterDetailView.swift in Sources */,
 				AC6AA6162B1B2952009B404F /* HelpView.swift in Sources */,
 				AC6AA60E2B1A87C9009B404F /* CityView.swift in Sources */,
+				AC6DBA5E2B1E7BC700B2A6C3 /* AnimationStyle.swift in Sources */,
 				AC6DBA5A2B1E556A00B2A6C3 /* DescriptionDetailCell.swift in Sources */,
 				AC0B24142B1A2BC200BC7FAE /* MafiaGameApp.swift in Sources */,
+				AC6DBA612B1E834100B2A6C3 /* CharInfoModel.swift in Sources */,
 				AC6AA6182B1B2A0D009B404F /* TabBarItem.swift in Sources */,
 				AC6AA5E92B1A6CBE009B404F /* StatsView.swift in Sources */,
 				AC6AA60C2B1A87B0009B404F /* CharacterCell.swift in Sources */,

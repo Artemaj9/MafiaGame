@@ -15,11 +15,11 @@ struct CharacterCell3: View {
             Color("strokeGrad2")
         ]
     )
+
     var isDescription = true
+    @Binding var presentationMode : PresentationMode
     var body: some View {
-//        VStack(alignment: .center) {
             ZStack {
-               // Color.black.ignoresSafeArea()
                 GeometryReader { geo in
                     VStack() {
                         ZStack(alignment: .top) {
@@ -45,6 +45,11 @@ struct CharacterCell3: View {
                                                 .frame(width: 33, height: 33)
                                                 .overlay(
                                                     Image("x"))
+                                                .onTapGesture {
+                                                    DispatchQueue.main.async {
+                                                        presentationMode.dismiss()
+                                                    }
+                                                }
                                                // .foregroundColor(.black)
                                             Spacer()
                                             Rectangle()
