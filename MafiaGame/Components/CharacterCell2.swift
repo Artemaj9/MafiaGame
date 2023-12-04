@@ -1,10 +1,10 @@
 //
-//  CharacterCell.swift
+//  CharacterCell2.swift
 //
 
 import SwiftUI
 
-struct CharacterCell: View {
+struct CharacterCell2: View {
 
     let character: CharacterModel
     var myGradient = Gradient(
@@ -17,15 +17,14 @@ struct CharacterCell: View {
     var isDescription = true
    // @State var isDescription = true
     var body: some View {
-        VStack(alignment: .center) {
             ZStack {
-                Color.black.ignoresSafeArea()
+               
                 GeometryReader { geo in
                     VStack() {
                         ZStack(alignment: .top) {
                             Image(character.image)
                                 .resizable()
-                                .scaledToFit()
+                                .scaledToFill()
                                 .overlay {
                                     ZStack(alignment: .top) {
                                         Rectangle()
@@ -38,35 +37,36 @@ struct CharacterCell: View {
                                                 lineWidth: 3
                                             )
                                             .cornerRadius(1)
-                                        HStack {
-                                            Spacer()
-                                            Rectangle()
-                                                .fill(.white)
-                                                .frame(width: 40, height: 33)
-                                                .overlay(
-                                                    Text(character.number)
-                                                        .font(Font.custom("Roboto-Bold", size: 24)))
-                                                .foregroundColor(.black)
-                                        }
-                                        .padding(12)
-                                        .offset(y: 4)
+//                                        HStack {
+//                                            Spacer()
+//                                            Rectangle()
+//                                                .fill(.white)
+//                                                .frame(width: 16, height: 12)
+//                                                .overlay(
+//                                                    Text(character.number)
+//                                                        .font(Font.custom("Roboto-Bold", size: 4)))
+//                                                .foregroundColor(.black)
+//                                        }
+//                                      //  .padding(12)
+//                                        .offset(y: 4)
                                     }
                                 }
                                 .padding()
                                 .background {
-                                    
+
                                     ZStack {
+                                        Color.black
                                         RadialGradient(colors: [Color(character.type + "Bg"),.black], center: .center, startRadius: 80, endRadius: 190)
                                         Color(character.type + "Bg").opacity(0.4)
-                                        
+
                                         RadialGradient(colors: [.black.opacity(0),.black.opacity(0.3) ], center: .center, startRadius: 10, endRadius: 90)
                                             .mask {
                                                 Image(character.image + "Rays")
                                                     .resizable()
                                                     .scaledToFit()
-                                                
+
                                             }
-                                        
+
                                         RadialGradient(colors: [Color("cubeGrad"),Color("cubeGrad").opacity(0.32),Color("cubeGrad").opacity(0) ], center: .center, startRadius: 1, endRadius: 190)
                                             .blur(radius: 10)
                                             .offset(y: -24)
@@ -79,7 +79,7 @@ struct CharacterCell: View {
                                     }
                                     .padding()
                                 }
-                            
+
                             Rectangle()
                                 .fill(
                                     LinearGradient(gradient: Gradient(colors: [
@@ -90,33 +90,24 @@ struct CharacterCell: View {
                                                    startPoint: .leading,
                                                    endPoint: .trailing)
                                 )
-                                .frame(width: 320, height: 33)
+                                .frame(width: geo.size.width*0.7, height: geo.size.height/10)
+                                //.frame(width: 120, height: 33)
                                 .overlay(
                                     Text(character.role)
-                                        .font(Font.custom("Roboto-Black", size: 27))
+                                        .font(Font.custom("Roboto-Black", size: 8))
                                         .foregroundColor(.white)
                                         .shadow(color: .black, radius: 4)
                                 )
-                                .offset(y: 0.75 * geo.size.width)
+                                .offset(y: 0.65 * geo.size.width)
                         }
-                        if character.isDescription {
-                            Text(character.description)
-                                .multilineTextAlignment(.center)
-                                .font(Font.custom("Roboto-Medium", size: 18))
-                                .foregroundColor(.white)
-                                .shadow(color: .black, radius: 6)
-                                .padding([.horizontal,.bottom], 16)
-                        }
-
                     }
-                    .frame(maxWidth: .infinity)
-                    .background {
-                        Color(character.type + "Color")
-                            .padding(4)
-                    }
+                    //.frame(maxWidth: .infinity)
+                  //  .background {
+                    //    Color(character.type + "Color")
+                      //      .padding(4)
+                    //}
                 }
             }
-        }
     }
 }
 

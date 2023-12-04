@@ -13,6 +13,7 @@ struct CharacterModel: Hashable {
     let role: String
     let type: String
     let description: String
+    var isDescription: Bool =  false
   
 }
 
