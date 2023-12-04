@@ -67,6 +67,7 @@ struct CityView: View {
             .preferredColorScheme(.dark)
         }
         .navigationViewStyle(.stack)
+
     }
 }
 

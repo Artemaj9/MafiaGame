@@ -80,7 +80,6 @@ struct GameView: View {
                                        , value: isUnfold)
                         }
                     }
-                  //  .animation(.easeInOut(duration: 1), value: isUnfold)
                     .offset(y: -10)
                     
                     HStack {
@@ -89,11 +88,11 @@ struct GameView: View {
                             .animation(.easeInOut(duration: 1), value: isUnfold)
                     }
                     .padding(.top, 8)
+            
+                    Spacer()
+                    Spacer()
+                    Spacer()
                     
-                        
-                    Spacer()
-                    Spacer()
-                    Spacer()
                     HStack(spacing: 24) {
                         Button {
                             
@@ -180,7 +179,6 @@ struct GameView: View {
                 .opacity((isUnfold ? 1 : 0))
                 .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
             }
-          //  .drawingGroup()
             .preferredColorScheme(.light)
         }
     }

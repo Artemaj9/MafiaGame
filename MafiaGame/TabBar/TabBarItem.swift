@@ -8,9 +8,6 @@ struct TabItem: View {
     
     let width, height: CGFloat
     let model: TabModel
-//    let iconName: String
-//    let text: String
-//    let assignedPage: Page
     
     @ObservedObject var tabbarRouter: TabbarRouter
     
