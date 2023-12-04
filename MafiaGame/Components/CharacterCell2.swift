@@ -94,11 +94,11 @@ struct CharacterCell2: View {
                                 //.frame(width: 120, height: 33)
                                 .overlay(
                                     Text(character.role)
-                                        .font(Font.custom("Roboto-Black", size: 8))
+                                        .font(Font.custom("Roboto-Black", size: 12))
                                         .foregroundColor(.white)
                                         .shadow(color: .black, radius: 4)
                                 )
-                                .offset(y: 0.65 * geo.size.width)
+                                .offset(y: 0.7 * geo.size.width)
                         }
                     }
                     //.frame(maxWidth: .infinity)

@@ -20,13 +20,13 @@ struct TabBar: View {
     var contentView: some View {
         switch tabbarRouter.currentPage {
         case .game:
-            GameView()
-                .environmentObject(tabbarRouter)
+               GameView()
+      
         case .city:
             CityView()
                 .environmentObject(tabbarRouter)
         case .help:
-            HelpView()
+            MafiaWinsView()
                 .environmentObject(tabbarRouter)
         }
     }

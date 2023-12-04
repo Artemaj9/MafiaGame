@@ -73,10 +73,11 @@ struct GameView: View {
                             isUnfold.toggle()
                         } label: {
                             Image(systemName: "chevron.down")
-                            .rotationEffect(.degrees(isUnfold ? 180 : 0))
+                                .rotationEffect(.degrees(isUnfold ? 180 : 0))
                             .foregroundColor(.black)
                             .scaleEffect(1.3)
-                            .animation(.easeInOut(duration: 1), value: isUnfold)
+                            .animation(.easeInOut(duration: 1)
+                                       , value: isUnfold)
                         }
                     }
                   //  .animation(.easeInOut(duration: 1), value: isUnfold)
@@ -140,40 +141,75 @@ struct GameView: View {
                 
                 VStack(spacing: 0) {
                     ScrollView(showsIndicators: false) {
+                        Color.clear
+                            .frame(height: 12)
                         LazyVGrid(
                             columns: columns,
                             alignment: .center,
                             spacing: -30
                         ) {
+                            
                             ForEach(characters, id: \.self) { character in
-                                CharacterCell2(character: character)
-                                    .scaledToFill()
-                                    .scaleEffect(y: 1.2)
-                                    .frame(width: geo.size.width/2.8)
-                                   // .padding(.bottom, -4)
-                                    //.scaleEffect(0.3)
-                                  //  .frame(width: geo.size.width / 4, height: geo.size.height/10
-                                    //)//{ index in
-//                                GeometryReader { geo2 in
-//                                        }
-//                                        .opacity(getScrollOpacity(geometry: geo2))
-//                                }
-//                               // .frame(
-//                                    width: geo.size.width * 0.4,
-//                                    height: geo.size.width * 0.4,
-//                                    alignment: .center
-//                                )
+                                GeometryReader { geo2 in
+                                    CharacterCell2(character: character)
+                                        .scaledToFill()
+                                        .scaleEffect(y: 1.5)
+                                        .frame(width: geo.size.width/4, height: geo.size.height/6)
+                                        .padding(4)
+                                        .padding(.vertical, 4)
+                                        .offset(x: 12)
+                                      .opacity(getScrollOpacity(geometry: geo2))
+                                      .blur(radius: (1 -
+                                                     getScrollOpacity(geometry: geo2))*3)
+                                      .saturation(getScrollOpacity(geometry: geo2)*1.2)
+                                }
+                                .frame(
+                                    width: geo.size.width * 0.35,
+                                    height: geo.size.width * 0.43,
+                                    alignment: .center
+                                )
+                             
                             }
                         }
+                        Color.clear
+                            .frame(height: 64)
                     }
-                    .padding(.horizontal, 8)
-                    .padding(.bottom, geo.size.height*0.2)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, geo.size.height/4)
                 }
                 .opacity((isUnfold ? 1 : 0))
-                .animation(.easeInOut(duration: 2.5), value: isUnfold)
+                .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
             }
+          //  .drawingGroup()
             .preferredColorScheme(.light)
         }
+    }
+    
+    // MARK: - Functions
+
+    func getScrollOpacity(geometry: GeometryProxy) -> Double {
+        let maxY = UIScreen.main.bounds.height
+        let currentY = geometry.frame(in: .global).minY
+        let opacity: Double
+        
+        let yInitial = 0.45 * maxY
+        let yInitial2 = 0.01 * maxY
+        let yFinal = 0.7 * maxY
+        let yFinal2 = -0.2 * maxY
+        
+        let k = 1 / (yInitial - yFinal)
+        let kTop = 1 / (yInitial2 - yFinal2)
+        let b = -k * yFinal
+        let bTop = -kTop * yFinal2
+        
+        if currentY < yInitial && currentY > yInitial2 {
+            opacity = 1
+        } else if currentY >= yInitial {
+            opacity = k * currentY + b
+        } else {
+            opacity = kTop * currentY + bTop
+        }
+        return opacity
     }
 }
 
