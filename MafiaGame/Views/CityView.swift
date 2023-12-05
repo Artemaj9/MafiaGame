@@ -42,26 +42,27 @@ struct CityView: View {
         NavigationView {
             ZStack {
                 Color.black.ignoresSafeArea()
-                
+                Image("nightBg")
                 ScrollView(showsIndicators: false) {
                     Text("Characters")
                         .font(Font.custom("Roboto-Bold", size: 33))
                         .foregroundColor(Color("cityTitle"))
                         .shadow(color: .white, radius: 2)
                     
-                    VStack() {
+                    VStack(spacing: 4) {
                         ForEach(characters, id: \.self) { character in
                             NavigationLink {
                                 CharacterDetailView(num: Int(character.number)!)
                             } label: {
                                 
                                 CharacterCell(character: character)
-                                    .frame(minHeight: 450, idealHeight: 500, maxHeight: 550, alignment: .center
+                                    .frame(minHeight: 300, idealHeight: 480, maxHeight: 550, alignment: .center
                                     )
                             }
-
                         }
                     }
+                    Color.clear
+                        .frame(height: 64)
                 }
             }
            

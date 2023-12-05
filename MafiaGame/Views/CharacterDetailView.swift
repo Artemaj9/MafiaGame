@@ -8,7 +8,7 @@ struct CharacterDetailView: View {
    
     @Environment(\.presentationMode) var presentation
     var num: Int = 2
-    @State var saturation = 0.0
+    //@State var rotation = -15.0
 
     var body: some View {
           
@@ -27,6 +27,7 @@ struct CharacterDetailView: View {
                             type: allCharacters[num - 1].team.rawValue,
                             description: "", isDescription: false), presentationMode: presentation)
                         .frame(width: geo.size.width * 0.95, height: geo.size.height/2.3, alignment: .center)
+                       // .hueRotation(.degrees(rotation))
                         
                         
                         ForEach(allCharacters[num - 1].descriptionArray, id:\.0) { (title, info) in
@@ -40,7 +41,7 @@ struct CharacterDetailView: View {
                       .offset(y: -12)
                         
                         Color.clear
-                            .frame(height: geo.size.height/8)
+                            .frame(height: geo.size.height/6)
                     }
                     .onAppear {
                         print(geo.size.height)
@@ -56,9 +57,6 @@ struct CharacterDetailView: View {
                         .offset(x: 5)
                        // .offset(y: -20)
                       
-                }
-                .onAppear {
-                    saturation = 1.0
                 }
                 //.background(Color("citizenBg"))
             }

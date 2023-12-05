@@ -127,14 +127,14 @@ let allCharacters: [Character] = [
                           description:
                             "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
     
-    Character(image: "mistress", title: "MISTRESS", team: .neutral, num: 11, descriptionArray: [
-                    ("Role", " The Escort/Mistress is a citizen who can distract players each night, preventing them from using their ability."),
-                    ("Abilities", "Each night, the Escort/Mistress can choose one player to role block, which prevents that player from using their ability."),
-                    ("Number of Players", "Typically, there is only one Escort/Mistress in a game."),
-                    ("Status", "Rare (Usually included in larger or more complex games as a disruptive role)."),
-                    ("Limit", "Usually 1 Escort/Mistress in a game to maintain balance.")],
-                          description:
-                            "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
+//    Character(image: "mistress", title: "MISTRESS", team: .neutral, num: 11, descriptionArray: [
+//                    ("Role", " The Escort/Mistress is a citizen who can distract players each night, preventing them from using their ability."),
+//                    ("Abilities", "Each night, the Escort/Mistress can choose one player to role block, which prevents that player from using their ability."),
+//                    ("Number of Players", "Typically, there is only one Escort/Mistress in a game."),
+//                    ("Status", "Rare (Usually included in larger or more complex games as a disruptive role)."),
+//                    ("Limit", "Usually 1 Escort/Mistress in a game to maintain balance.")],
+//                          description:
+//                            "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
     
     Character(image: "mistress", title: "MISTRESS", team: .neutral, num: 11, descriptionArray: [
                     ("Role", "The Escort/Mistress is a citizen who can distract players each night, preventing them from using their ability."),
@@ -163,7 +163,7 @@ let allCharacters: [Character] = [
                           description:
                             "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
     
-    Character(image: "serial killer", title: "SERIAL KILLER", team: .neutral, num: 14, descriptionArray: [
+    Character(image: "skiller", title: "SERIAL KILLER", team: .neutral, num: 14, descriptionArray: [
                     ("Role", "The Serial Killer is an independent role that tries to be the last one standing. They do this by eliminating one player every night."),
                     ("Abilities", "They choose a player to kill each night. They're immune to being killed at night, but can be lynched during the day."),
                     ("Number of Players", "Typically, there is only one Serial Killer in a game."),

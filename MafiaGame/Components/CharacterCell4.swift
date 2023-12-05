@@ -1,10 +1,17 @@
 //
-//  CharacterCell.swift
+//  CharacterCell4.swift
+//  MafiaGame
 //
+//  Created by Artem on 05.12.2023.
+//
+//
+//  CharacterCell3.swift
+//
+
 
 import SwiftUI
 
-struct CharacterCell: View {
+struct CharacterCell4: View {
 
     let character: CharacterModel
     let myGradient = Gradient(
@@ -14,18 +21,18 @@ struct CharacterCell: View {
             Color("strokeGrad2")
         ]
     )
+
     var isDescription = true
-   // @State var isDescription = true
+    
     var body: some View {
-        VStack(alignment: .center) {
             ZStack {
-                Color.black.ignoresSafeArea()
                 GeometryReader { geo in
                     VStack() {
                         ZStack(alignment: .top) {
                             Image(character.image)
                                 .resizable()
-                                //.scaledToFit()
+                               // .scaledToFit()
+                               // .frame(width: geo.size.width*0.9)
                                 .overlay {
                                     ZStack(alignment: .top) {
                                         Rectangle()
@@ -39,6 +46,7 @@ struct CharacterCell: View {
                                             )
                                             .cornerRadius(1)
                                         HStack {
+                                               // .foregroundColor(.black)
                                             Spacer()
                                             Rectangle()
                                                 .fill(.white)
@@ -98,32 +106,12 @@ struct CharacterCell: View {
                                         .shadow(color: .black, radius: 4)
                                 )
                                 .offset(y: 0.75 * geo.size.width)
-                                //.offset(y: 0.65 * geo.size.height)
                         }
-
-                        if character.isDescription {
-                            Text(character.description)
-                                .multilineTextAlignment(.center)
-                                .font(Font.custom("Roboto-Medium", size: 18))
-                                .foregroundColor(.white)
-                                .shadow(color: .black, radius: 6)
-                                .padding([.horizontal,.bottom], 16)
-                        }
-
                     }
-                    .frame(maxWidth: .infinity)
-                    .background {
-                        Color(character.type + "Color")
-                            .padding(4)
-                    }
-                    .onAppear {
-                        print(geo.size.width)
-                    }
+                    .frame(maxWidth: geo.size.width)
                 }
-            }
-            
+          //  }
         }
     }
 }
 
-#warning("цвет фона карточек надо поправлять!")
