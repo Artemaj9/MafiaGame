@@ -19,7 +19,6 @@ struct SearchView: View {
     @State private var opacityQuestions = 0.0
     @State private var blurQuestions = 10.0
     
-
     let defaultQuestions = [
         "What should I do as a Doctor in Mafia?",
         "As a Sheriff, who should I investigate first?",

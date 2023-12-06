@@ -49,6 +49,9 @@ struct HomeView: View {
                         }
                     }
                     .offset(y: keyboardHeight > 0 ? keyboardHeight - geo.size.height/10 - 8: 0)
+                    .onTapGesture {
+                        UIApplication.shared.endEditing()
+                    }
                     
                     
                     SearchView(searchText: $searchText, keyboardHeight: $keyboardHeight)

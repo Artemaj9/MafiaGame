@@ -9,6 +9,9 @@ struct TabBar: View {
     @StateObject var tabbarRouter = TabbarRouter()
     @Namespace private var namespace
     @State var localSelection: Page = .game
+    init() {
+          UITextField.appearance().keyboardAppearance = .light
+      }
     
     let tabs = [
         TabModel(iconname: "tbGame", text: "Game", assignedPage: .game),
