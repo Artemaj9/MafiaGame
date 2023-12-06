@@ -19,9 +19,9 @@ struct ChatBubble: View {
             
             MessageBubble(direction: isAI ? .left : .right) {
                 VStack(alignment: .leading, spacing: 7){
-                    Text(isAI ? "AI" : "You")
-                        .font(.subheadline)
-                        .fontWeight(.bold)
+                 //   Text(isAI ? "AI" : "You")
+                   //     .font(.subheadline)
+                     //   .fontWeight(.bold)
                     if message.contains("http") {
                         
                         if let image = imageViewModel.image {
@@ -39,8 +39,8 @@ struct ChatBubble: View {
                 }
                 .padding(.all, 20)
                 .padding(.horizontal)
-                .foregroundColor(isAI ? .black : .white)
-                .background(isAI ? Color(.systemGray5) : .blue)
+                .foregroundColor(isAI ? .white : .black)
+                .background(isAI ? .black : .white)
             }
             .scaleEffect(opacityAndScale)
             .opacity(opacityAndScale)

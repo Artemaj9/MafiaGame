@@ -14,7 +14,7 @@ struct ScrollHeaderView: View {
     @State private var offsetXFourth = -192.0;
     @State private var opacityFourtht = 0.0;
     @Binding var searchText: String
-    
+    //@Binding var showHelpQuestions = true
     let defaultQuestions = [
         "What should I do as a Doctor in Mafia?",
         "As a Sheriff, who should I investigate first?",
@@ -28,26 +28,26 @@ struct ScrollHeaderView: View {
     var body: some View {
         VStack(alignment: .leading) {
             firstHeaderBubble
-          //  sloganTextView
-           // secondHeaderBubble
-          //  thirdHeaderBubble
-           // VStack(alignment: .leading) {
-            ForEach(defaultQuestions, id: \.self) { question in
-             //   MessageBubbleShape(direction: .left) {
-                Button {
-                    searchText = question
-                } label: {
-                    Text(question)
-                        .font(Font.custom("Roboto-Medium", size: 14))
-                        .padding(4)
-                        .background {
-                            Rectangle()
-                                .fill(.white)
-                                .cornerRadius(100)
-                        }
+            
+//            ForEach(defaultQuestions, id: \.self) { question in
+//                Button {
+//                    searchText = question
+//                } label: {
+//                    Text(question)
+//                        .font(Font.custom("Roboto-Medium", size: 16))
+//                        .foregroundColor(.black)
+//                        .padding(4)
+//                        .background {
+//                            Rectangle()
+//                                .fill(.white)
+//                                .cornerRadius(100)
+//                        }
+//                }
+//                    }
+//            .opacity(searchText.count > 5 ? 0 : 1)
+//            .animation(.easeOut, value: searchText.count)
                 }
-                    }
-                }
+       // .offset(y: 200)
       //  .padding(.leading, -12)
           //  }
       //  }
@@ -99,7 +99,7 @@ extension ScrollHeaderView {
             MessageBubble(direction: .left) {
                 VStack(alignment: .leading) {
                     Text("Whether you're a Mafia member trying to outwit the citizens, a Doctor looking for the best protection strategy, or an Executioner trying to manipulate the crowd, MafAdvisor is here to guide you. With an intuitive understanding of the game rules and a wealth of strategic knowledge, MafAdvisor will help you excel, no matter what role you play.")
-                        .font(Font.custom("Roboto-Medium", size: 14))
+                        .font(Font.custom("Roboto-Medium", size: 16))
                         .padding()
                 }
                 

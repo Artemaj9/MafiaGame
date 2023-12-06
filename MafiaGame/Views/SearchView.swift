@@ -14,72 +14,110 @@ struct SearchView: View {
     @State private var isListening = false
     @State private var offsetX = 292.0;
     @State private var opacity = 0.0;
+    @State private var opacityQuestions = 0.0
+    @State private var blurQuestions = 10.0
+    let defaultQuestions = [
+        "What should I do as a Doctor in Mafia?",
+        "As a Sheriff, who should I investigate first?",
+        "I'm a Vigilante. Who should I target and why?",
+        "How should I utilize my ability as a Godfather?",
+        "I'm the Mafioso. Who should I kill first?",
+        "How can I protect others as the Bodyguard?",
+        "What should be my strategy as a Sheriff?"
+    ]
+    @State private var isShowHelp = true
     
     var body: some View {
-        ZStack(alignment: .leading){
-            ZStack{}
-                .frame(maxWidth: .infinity, maxHeight: 55)
-                .background(.white)
-                .cornerRadius(16, corners: [.topLeft,.topRight])
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: 14)
-//                        .stroke(.blue, lineWidth: 1)
-//                )
-                .padding(.horizontal, -14)
-
-            HStack{
-                TextField("", text: $searchText)
-                    .onChange(of: searchText) { newValue in
-                        withAnimation(.spring()){
-                            isTyped = newValue.isEmpty ? false : true
-                            
-                            sendButtomImage = isTyped ? sendButtomImages[0] :  sendButtomImages[1]
-                        }
+        VStack(alignment: .leading) {
+            if isShowHelp {
+                ForEach(defaultQuestions, id: \.self) { question in
+                    Button {
+                        searchText = question
+                    } label: {
+                        Text(question)
+                            .font(Font.custom("Roboto-Medium", size: 14))
+                            .foregroundColor(.black)
+                            .padding(4)
+                            .background {
+                                Rectangle()
+                                    .fill(.white)
+                                    .cornerRadius(100)
+                            }
                     }
-                ZStack{
-                    Image(systemName: sendButtomImage)
-                        .rotationEffect(Angle(degrees: isTyped ? 45 : 0))
                 }
-                .frame(width: 50,height: 50)
-                //.background(.blue)
-               // .cornerRadius(14)
-                .foregroundColor(.black)
-                .padding(.trailing, -14)
-                .onTapGesture {
-                    if !isTyped {
-                        isListening.toggle()
-                        withAnimation(.spring()) {
-                            sendButtomImage = isListening ? sendButtomImages[2] : sendButtomImages[1]
+                .padding(.bottom, 8)
+                .opacity(opacityQuestions)
+                .blur(radius: blurQuestions)
+                .opacity(searchText.count > 5 || !isShowHelp ? 0 : 1)
+                .animation(.easeOut, value: searchText.count)
+                .animation(.easeOut, value: isShowHelp)
+            }
+            ZStack(alignment: .leading) {
+                ZStack{}
+                    .frame(maxWidth: .infinity, maxHeight: 55)
+                 
+                    .background(.white)
+
+                    .cornerRadius(16, corners: [.topLeft,.topRight])
+                    .shadow(color: .black.opacity(0.32), radius: 16)
+                    .padding(.horizontal, -14)
+                
+                HStack {
+                    TextField("", text: $searchText)
+                        .font(Font.custom("Roboto-Medium", size: 15))
+                        .onChange(of: searchText) { newValue in
+                            withAnimation(.spring()){
+                                isTyped = newValue.isEmpty ? false : true
+                                sendButtomImage = isTyped ? sendButtomImages[0] :  sendButtomImages[1]
+                            }
                         }
-                    } else {
-                       
-                        vm.addMessage(isAI: false, message: searchText)
-                        searchText = ""
+                    ZStack {
+                        Image(systemName: sendButtomImage)
+                            .rotationEffect(Angle(degrees: isTyped ? 45 : 0))
                     }
+                    .frame(width: 50,height: 50)
+                    .foregroundColor(.black)
+                    .padding(.trailing, -14)
+                    .onTapGesture {
+                        isShowHelp = false
+                        if !isTyped {
+                            isListening.toggle()
+                            withAnimation(.spring()) {
+                                sendButtomImage = isListening ? sendButtomImages[2] : sendButtomImages[1]
+                            }
+                        } else {
+                            vm.addMessage(isAI: false, message: searchText)
+                            searchText = ""
+                        }
+                    }
+                }
+                
+                Text(isTyped ? "Chat with me..." : "Start typing a message...")
+                    .frame(height: 20, alignment: .leading)
+                    .padding(.horizontal, 7)
+                    .background(Color.white.cornerRadius(isTyped ? 16 : 0))
+                    .font(Font.custom("Roboto-Medium", size: isTyped ? 13 : 15))
+                    .padding(.top, isTyped ? -36 : 0)
+                    .padding(.leading, 1)
+                    .opacity(searchText.count > 4 ? 0 : 1)
+                    .animation(.easeInOut(duration: 0.4), value: isTyped)
+                    .animation(.easeInOut(duration: 0.4), value: searchText.count)
+            }
+            .frame(height: 50, alignment: .leading)
+            .foregroundColor(.black)
+            .offset(x: offsetX)
+            .opacity(opacity)
+            .onAppear {
+                withAnimation(.spring().delay(1.58)){
+                    opacity = 1
+                    offsetX = 0
                 }
             }
-            
-            Text(isTyped ? "Chat with me..." : "Start typing a message...")
-                .frame(height: 20, alignment: .leading)
-                .padding(.horizontal, 7)
-                .background(.white)
-                .font(Font.system(size: isTyped ? 13 : 16))
-                .padding(.top, isTyped ? -36 : 0)
-                .padding(.leading, 1)
-                .opacity(searchText.count > 4 ? 0 : 1)
-                .animation(.easeInOut(duration: 0.4), value: isTyped)
-                .animation(.easeInOut(duration: 0.4), value: searchText.count)
         }
-        .frame(height: 50, alignment: .leading)
-        .foregroundColor(.black)
-        //.padding(.horizontal, 14)
-        //.padding(.horizontal, 14)
-        .offset(x: offsetX)
-        .opacity(opacity)
         .onAppear {
-            withAnimation(.spring().delay(1.58)){
-                opacity = 1
-                offsetX = 0
+            withAnimation(.spring().delay(0.09)) {
+                opacityQuestions = 1
+                blurQuestions = 0
             }
         }
     }

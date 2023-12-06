@@ -8,18 +8,19 @@ struct HomeView: View {
     @StateObject var vm = HomeViewModel()
     @State var searchText = ""
     @State var showHeader = true
+    
     var body: some View {
         ZStack {
             backgroundView
                 .ignoresSafeArea()
             GeometryReader { geo in
                 VStack {
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         ScrollViewReader { proxy in
                             VStack(alignment: .leading){
                                 if showHeader {
-                                    ScrollHeaderView()
-                                        .opacity((Double(10 - searchText.count))/10)
+                                    ScrollHeaderView(searchText: $searchText)
+//                                        .opacity((Double(10 - searchText.count))/10)
                                         .animation(.easeOut, value: searchText.count)
                                     
                                     ForEach($vm.messages, id: \.id) { message in
@@ -30,14 +31,11 @@ struct HomeView: View {
                                 }
                             }
 
-                            
                             .onChange(of: vm.messages.count) { _ in
                                 withAnimation(.spring()){
                                     proxy.scrollTo(vm.messages.last?.id, anchor: .bottom)
                                 }
-                                
                             }
-                            
                         }
                     }
                     
@@ -49,6 +47,7 @@ struct HomeView: View {
                 .padding(8)
             }
         }
+        .preferredColorScheme(.dark)
 }
 }
 
@@ -57,17 +56,10 @@ extension HomeView {
         ZStack {
             Image("bgday")
                 .resizable()
-                .hueRotation(Angle(degrees: 45))
-               // .brightness(0.2)
-              //  .scaledToFill()
-                //.ignoresSafeArea(edges: .bottom)
-               .saturation(1.5)
-              
-                
+                .hueRotation(Angle(degrees: 25))
+                .contrast(1)
+                .saturation(1.2)
                 .colorMultiply(Color("bgMultiplyColor"))
-                //.saturation(1.9)
-               
-                
         }
         .opacity(1)
     }
