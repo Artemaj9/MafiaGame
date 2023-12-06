@@ -8,6 +8,7 @@ struct SearchView: View {
     
     @EnvironmentObject var vm : HomeViewModel
     @Binding var searchText: String //= ""
+    @Binding var keyboardHeight: CGFloat
     @State private var isTyped = false
     @State private var sendButtomImage =  "mic.fill"
     private let sendButtonImage =  "send"
@@ -16,6 +17,7 @@ struct SearchView: View {
     @State private var opacity = 0.0;
     @State private var opacityQuestions = 0.0
     @State private var blurQuestions = 10.0
+
     let defaultQuestions = [
         "What should I do as a Doctor in Mafia?",
         "As a Sheriff, who should I investigate first?",
@@ -48,9 +50,11 @@ struct SearchView: View {
                 .padding(.bottom, 8)
                 .opacity(opacityQuestions)
                 .blur(radius: blurQuestions)
-                .opacity(searchText.count > 5 || !isShowHelp ? 0 : 1)
+                .opacity(searchText.count > 5 || !isShowHelp || keyboardHeight > 0 ? 0 : 1)
+                .offset(y: searchText.count > 5 || !isShowHelp || keyboardHeight > 0 ? 300 : 0 )
                 .animation(.easeOut, value: searchText.count)
                 .animation(.easeOut, value: isShowHelp)
+                .animation(.easeOut, value: keyboardHeight)
             }
             ZStack(alignment: .leading) {
                 ZStack{}
@@ -124,7 +128,7 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(searchText: .constant(""))
+        SearchView(searchText: .constant(""), keyboardHeight: .constant(0))
             .environmentObject(HomeViewModel())
     }
 }

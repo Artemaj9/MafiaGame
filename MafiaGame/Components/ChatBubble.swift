@@ -37,7 +37,7 @@ struct ChatBubble: View {
                         }
                     } else {
                         Text(message)
-                            .font(Font.custom("Roboto-Medium", size: 15))
+                            .font(Font.custom("Roboto-Medium", size: 16))
                            // .font(.headline)
                             //.fontWeight(.regular)
                     }

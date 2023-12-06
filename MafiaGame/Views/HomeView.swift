@@ -3,11 +3,15 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeView: View {
+    
     @StateObject var vm = HomeViewModel()
+    
+    @State private var showHeader = true
+    @State private var keyboardHeight: CGFloat = 0
     @State var searchText = ""
-    @State var showHeader = true
     
     var body: some View {
         ZStack {
@@ -30,23 +34,38 @@ struct HomeView: View {
                                     }
                                 }
                             }
+                            //.padding(.top, 4)
 
                             .onChange(of: vm.messages.count) { _ in
                                 withAnimation(.spring()){
-                                    proxy.scrollTo(vm.messages.last?.id, anchor: .bottom)
+                                    if vm.messages.count >= 2 {
+                                        proxy.scrollTo(vm.messages[vm.messages.count - 2].id, anchor: .top)
+                                    }
+                                   // proxy.scrollTo(vm.messages.last?.id, anchor: .bottom)
                                 }
                             }
                             Color.clear
-                                .frame(height: geo.size.height/10)
+                                .frame(height: vm.messages.count >= 2 ? geo.size.height : geo.size.height/10)
                         }
                     }
+                    .offset(y: keyboardHeight > 0 ? keyboardHeight - geo.size.height/10 - 8: 0)
                     
                     
-                    SearchView(searchText: $searchText)
+                    SearchView(searchText: $searchText, keyboardHeight: $keyboardHeight)
                         .environmentObject(vm)
                         .offset(y:-geo.size.height/10)
+                       // .offset(y: -keyboardHeight)
+                        //.padding(.bottom, -keyboardHeight)
+                        // 3.
+                        
                     //  .padding(.bottom,14)
                 }
+                .offset(y: keyboardHeight > 0 ? -keyboardHeight + geo.size.height/10 + 8: 0)
+
+                .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0
+                    print(self.keyboardHeight)
+                }
+                .animation(.spring(), value: keyboardHeight)
                 .padding(8)
             }
         }

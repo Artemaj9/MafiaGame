@@ -62,6 +62,8 @@
 		AC6DBA852B1FF27300B2A6C3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA842B1FF27300B2A6C3 /* HomeView.swift */; };
 		AC6DBA872B1FF2C600B2A6C3 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA862B1FF2C600B2A6C3 /* ChatBubble.swift */; };
 		AC6DBAA32B20F6D000B2A6C3 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAA22B20F6CF00B2A6C3 /* AvatarView.swift */; };
+		AC6DBAA82B210EEA00B2A6C3 /* Publishers+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAA72B210EEA00B2A6C3 /* Publishers+ext.swift */; };
+		AC6DBAAA2B2119BB00B2A6C3 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAA92B2119BB00B2A6C3 /* UIApplication.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -124,6 +126,8 @@
 		AC6DBA842B1FF27300B2A6C3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AC6DBA862B1FF2C600B2A6C3 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		AC6DBAA22B20F6CF00B2A6C3 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		AC6DBAA72B210EEA00B2A6C3 /* Publishers+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+ext.swift"; sourceTree = "<group>"; };
+		AC6DBAA92B2119BB00B2A6C3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,6 +204,7 @@
 		AC0B24282B1A4EC300BC7FAE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AC6DBAA62B210E8400B2A6C3 /* KeyboardFeatures */,
 				AC0B24262B1A4E8400BC7FAE /* CornerModifier.swift */,
 				AC6AA6052B1A73E3009B404F /* View+InnerShadow.swift */,
 				AC6DBA5D2B1E7BC700B2A6C3 /* AnimationStyle.swift */,
@@ -324,6 +329,15 @@
 			path = AIViewModel;
 			sourceTree = "<group>";
 		};
+		AC6DBAA62B210E8400B2A6C3 /* KeyboardFeatures */ = {
+			isa = PBXGroup;
+			children = (
+				AC6DBAA72B210EEA00B2A6C3 /* Publishers+ext.swift */,
+				AC6DBAA92B2119BB00B2A6C3 /* UIApplication.swift */,
+			);
+			path = KeyboardFeatures;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -443,7 +457,9 @@
 				AC6DBA782B1FE42A00B2A6C3 /* MessageBubble.swift in Sources */,
 				ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */,
 				AC6DBA7D2B1FE66600B2A6C3 /* ImageViewModel.swift in Sources */,
+				AC6DBAAA2B2119BB00B2A6C3 /* UIApplication.swift in Sources */,
 				AC0B24252B1A44AF00BC7FAE /* GameView.swift in Sources */,
+				AC6DBAA82B210EEA00B2A6C3 /* Publishers+ext.swift in Sources */,
 				AC6DBAA32B20F6D000B2A6C3 /* AvatarView.swift in Sources */,
 				AC0B24222B1A2E7800BC7FAE /* SplashView.swift in Sources */,
 				AC448E162B1BEA7D003ACDF3 /* GreenWinsView.swift in Sources */,
