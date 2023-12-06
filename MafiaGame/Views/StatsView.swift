@@ -2,7 +2,6 @@
 //  StatsView.swift
 //
 
-
 import SwiftUI
 
 struct StatsView: View {
@@ -13,6 +12,7 @@ struct StatsView: View {
             Spacer()
             
             StatCell(mainColor: "mainSmile", bgColor: "bgSmile", shadowColor: "shadowSmile", value: "0", icon: "smile")
+            
             Spacer()
             
             StatCell(mainColor: "mainUsers", bgColor: "bgUsers", shadowColor: "shadowUsers", value: "3", icon: "group")

@@ -18,12 +18,16 @@ struct GameView: View {
     let characters = [
         CharacterModel(image: "citizen", number: "1", role: "CITIZEN", type: "citizen", description:
     "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day.", isDescription: false),
+        
         CharacterModel(image: "doctor", number: "2", role: "DOCTOR", type: "citizen", description:
     "Can protect other players from being eliminated by the Mafia at night. Typically they cannot protect the same person two nights in a row.", isDescription: false),
+        
         CharacterModel(image: "sheriff", number: "3", role: "SHERIFF", type: "citizen", description:
     "A variant of the Detective. They can investigate other players to find out if they are suspicious (Mafia or Serial Killer) or not.", isDescription: false),
+        
         CharacterModel(image: "cop", number: "4", role: "COP", type: "citizen", description:
     "Can investigate other players to determine their roles. They play a crucial role in guiding the citizens to make the right decisions.", isDescription: false),
+        
         CharacterModel(image: "mafia", number: "5", role: "MAFIA",  type: "mafia", description:
     "The main antagonists who secretly eliminate citizens at night. They know each other's identity and conspire to deceive the town during the day.", isDescription: false),
         CharacterModel(image: "godfather", number: "6", role: "GODFATHER", type: "mafia", description:

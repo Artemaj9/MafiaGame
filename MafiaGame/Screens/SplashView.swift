@@ -15,6 +15,7 @@ struct SplashView: View {
                 .ignoresSafeArea()
             
             GeometryReader { geo in
+                
                 Image("logoman")
                     .scaledToFit()
                     .frame(width: geo.size.width,
@@ -31,8 +32,6 @@ struct SplashView: View {
             }
             .saturation(saturation)
             .animation(.easeIn(duration: 0.8),value: saturation)
-           
-
         }
         .preferredColorScheme(.dark)
         .onAppear {

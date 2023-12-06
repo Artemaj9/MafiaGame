@@ -21,12 +21,13 @@ struct TabBar: View {
         switch tabbarRouter.currentPage {
         case .game:
                GameView()
-      
+            
         case .city:
             CityView()
                 .environmentObject(tabbarRouter)
+            
         case .help:
-            MafiaWinsView()
+            HomeView()
                 .environmentObject(tabbarRouter)
         }
     }
@@ -61,7 +62,6 @@ struct TabBar: View {
                                             .shadow(color: Color("tbShadow"), radius: 8, x: 0, y: 0)
                                             .frame(width: 75, height: 49)
                                             .offset(y: geometry.size.height > 800 ?  -14 : -10)
-                                           // .animation(.easeIn(duration: 1), value: localSelection)
                                     }
                                 }
                             )

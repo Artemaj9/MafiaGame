@@ -14,7 +14,6 @@ struct CharacterModel: Hashable {
     let type: String
     let description: String
     var isDescription: Bool =  true
-  
 }
 
 

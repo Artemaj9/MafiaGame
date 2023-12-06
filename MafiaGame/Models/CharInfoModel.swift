@@ -1,8 +1,5 @@
 //
 //  CharInfoModel.swift
-//  MafiaGame
-//
-//  Created by Artem on 05.12.2023.
 //
 
 import Foundation
@@ -81,7 +78,6 @@ let allCharacters: [Character] = [
               description:
                 "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
     
-    
     Character(image: "godfather", title: "GODFATHER", team: .mafia, num: 6, descriptionArray: [
         ("Role", "The Godfather is the leader of the Mafia. Their goal is to eliminate the Citizens and take control of the town."),
         ("Abilities", "The Godfather chooses a player to kill each night. If there is no Mafioso, the Godfather will carry out the killing. The Godfather appears innocent to the Detective's investigation and is immune to being killed at night."),
@@ -91,7 +87,6 @@ let allCharacters: [Character] = [
               description:
                 "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
  
-    
     Character(image: "mafioso", title: "MAFIOSO", team: .mafia, num: 7, descriptionArray: [
         ("Role", "The Mafioso is a member of the Mafia who carries out the killing chosen by the Godfather."),
         ("Abilities", "The Mafioso kills the target chosen by the Godfather each night. If the Godfather dies or is role-blocked, the Mafioso will make the decision on who to kill."),
@@ -100,6 +95,7 @@ let allCharacters: [Character] = [
         ("Limit", "Usually 1 Mafioso in a game to maintain balance.")],
               description:
                 "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
+    
     Character(image: "framer", title: "FRAMER", team: .mafia, num: 8, descriptionArray: [
                     ("Role", "The Framer is a member of the Mafia who can make other players appear guilty."),
                     ("Abilities", "The Framer chooses a player to frame each night. If the Detective investigates this player, they will appear as Mafia."),
@@ -126,15 +122,6 @@ let allCharacters: [Character] = [
                     ("Limit", "Usually 1 Executioner in a game to maintain balance.")],
                           description:
                             "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
-    
-//    Character(image: "mistress", title: "MISTRESS", team: .neutral, num: 11, descriptionArray: [
-//                    ("Role", " The Escort/Mistress is a citizen who can distract players each night, preventing them from using their ability."),
-//                    ("Abilities", "Each night, the Escort/Mistress can choose one player to role block, which prevents that player from using their ability."),
-//                    ("Number of Players", "Typically, there is only one Escort/Mistress in a game."),
-//                    ("Status", "Rare (Usually included in larger or more complex games as a disruptive role)."),
-//                    ("Limit", "Usually 1 Escort/Mistress in a game to maintain balance.")],
-//                          description:
-//                            "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
     
     Character(image: "mistress", title: "MISTRESS", team: .neutral, num: 11, descriptionArray: [
                     ("Role", "The Escort/Mistress is a citizen who can distract players each night, preventing them from using their ability."),
@@ -172,7 +159,3 @@ let allCharacters: [Character] = [
                           description:
                             "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day.")
     ]
-    
-    
-
-

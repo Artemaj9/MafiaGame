@@ -1,8 +1,5 @@
 //
 //  GreenWinsView.swift
-//  MafiaGame
-//
-//  Created by Artem on 03.12.2023.
 //
 
 import SwiftUI
@@ -24,6 +21,7 @@ struct GreenWinsView: View {
                     .ignoresSafeArea()
                     .animation(.easeInOut(duration: 5), value: radians)
                     .animation(.easeIn(duration: 7), value: saturation)
+                
                 RadialGradient(colors: [Color("cubeGrad").opacity(0.1),Color("cubeGrad").opacity(0.3),Color("cubeGrad").opacity(0)], center: .center, startRadius: 3 * radiusFactor, endRadius: 180 * radiusFactor)
                     .blur(radius: 40)
                     .offset(y:  -geo.size.height * 0.3)
@@ -35,6 +33,7 @@ struct GreenWinsView: View {
                             .offset(y:  -geo.size.height * 0.3)
                             .animation(.easeInOut(duration: 12), value: degrees)
                     }
+                
                 RadialGradient(colors: [Color("cubeGrad").opacity(0),Color("cubeGrad").opacity(0.4),Color("cubeGrad").opacity(0)], center: .center, startRadius: 11 * radiusFactor, endRadius: 270 * radiusFactor)
                     .saturation(saturation)
                     .blur(radius: 40)
@@ -51,12 +50,12 @@ struct GreenWinsView: View {
                             .font(Font.custom("Roboto-Black", size: 36))
                         Text("WINS")
                             .font(Font.custom("Roboto-Black", size: 88))
-                        //  Spacer()
                     }
                     .foregroundColor(Color("citizenWinsColor"))
                     .shadow(color: .black.opacity(0.64), radius: 4, x: 0, y: 0)
                     .saturation(saturation)
                     .animation(.easeIn(duration: 3), value: saturation)
+                    
                     Button {
                         
                     } label: {
@@ -67,6 +66,7 @@ struct GreenWinsView: View {
                     }
                 }
                 .offset(y: -geo.size.height * 0.3)
+                
                 Group {
                     Image("citizen")
                         .resizable()

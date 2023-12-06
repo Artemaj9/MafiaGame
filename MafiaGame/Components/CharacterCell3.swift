@@ -2,7 +2,6 @@
 //  CharacterCell3.swift
 //  
 
-
 import SwiftUI
 
 struct CharacterCell3: View {

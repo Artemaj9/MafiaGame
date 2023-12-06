@@ -6,7 +6,6 @@ import SwiftUI
 
 struct CityView: View {
     
-    
     let characters = [
         CharacterModel(image: "citizen", number: "1", role: "CITIZEN", type: "citizen", description:
     "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day."),
@@ -42,7 +41,9 @@ struct CityView: View {
         NavigationView {
             ZStack {
                 Color.black.ignoresSafeArea()
+                
                 Image("nightBg")
+                
                 ScrollView(showsIndicators: false) {
                     Text("Characters")
                         .font(Font.custom("Roboto-Bold", size: 33))
@@ -54,22 +55,20 @@ struct CityView: View {
                             NavigationLink {
                                 CharacterDetailView(num: Int(character.number)!)
                             } label: {
-                                
                                 CharacterCell(character: character)
                                     .frame(minHeight: 300, idealHeight: 480, maxHeight: 550, alignment: .center
                                     )
                             }
                         }
                     }
+                    
                     Color.clear
                         .frame(height: 64)
                 }
             }
-           
             .preferredColorScheme(.dark)
         }
         .navigationViewStyle(.stack)
-
     }
 }
 

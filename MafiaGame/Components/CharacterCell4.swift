@@ -1,13 +1,6 @@
 //
 //  CharacterCell4.swift
-//  MafiaGame
 //
-//  Created by Artem on 05.12.2023.
-//
-//
-//  CharacterCell3.swift
-//
-
 
 import SwiftUI
 
@@ -19,9 +12,7 @@ struct CharacterCell4: View {
             Color("strokeGrad4"),
             Color("strokeGrad3"),
             Color("strokeGrad2")
-        ]
-    )
-
+        ])
     var isDescription = true
     
     var body: some View {
@@ -31,8 +22,6 @@ struct CharacterCell4: View {
                         ZStack(alignment: .top) {
                             Image(character.image)
                                 .resizable()
-                               // .scaledToFit()
-                               // .frame(width: geo.size.width*0.9)
                                 .overlay {
                                     ZStack(alignment: .top) {
                                         Rectangle()
@@ -46,8 +35,8 @@ struct CharacterCell4: View {
                                             )
                                             .cornerRadius(1)
                                         HStack {
-                                               // .foregroundColor(.black)
                                             Spacer()
+                                            
                                             Rectangle()
                                                 .fill(.white)
                                                 .frame(width: 40, height: 33)
@@ -65,6 +54,7 @@ struct CharacterCell4: View {
                                     
                                     ZStack {
                                         RadialGradient(colors: [Color(character.type + "Bg"),.black], center: .center, startRadius: 80, endRadius: 190)
+                                        
                                         Color(character.type + "Bg").opacity(0.4)
                                         
                                         RadialGradient(colors: [.black.opacity(0),.black.opacity(0.3) ], center: .center, startRadius: 10, endRadius: 90)
@@ -72,7 +62,6 @@ struct CharacterCell4: View {
                                                 Image(character.image + "Rays")
                                                     .resizable()
                                                     .scaledToFit()
-                                                
                                             }
                                         
                                         RadialGradient(colors: [Color("cubeGrad"),Color("cubeGrad").opacity(0.32),Color("cubeGrad").opacity(0) ], center: .center, startRadius: 1, endRadius: 190)
@@ -110,8 +99,6 @@ struct CharacterCell4: View {
                     }
                     .frame(maxWidth: geo.size.width)
                 }
-          //  }
         }
     }
 }
-

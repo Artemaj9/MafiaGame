@@ -8,18 +8,18 @@ struct CharacterDetailView: View {
    
     @Environment(\.presentationMode) var presentation
     var num: Int = 2
-    //@State var rotation = -15.0
-
+    
     var body: some View {
-          
             ZStack {
                 Image("bgnight")
                     .scaleEffect(2, anchor: .leading)
                     .offset(x: -24)
+                
                 GeometryReader { geo in
                     ScrollView(showsIndicators: false) {
                         Color.clear
                             .frame(height: 24)
+                        
                         CharacterCell3(character: CharacterModel(
                             image: allCharacters[num - 1].image,
                             number: String(num),
@@ -27,8 +27,6 @@ struct CharacterDetailView: View {
                             type: allCharacters[num - 1].team.rawValue,
                             description: "", isDescription: false), presentationMode: presentation)
                         .frame(width: geo.size.width * 0.95, height: geo.size.height/2.3, alignment: .center)
-                       // .hueRotation(.degrees(rotation))
-                        
                         
                         ForEach(allCharacters[num - 1].descriptionArray, id:\.0) { (title, info) in
                             DescriptionDetailCell(title: title , information: info)
@@ -52,13 +50,9 @@ struct CharacterDetailView: View {
                 }
                 .background {
                     Color("citizenBg").opacity(0.44)
-                        //.ignoresSafeArea()
                         .padding(.horizontal, 12)
                         .offset(x: 5)
-                       // .offset(y: -20)
-                      
                 }
-                //.background(Color("citizenBg"))
             }
             .offset(x: -5)
             .navigationBarHidden(true)
