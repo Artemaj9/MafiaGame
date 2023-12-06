@@ -36,8 +36,11 @@ struct HomeView: View {
                                     proxy.scrollTo(vm.messages.last?.id, anchor: .bottom)
                                 }
                             }
+                            Color.clear
+                                .frame(height: geo.size.height/10)
                         }
                     }
+                    
                     
                     SearchView(searchText: $searchText)
                         .environmentObject(vm)

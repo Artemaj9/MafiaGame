@@ -61,6 +61,7 @@
 		AC6DBA832B1FF14C00B2A6C3 /* ScrollHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA822B1FF14B00B2A6C3 /* ScrollHeaderView.swift */; };
 		AC6DBA852B1FF27300B2A6C3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA842B1FF27300B2A6C3 /* HomeView.swift */; };
 		AC6DBA872B1FF2C600B2A6C3 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA862B1FF2C600B2A6C3 /* ChatBubble.swift */; };
+		AC6DBAA32B20F6D000B2A6C3 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAA22B20F6CF00B2A6C3 /* AvatarView.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,7 @@
 		AC6DBA822B1FF14B00B2A6C3 /* ScrollHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollHeaderView.swift; sourceTree = "<group>"; };
 		AC6DBA842B1FF27300B2A6C3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AC6DBA862B1FF2C600B2A6C3 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		AC6DBAA22B20F6CF00B2A6C3 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,6 +252,7 @@
 				AC6AA60B2B1A87B0009B404F /* CharacterCell.swift */,
 				AC6DBA772B1FE42A00B2A6C3 /* MessageBubble.swift */,
 				AC6DBA862B1FF2C600B2A6C3 /* ChatBubble.swift */,
+				AC6DBAA22B20F6CF00B2A6C3 /* AvatarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */,
 				AC6DBA7D2B1FE66600B2A6C3 /* ImageViewModel.swift in Sources */,
 				AC0B24252B1A44AF00BC7FAE /* GameView.swift in Sources */,
+				AC6DBAA32B20F6D000B2A6C3 /* AvatarView.swift in Sources */,
 				AC0B24222B1A2E7800BC7FAE /* SplashView.swift in Sources */,
 				AC448E162B1BEA7D003ACDF3 /* GreenWinsView.swift in Sources */,
 				AC6DBA5C2B1E64F900B2A6C3 /* CharacterCell3.swift in Sources */,

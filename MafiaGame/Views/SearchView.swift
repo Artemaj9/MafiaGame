@@ -10,7 +10,7 @@ struct SearchView: View {
     @Binding var searchText: String //= ""
     @State private var isTyped = false
     @State private var sendButtomImage =  "mic.fill"
-    private let sendButtomImages = ["paperplane.fill","mic.fill","stop.circle.fill"]
+    private let sendButtonImage =  "send"
     @State private var isListening = false
     @State private var offsetX = 292.0;
     @State private var opacity = 0.0;
@@ -68,26 +68,25 @@ struct SearchView: View {
                         .onChange(of: searchText) { newValue in
                             withAnimation(.spring()){
                                 isTyped = newValue.isEmpty ? false : true
-                                sendButtomImage = isTyped ? sendButtomImages[0] :  sendButtomImages[1]
                             }
                         }
                     ZStack {
-                        Image(systemName: sendButtomImage)
-                            .rotationEffect(Angle(degrees: isTyped ? 45 : 0))
+                        Image(sendButtonImage)
+                            .opacity(searchText.count == 0 ? 0.5 : 1)
+                            .animation(.easeOut, value: searchText.count)
+                            //.rotationEffect(Angle(degrees: isTyped ? 45 : 0))
                     }
                     .frame(width: 50,height: 50)
                     .foregroundColor(.black)
-                    .padding(.trailing, -14)
+                    .padding(.trailing, -8)
                     .onTapGesture {
-                        isShowHelp = false
+                     
                         if !isTyped {
-                            isListening.toggle()
-                            withAnimation(.spring()) {
-                                sendButtomImage = isListening ? sendButtomImages[2] : sendButtomImages[1]
-                            }
+
                         } else {
                             vm.addMessage(isAI: false, message: searchText)
                             searchText = ""
+                            isShowHelp = false
                         }
                     }
                 }

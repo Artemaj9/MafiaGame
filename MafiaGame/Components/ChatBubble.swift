@@ -12,9 +12,13 @@ struct ChatBubble: View {
     @State private var opacityAndScale = 0.0
     @State private var offsetX = 0.0
     var body: some View {
-        HStack(spacing: 0){
-            if(!isAI){
-                paddingBalloon
+        HStack(alignment: .bottom, spacing: 0){
+//            if(!isAI){
+//                paddingBalloon
+//            }
+            if isAI {
+                AvatarView(isAI: isAI)
+                .frame(width: 36, height: 36)
             }
             
             MessageBubble(direction: isAI ? .left : .right) {
@@ -33,8 +37,9 @@ struct ChatBubble: View {
                         }
                     } else {
                         Text(message)
-                            .font(.headline)
-                            .fontWeight(.regular)
+                            .font(Font.custom("Roboto-Medium", size: 15))
+                           // .font(.headline)
+                            //.fontWeight(.regular)
                     }
                 }
                 .padding(.all, 20)
@@ -46,6 +51,10 @@ struct ChatBubble: View {
             .opacity(opacityAndScale)
             .offset(x: offsetX)
             
+            if !isAI {
+                AvatarView(isAI: isAI)
+                    .frame(width: 36, height: 36)
+            }
             if(isAI){
                 paddingBalloon
             }

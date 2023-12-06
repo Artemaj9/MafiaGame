@@ -74,7 +74,7 @@ struct ScrollHeaderView: View {
 
 extension ScrollHeaderView {
     
-    var firstHeaderBubble: some View{
+    var firstHeaderBubble: some View {
         HStack(alignment: .bottom) {
             ZStack {
                 Rectangle()
