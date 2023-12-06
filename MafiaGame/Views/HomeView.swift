@@ -54,6 +54,7 @@ struct HomeView: View {
                     SearchView(searchText: $searchText, keyboardHeight: $keyboardHeight)
                         .environmentObject(vm)
                         .offset(y:-geo.size.height/10)
+                        
                        // .offset(y: -keyboardHeight)
                         //.padding(.bottom, -keyboardHeight)
                         // 3.

@@ -64,6 +64,7 @@
 		AC6DBAA32B20F6D000B2A6C3 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAA22B20F6CF00B2A6C3 /* AvatarView.swift */; };
 		AC6DBAA82B210EEA00B2A6C3 /* Publishers+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAA72B210EEA00B2A6C3 /* Publishers+ext.swift */; };
 		AC6DBAAA2B2119BB00B2A6C3 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAA92B2119BB00B2A6C3 /* UIApplication.swift */; };
+		AC6DBAAC2B212D5900B2A6C3 /* SearchAnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAAB2B212D5900B2A6C3 /* SearchAnimationHelper.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,7 @@
 		AC6DBAA22B20F6CF00B2A6C3 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		AC6DBAA72B210EEA00B2A6C3 /* Publishers+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+ext.swift"; sourceTree = "<group>"; };
 		AC6DBAA92B2119BB00B2A6C3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		AC6DBAAB2B212D5900B2A6C3 /* SearchAnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimationHelper.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,6 +242,7 @@
 				AC6DBA7E2B1FE87D00B2A6C3 /* HeaderView.swift */,
 				AC6DBA822B1FF14B00B2A6C3 /* ScrollHeaderView.swift */,
 				AC6DBA802B1FE99600B2A6C3 /* SearchView.swift */,
+				AC6DBAAB2B212D5900B2A6C3 /* SearchAnimationHelper.swift */,
 				AC6DBA842B1FF27300B2A6C3 /* HomeView.swift */,
 			);
 			path = Views;
@@ -452,6 +455,7 @@
 				AC6DBA7B2B1FE5F300B2A6C3 /* HomeViewModel.swift in Sources */,
 				AC6DBA632B1EA3F500B2A6C3 /* CharacterCell4.swift in Sources */,
 				AC6DBA762B1FE23700B2A6C3 /* UIColor+Color.swift in Sources */,
+				AC6DBAAC2B212D5900B2A6C3 /* SearchAnimationHelper.swift in Sources */,
 				ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */,
 				AC6DBA742B1FE06100B2A6C3 /* AIAnswerModel.swift in Sources */,
 				AC6DBA782B1FE42A00B2A6C3 /* MessageBubble.swift in Sources */,

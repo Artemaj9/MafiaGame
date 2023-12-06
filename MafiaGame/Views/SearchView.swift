@@ -7,6 +7,7 @@ import SwiftUI
 struct SearchView: View {
     
     @EnvironmentObject var vm : HomeViewModel
+    @StateObject var animationHelper = AnimationHelper()
     @Binding var searchText: String //= ""
     @Binding var keyboardHeight: CGFloat
     @State private var isTyped = false
@@ -17,6 +18,7 @@ struct SearchView: View {
     @State private var opacity = 0.0;
     @State private var opacityQuestions = 0.0
     @State private var blurQuestions = 10.0
+    
 
     let defaultQuestions = [
         "What should I do as a Doctor in Mafia?",
@@ -78,40 +80,47 @@ struct SearchView: View {
                         Image(sendButtonImage)
                             .opacity(searchText.count == 0 ? 0.5 : 1)
                             .animation(.easeOut, value: searchText.count)
-                            //.rotationEffect(Angle(degrees: isTyped ? 45 : 0))
                     }
                     .frame(width: 50,height: 50)
                     .foregroundColor(.black)
                     .padding(.trailing, -8)
                     .onTapGesture {
                      
-                        if !isTyped {
-
-                        } else {
+                        if isTyped {
                             vm.addMessage(isAI: false, message: searchText)
                             searchText = ""
                             isShowHelp = false
+                            withAnimation {
+                                UIApplication.shared.endEditing()
+                            }
+                            isTyped = false
+                            animationHelper.setUpTimer()
                         }
                     }
                 }
-                
-                Text(isTyped ? "Chat with me..." : "Start typing a message...")
-                    .frame(height: 20, alignment: .leading)
-                    .padding(.horizontal, 7)
-                    .background(Color.white.cornerRadius(isTyped ? 16 : 0))
-                    .font(Font.custom("Roboto-Medium", size: isTyped ? 13 : 15))
-                    .padding(.top, isTyped ? -36 : 0)
-                    .padding(.leading, 1)
-                    .opacity(searchText.count > 4 ? 0 : 1)
-                    .animation(.easeInOut(duration: 0.4), value: isTyped)
-                    .animation(.easeInOut(duration: 0.4), value: searchText.count)
+
+                    Text(isTyped ? "Chat with me..." : "Start typing a message...")
+                        .frame(height: 20, alignment: .leading)
+                        .padding(.horizontal, 7)
+                        //.background(Color.white.opacity(0.8).cornerRadius(isTyped ? 16 : 0))
+                        .background(isTyped ? Color.white.opacity(0.8).cornerRadius(16) : Color.clear.opacity(0.8).cornerRadius(16))
+                        .font(Font.custom("Roboto-Medium", size: isTyped ? 13 : 15))
+                        .padding(.top, isTyped ? -36 : 0)
+                        .padding(.leading, 1)
+                        .opacity(searchText.count > 4  ? 0 : 1)
+                        .animation(.easeInOut(duration: 0.4), value: isTyped)
+                        .animation(.easeInOut(duration: 0.4), value: searchText.count)
+                        .opacity(min(animationHelper.count, 1))
+                    //.animation(.easeInOut(duration: 0.4), value: showAfterSend)
             }
             .frame(height: 50, alignment: .leading)
             .foregroundColor(.black)
             .offset(x: offsetX)
             .opacity(opacity)
+            .opacity(min(animationHelper.count, 1))
+      
             .onAppear {
-                withAnimation(.spring().delay(1.58)){
+                withAnimation(.spring().delay(1.3)){
                     opacity = 1
                     offsetX = 0
                 }
