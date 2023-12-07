@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct HelpView: View {
+    @StateObject var vm = GameViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        if !vm.onboardingHasShown {
+            AIOnboardingView(vm: vm)
+        } else {
+            HomeView()
+        }
     }
 }
 

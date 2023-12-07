@@ -8,18 +8,20 @@ struct SearchView: View {
     
     @EnvironmentObject var vm : HomeViewModel
     @StateObject var animationHelper = AnimationHelper()
-    @Binding var searchText: String //= ""
+    @FocusState var isFocused: Bool
+    @Binding var searchText: String
     @Binding var keyboardHeight: CGFloat
     @State private var isTyped = false
-    @State private var sendButtomImage =  "mic.fill"
-    private let sendButtonImage =  "send"
     @State private var isListening = false
-    @State private var offsetX = 292.0;
-    @State private var opacity = 0.0;
+    @State private var offsetX = 292.0
+    @State private var opacity = 0.0
     @State private var opacityQuestions = 0.0
     @State private var blurQuestions = 10.0
+    @State private var isShowHelp = true
     
-    let defaultQuestions = [
+    private let sendButtonImage =  "send"
+    
+    private let defaultQuestions = [
         "What should I do as a Doctor in Mafia?",
         "As a Sheriff, who should I investigate first?",
         "I'm a Vigilante. Who should I target and why?",
@@ -28,7 +30,7 @@ struct SearchView: View {
         "How can I protect others as the Bodyguard?",
         "What should be my strategy as a Sheriff?"
     ]
-    @State private var isShowHelp = true
+    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -69,6 +71,7 @@ struct SearchView: View {
                 
                 HStack {
                     TextField("", text: $searchText)
+                        .focused($isFocused)
                         .font(Font.custom("Roboto-Medium", size: 15))
                         .onChange(of: searchText) { newValue in
                             withAnimation(.spring()){
@@ -123,6 +126,11 @@ struct SearchView: View {
                     opacity = 1
                     offsetX = 0
                 }
+            }
+        }
+        .onTapGesture {
+            if isFocused == true {
+                isFocused.toggle()
             }
         }
         .onAppear {

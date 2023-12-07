@@ -9,10 +9,7 @@ struct TabBar: View {
     @StateObject var tabbarRouter = TabbarRouter()
     @Namespace private var namespace
     @State var localSelection: Page = .game
-    init() {
-          UITextField.appearance().keyboardAppearance = .light
-      }
-    
+
     let tabs = [
         TabModel(iconname: "tbGame", text: "Game", assignedPage: .game),
         TabModel(iconname: "tbCity", text: "City", assignedPage: .city),
@@ -24,16 +21,19 @@ struct TabBar: View {
         switch tabbarRouter.currentPage {
         case .game:
                GameView()
-            
+                .environmentObject(tabbarRouter)
         case .city:
+            //AIOnboardingView()
             CityView()
                 .environmentObject(tabbarRouter)
             
         case .help:
-            HomeView()
+            HelpView()
                 .environmentObject(tabbarRouter)
         }
     }
+    
+    init() { UITextField.appearance().keyboardAppearance = .light }
     
     var body: some View {
         GeometryReader { geometry in

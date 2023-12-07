@@ -65,6 +65,9 @@
 		AC6DBAA82B210EEA00B2A6C3 /* Publishers+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAA72B210EEA00B2A6C3 /* Publishers+ext.swift */; };
 		AC6DBAAA2B2119BB00B2A6C3 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAA92B2119BB00B2A6C3 /* UIApplication.swift */; };
 		AC6DBAAC2B212D5900B2A6C3 /* SearchAnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAAB2B212D5900B2A6C3 /* SearchAnimationHelper.swift */; };
+		AC6DBAAF2B21425400B2A6C3 /* AIOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAAE2B21425400B2A6C3 /* AIOnboardingView.swift */; };
+		AC6DBAB12B214BDC00B2A6C3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAB02B214BDC00B2A6C3 /* OnboardingModel.swift */; };
+		AC6DBAB32B2150AE00B2A6C3 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAB22B2150AE00B2A6C3 /* GameViewModel.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -130,6 +133,9 @@
 		AC6DBAA72B210EEA00B2A6C3 /* Publishers+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+ext.swift"; sourceTree = "<group>"; };
 		AC6DBAA92B2119BB00B2A6C3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		AC6DBAAB2B212D5900B2A6C3 /* SearchAnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimationHelper.swift; sourceTree = "<group>"; };
+		AC6DBAAE2B21425400B2A6C3 /* AIOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIOnboardingView.swift; sourceTree = "<group>"; };
+		AC6DBAB02B214BDC00B2A6C3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		AC6DBAB22B2150AE00B2A6C3 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +203,7 @@
 				AC6DBA6B2B1FDCAA00B2A6C3 /* CityTab */,
 				AC6DBA6A2B1FDC3D00B2A6C3 /* EndGame */,
 				AC0B24212B1A2E7800BC7FAE /* SplashView.swift */,
+				AC6DBAAD2B21422100B2A6C3 /* HelpTab */,
 				AC0B24242B1A44AF00BC7FAE /* GameView.swift */,
 				AC6AA6152B1B2952009B404F /* HelpView.swift */,
 			);
@@ -281,6 +288,7 @@
 			children = (
 				ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */,
 				AC6DBA602B1E834100B2A6C3 /* CharInfoModel.swift */,
+				AC6DBAB02B214BDC00B2A6C3 /* OnboardingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +336,7 @@
 			children = (
 				AC6DBA7A2B1FE5F300B2A6C3 /* HomeViewModel.swift */,
 				AC6DBA7C2B1FE66600B2A6C3 /* ImageViewModel.swift */,
+				AC6DBAB22B2150AE00B2A6C3 /* GameViewModel.swift */,
 			);
 			path = AIViewModel;
 			sourceTree = "<group>";
@@ -339,6 +348,14 @@
 				AC6DBAA92B2119BB00B2A6C3 /* UIApplication.swift */,
 			);
 			path = KeyboardFeatures;
+			sourceTree = "<group>";
+		};
+		AC6DBAAD2B21422100B2A6C3 /* HelpTab */ = {
+			isa = PBXGroup;
+			children = (
+				AC6DBAAE2B21425400B2A6C3 /* AIOnboardingView.swift */,
+			);
+			path = HelpTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +453,7 @@
 				AC6AA6182B1B2A0D009B404F /* TabBarItem.swift in Sources */,
 				AC6AA5E92B1A6CBE009B404F /* StatsView.swift in Sources */,
 				AC6AA60C2B1A87B0009B404F /* CharacterCell.swift in Sources */,
+				AC6DBAB12B214BDC00B2A6C3 /* OnboardingModel.swift in Sources */,
 				AC6DBA722B1FDFF200B2A6C3 /* DallEModel.swift in Sources */,
 				AC6DBA852B1FF27300B2A6C3 /* HomeView.swift in Sources */,
 				AC0B24272B1A4E8400BC7FAE /* CornerModifier.swift in Sources */,
@@ -445,6 +463,7 @@
 				AC6DBA562B1DD64C00B2A6C3 /* CharacterCell2.swift in Sources */,
 				AC6DBA672B1FD89800B2A6C3 /* OpenAIAPI.swift in Sources */,
 				AC6AA6062B1A73E3009B404F /* View+InnerShadow.swift in Sources */,
+				AC6DBAAF2B21425400B2A6C3 /* AIOnboardingView.swift in Sources */,
 				AC6AA60A2B1A75B9009B404F /* StatCell.swift in Sources */,
 				AC6DBA812B1FE99600B2A6C3 /* SearchView.swift in Sources */,
 				AC6AA6122B1B270C009B404F /* TabBar.swift in Sources */,
@@ -458,6 +477,7 @@
 				AC6DBAAC2B212D5900B2A6C3 /* SearchAnimationHelper.swift in Sources */,
 				ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */,
 				AC6DBA742B1FE06100B2A6C3 /* AIAnswerModel.swift in Sources */,
+				AC6DBAB32B2150AE00B2A6C3 /* GameViewModel.swift in Sources */,
 				AC6DBA782B1FE42A00B2A6C3 /* MessageBubble.swift in Sources */,
 				ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */,
 				AC6DBA7D2B1FE66600B2A6C3 /* ImageViewModel.swift in Sources */,
