@@ -11,6 +11,31 @@ struct GameView: View {
     @State var percent = 30
     @StateObject var vm = GameViewModel()
     
+    let dayGradient =  LinearGradient(stops: [
+        .init(color: Color("timergrad1"), location: 0.1),
+        .init(color: Color("timergrad2"), location: 0.4),
+        .init(color: Color("timergrad3"), location: 0.85),
+       .init(color:
+        Color("timergrad4"), location: 0.98)
+    ],
+                   startPoint: .trailing,
+                   endPoint:
+            .bottomLeading
+)
+    
+    
+    let nightGradient =  LinearGradient(stops: [
+        .init(color: Color("nightgrad1"), location: 0.1),
+        .init(color: Color("nightgrad2"), location: 0.4),
+        .init(color: Color("nightgrad3"), location: 0.85),
+       .init(color:
+        Color("nightgrad4"), location: 0.98)
+    ],
+                   startPoint: .trailing,
+                   endPoint:
+            .bottomLeading
+)
+    
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: -16, alignment: nil),
         GridItem(.flexible(), spacing: -16, alignment: nil),
@@ -59,7 +84,7 @@ struct GameView: View {
                     .resizable()
                     .ignoresSafeArea()
                     .animation(.easeInOut(duration: 1.5), value: isDay)
-                
+            
                 VStack {
                     Rectangle()
                         .fill(.white)
@@ -102,6 +127,7 @@ struct GameView: View {
                     HStack(spacing: 24) {
                         Button {
                             isDay.toggle()
+                         //   vm.animationTransition()
                         } label: {
                             Circle()
                                 .fill(.white)
@@ -114,19 +140,30 @@ struct GameView: View {
             
                         Button {
                             isDay.toggle()
+                            vm.animationTransition()
+                            vm.resetTimer()
                         } label: {
-                            Circle()
-                                .fill(isDay ? .yellow : .blue)
-                                .frame(width: 80)
-                                .shadow(color: isDay ? .black.opacity(0.64) : .white.opacity(0.44), radius: 4)
                             
+                            Circle()
+                                .fill(isDay ? dayGradient : nightGradient)
+                                .frame(width: 80)
+                               // .animation(.easeInOut(duration: 10), value: isDay)
+                                .shadow(color: isDay ? .black.opacity(0.64) : .white.opacity(0.44), radius: 4)
+                                .animation(.easeInOut(duration: 1), value: isDay)
                                 .overlay {
                                     Image(isDay ? "sunbtn" : "moonbtn")
+                                      //  .blur(radius: 2.0 * abs(sin( .pi/100*Double(vm.opacityCount))))
+                                       
                                 }
+                            #warning("Bug whe go to night or to day with timer!!!!!!!!!")
+                               // .hueRotation(Angle(degrees: -10*abs(sin( .pi/100*Double(vm.opacityCount)))))
+                              //  .opacity(abs(cos( .pi/100*Double(vm.opacityCount))))
+                             //   .saturation(1.0 * abs(cos( .pi/100*Double(vm.opacityCount))))
                         }
                         
                         Button {
                             isDay.toggle()
+                           // vm.resetTimer()
                         } label: {
                             Circle()
                                 .fill(.white)
@@ -166,6 +203,7 @@ struct GameView: View {
                         }
                         .offset(y: -geo.size.height/8 + 50)
                         .opacity(isDay ? 1 : 0)
+                        .offset(y: isDay ? 0: 50)
                         .animation(.easeInOut(duration: 1.5), value: isDay)
                 }
                 .ignoresSafeArea()

@@ -285,8 +285,8 @@
 			children = (
 				AC6DBA602B1E834100B2A6C3 /* CharInfoModel.swift */,
 				AC6DBAB02B214BDC00B2A6C3 /* OnboardingModel.swift */,
-				ACFD18892B24736200180D2E /* DollarAnimatableProperties.swift */,
 				ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */,
+				ACFD18892B24736200180D2E /* DollarAnimatableProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

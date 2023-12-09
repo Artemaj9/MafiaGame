@@ -13,6 +13,7 @@ class GameViewModel: ObservableObject {
     @Published var remainingTime = 90
     @Published var timerIsOn = false
     @Published var isPaused = true
+    @Published var opacityCount = 0
     private var cancellables = Set<AnyCancellable>()
     
     func setUpTimer() {
@@ -34,6 +35,29 @@ class GameViewModel: ObservableObject {
                         item.cancel()
                         timerIsOn = false
                         isPaused = true
+                    }
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    func resetTimer() {
+        remainingTime = 90
+        timerIsOn = false
+        isPaused = true
+    }
+    
+    func animationTransition() {
+        Timer
+            .publish(every: 0.01, on: .main, in: .common)
+            .autoconnect()
+            .sink { [unowned self] _ in
+                opacityCount += 2
+
+                if opacityCount >= 100 {
+                    opacityCount = 0
+                    for item in cancellables {
+                        item.cancel()
                     }
                 }
             }
