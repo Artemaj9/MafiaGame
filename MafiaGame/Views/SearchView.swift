@@ -31,7 +31,6 @@ struct SearchView: View {
         "What should be my strategy as a Sheriff?"
     ]
     
-    
     var body: some View {
         VStack(alignment: .leading) {
             if isShowHelp {
@@ -59,12 +58,11 @@ struct SearchView: View {
                 .animation(.easeOut, value: isShowHelp)
                 .animation(.easeOut, value: keyboardHeight)
             }
+            
             ZStack(alignment: .leading) {
                 ZStack{}
                     .frame(maxWidth: .infinity, maxHeight: 55)
-                 
                     .background(.white)
-
                     .cornerRadius(16, corners: [.topLeft,.topRight])
                     .shadow(color: .black.opacity(0.32), radius: 16)
                     .padding(.horizontal, -14)
@@ -78,6 +76,7 @@ struct SearchView: View {
                                 isTyped = newValue.isEmpty ? false : true
                             }
                         }
+                    
                     ZStack {
                         Image(sendButtonImage)
                             .opacity(searchText.count == 0 ? 0.5 : 1)
@@ -87,7 +86,6 @@ struct SearchView: View {
                     .foregroundColor(.black)
                     .padding(.trailing, -8)
                     .onTapGesture {
-                     
                         if isTyped {
                             vm.addMessage(isAI: false, message: searchText)
                             searchText = ""
@@ -100,11 +98,10 @@ struct SearchView: View {
                         }
                     }
                 }
-
+                
                     Text(isTyped ? "Chat with me..." : "Start typing a message...")
                         .frame(height: 20, alignment: .leading)
                         .padding(.horizontal, 7)
-                        //.background(Color.white.opacity(0.8).cornerRadius(isTyped ? 16 : 0))
                         .background(isTyped ? Color.white.opacity(0.8).cornerRadius(16) : Color.clear.opacity(0.8).cornerRadius(16))
                         .font(Font.custom("Roboto-Medium", size: isTyped ? 13 : 15))
                         .padding(.top, isTyped ? -36 : 0)
@@ -113,7 +110,6 @@ struct SearchView: View {
                         .animation(.easeInOut(duration: 0.4), value: isTyped)
                         .animation(.easeInOut(duration: 0.4), value: searchText.count)
                         .opacity(min(animationHelper.count, 1))
-                    //.animation(.easeInOut(duration: 0.4), value: showAfterSend)
             }
             .frame(height: 50, alignment: .leading)
             .foregroundColor(.black)

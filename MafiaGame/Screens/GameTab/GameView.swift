@@ -8,6 +8,8 @@ struct GameView: View {
     
     @State private var isDay = false
     @State private var isUnfold = false
+    @State var percent = 30
+    @StateObject var vm = GameViewModel()
     
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: -16, alignment: nil),
@@ -99,7 +101,7 @@ struct GameView: View {
                     
                     HStack(spacing: 24) {
                         Button {
-                            
+                            isDay.toggle()
                         } label: {
                             Circle()
                                 .fill(.white)
@@ -108,9 +110,8 @@ struct GameView: View {
                                 .overlay {
                                     Image("back")
                                 }
-                              
                         }
-                        
+            
                         Button {
                             isDay.toggle()
                         } label: {
@@ -125,7 +126,7 @@ struct GameView: View {
                         }
                         
                         Button {
-                            
+                            isDay.toggle()
                         } label: {
                             Circle()
                                 .fill(.white)
@@ -139,6 +140,33 @@ struct GameView: View {
                     .opacity(isUnfold ? 0 : 1)
                     .animation(.easeInOut(duration: 0.5), value: isUnfold)
                     Spacer()
+                    TimerView(remainingTime: $vm.remainingTime)
+                        .shadow(color: .black.opacity(0.32), radius: 4, x: 4, y: 0)
+                        .overlay{
+                            HStack {
+                                Text("\(vm.remainingTime/60):\(vm.remainingTime%60/10)\(vm.remainingTime%60%10)")
+                                    .font(Font.custom("Roboto-Medium", size: 18))
+                                    .foregroundColor(.white)
+                                    .shadow(color: .black, radius: 4)
+                            Spacer()
+                                Button {
+                                    if vm.timerIsOn {
+                                        vm.isPaused.toggle()
+                                    } else {
+                                        vm.setUpTimer()
+                                    }
+                                } label: {
+                                    Text(vm.isPaused ? "Press to start" : "Press to stop")
+                                        .font(Font.custom("Roboto-Regular", size: 15))
+                                        .foregroundColor(.black)
+                                }
+                            }
+                            .padding(40)
+                            .offset(y: -24)
+                        }
+                        .offset(y: -geo.size.height/8 + 50)
+                        .opacity(isDay ? 1 : 0)
+                        .animation(.easeInOut(duration: 1.5), value: isDay)
                 }
                 .ignoresSafeArea()
                 
@@ -171,7 +199,6 @@ struct GameView: View {
                                     height: geo.size.width * 0.43,
                                     alignment: .center
                                 )
-                             
                             }
                         }
                         Color.clear
@@ -184,6 +211,9 @@ struct GameView: View {
                 .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
             }
             .preferredColorScheme(.light)
+        }
+        .onAppear {
+            vm.remainingTime = 90
         }
     }
     

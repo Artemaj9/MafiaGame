@@ -6,7 +6,37 @@
 //
 
 import SwiftUI
+import Combine
 
 class GameViewModel: ObservableObject {
     @AppStorage("onboardingHasShown") var onboardingHasShown = false
+    @Published var remainingTime = 90
+    @Published var timerIsOn = false
+    @Published var isPaused = true
+    private var cancellables = Set<AnyCancellable>()
+    
+    func setUpTimer() {
+        timerIsOn = true
+        isPaused = false
+        remainingTime = 90
+        Timer
+            .publish(every: 0.1, on: .main, in: .common)
+            .autoconnect()
+            .sink { [unowned self] _ in
+                if !isPaused {
+                    remainingTime -= 1
+                }
+                print(remainingTime)
+            
+
+                if remainingTime <= 0 || !timerIsOn {
+                    for item in cancellables {
+                        item.cancel()
+                        timerIsOn = false
+                        isPaused = true
+                    }
+                }
+            }
+            .store(in: &cancellables)
+    }
 }

@@ -32,7 +32,6 @@ struct CharacterDetailView: View {
                             DescriptionDetailCell(title: title , information: info)
                                 .shadow(radius: 0.5).opacity(0.64)
                                 .frame(width: geo.size.width * 0.9)
-                               
                         }
                         .frame(width: geo.size.width * 0.9)
                         .fixedSize(horizontal: true, vertical: false)
@@ -46,7 +45,6 @@ struct CharacterDetailView: View {
                     }
                     .padding(.horizontal, 16)
                     .padding(.top, 16)
-              
                 }
                 .background {
                     Color("citizenBg").opacity(0.44)

@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct ChatBubble: View {
-    @StateObject private var imageViewModel = ImageViewModel()
     
     @Binding var isAI : Bool
     @Binding var message: String
@@ -13,9 +12,6 @@ struct ChatBubble: View {
     @State private var offsetX = 0.0
     var body: some View {
         HStack(alignment: .bottom, spacing: 0){
-//            if(!isAI){
-//                paddingBalloon
-//            }
             if isAI {
                 AvatarView(isAI: isAI)
                 .frame(width: 36, height: 36)
@@ -23,24 +19,8 @@ struct ChatBubble: View {
             
             MessageBubble(direction: isAI ? .left : .right) {
                 VStack(alignment: .leading, spacing: 7){
-                 //   Text(isAI ? "AI" : "You")
-                   //     .font(.subheadline)
-                     //   .fontWeight(.bold)
-                    if message.contains("http") {
-                        
-                        if let image = imageViewModel.image {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                        } else {
-                            ProgressView()
-                        }
-                    } else {
                         Text(message)
                             .font(Font.custom("Roboto-Medium", size: 16))
-                           // .font(.headline)
-                            //.fontWeight(.regular)
-                    }
                 }
                 .padding(.all, 20)
                 .padding(.horizontal)
@@ -66,10 +46,6 @@ struct ChatBubble: View {
                 offsetX = 0
             }
             
-            if message.contains("https") {
-                guard let url = URL(string: message) else { return }
-                imageViewModel.downloadImage(from: url)
-            }
         }
     }
 }

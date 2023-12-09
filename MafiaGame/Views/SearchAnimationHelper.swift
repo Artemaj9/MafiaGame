@@ -11,7 +11,6 @@ class AnimationHelper: ObservableObject {
     
     @Published var count = 1.0
  
-    
     func setUpTimer() {
         count = 0
         Timer
@@ -28,4 +27,3 @@ class AnimationHelper: ObservableObject {
             .store(in: &cancellables)
     }
 }
-

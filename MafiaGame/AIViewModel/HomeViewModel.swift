@@ -16,8 +16,6 @@ class HomeViewModel: ObservableObject {
         
         if !isAI{
             autoAIResponse()
-            openAIAPI.isImagePrompt(prompt: message) ?
-            sendDallERequest(prompt: message) :
             sendChatGPTRequest(prompt: message)
         }
     }
@@ -36,22 +34,6 @@ class HomeViewModel: ObservableObject {
                 switch completion {
                 case .failure(let error):
                     print("Chat GPT API request failed with error: \(error.localizedDescription)")
-                case .finished:
-                    break
-                }
-            }, receiveValue: { [weak self] value in
-                self?.addMessage(isAI: true, message: value)
-            })
-            .store(in: &cancellables)
-    }
-    
-    func sendDallERequest(prompt: String) {
-        openAIAPI.dallE(prompt: prompt)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    print("Dall-E API request failed with error: \(error.localizedDescription)")
                 case .finished:
                     break
                 }

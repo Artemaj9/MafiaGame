@@ -24,7 +24,6 @@ struct HomeView: View {
                             VStack(alignment: .leading){
                                 if showHeader {
                                     ScrollHeaderView(searchText: $searchText)
-//                                        .opacity((Double(10 - searchText.count))/10)
                                         .animation(.easeOut, value: searchText.count)
                                     
                                     ForEach($vm.messages, id: \.id) { message in
@@ -34,14 +33,12 @@ struct HomeView: View {
                                     }
                                 }
                             }
-                            //.padding(.top, 4)
 
                             .onChange(of: vm.messages.count) { _ in
                                 withAnimation(.spring()){
-                                    if vm.messages.count >= 2 {
-                                        proxy.scrollTo(vm.messages[vm.messages.count - 2].id, anchor: .top)
+                                    if vm.messages.count >= 3 {
+                                        proxy.scrollTo(vm.messages[vm.messages.count - 3].id, anchor: .top)
                                     }
-                                   // proxy.scrollTo(vm.messages.last?.id, anchor: .bottom)
                                 }
                             }
                             Color.clear
@@ -57,14 +54,8 @@ struct HomeView: View {
                     SearchView(searchText: $searchText, keyboardHeight: $keyboardHeight)
                         .environmentObject(vm)
                         .offset(y:-geo.size.height/10)
-                        
-                       // .offset(y: -keyboardHeight)
-                        //.padding(.bottom, -keyboardHeight)
-                        // 3.
-                        
-                    //  .padding(.bottom,14)
                 }
-                .offset(y: keyboardHeight > 0 ? -keyboardHeight + geo.size.height/10 + 8: 0)
+                .offset(y: keyboardHeight > 1 ? -keyboardHeight + geo.size.height/10 + 8: 0)
 
                 .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0
                     print(self.keyboardHeight)
@@ -90,6 +81,7 @@ extension HomeView {
         .opacity(1)
     }
 }
+
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()

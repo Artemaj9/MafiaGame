@@ -35,10 +35,9 @@ struct AIOnboardingView: View {
                                     .shadow(color: .black.opacity(0.8), radius: 2)
                                     .padding(.horizontal, geo.size.width/15)
                                     .offset(x: geo.size.width/50, y: -geo.size.height/35)
-                                    
                             }
                     }
-                  
+                    
                 }
                 
                 Button {
@@ -53,6 +52,7 @@ struct AIOnboardingView: View {
                             .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.045)
                             .foregroundColor(.white)
                             .shadow(color: .black.opacity(0.64), radius: 2)
+                        
                         Text("NEXT")
                             .font(Font.custom("Roboto-Bold", size: 18 ))
                             .foregroundColor(.black)
@@ -65,7 +65,6 @@ struct AIOnboardingView: View {
                     .frame(width: 0.57 * geo.size.width, height: 0.8 * geo.size.height)
                     .offset(y: geo.size.height * 0.2)
             }
-          //  .background(.green)
         }
     }
 }

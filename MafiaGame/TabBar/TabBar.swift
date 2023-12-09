@@ -20,10 +20,9 @@ struct TabBar: View {
     var contentView: some View {
         switch tabbarRouter.currentPage {
         case .game:
-               GameView()
+            GameView()
                 .environmentObject(tabbarRouter)
         case .city:
-            //AIOnboardingView()
             CityView()
                 .environmentObject(tabbarRouter)
             
@@ -69,9 +68,6 @@ struct TabBar: View {
                                 }
                             )
                         }
-                    }
-                    .onAppear {
-                        print(geometry.size.height)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height / 8)
                     .background( .white.opacity(tabbarRouter.currentPage == .city ? 0.95 : 1))

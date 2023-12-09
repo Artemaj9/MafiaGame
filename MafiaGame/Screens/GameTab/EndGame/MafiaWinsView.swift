@@ -61,7 +61,6 @@ struct MafiaWinsView: View {
                         .rotation3DEffect(.degrees(dollarOneDegree * dollar.angularSpeed),
                                           axis: (
                                             x: dollar.axisX, y: dollar.axisY, z: dollar.axisZ))
-                        //.shadow(Color.white, radius: 8)
                         .offset(x: dollar.initialXOffset, y: dollar.initialYOffset + dollarOneOffset * dollar.speed)
 .animation(.easeOut(duration: 175), value: dollarOneOffset)
 .animation(.easeOut(duration: 175), value: dollarOneDegree )

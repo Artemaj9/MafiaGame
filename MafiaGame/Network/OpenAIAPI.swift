@@ -7,7 +7,6 @@ import Combine
 
 class OpenAIAPI {
     private let chatGTPEndpoint = "https://api.openai.com/v1/chat/completions"
-    private let dallEEndpoint = "https://api.openai.com/v1/images/generations"
     
     private let token = ""
     // "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"
@@ -39,37 +38,5 @@ class OpenAIAPI {
             .decode(type: ChatGPTModel.self, decoder: JSONDecoder())
             .map { $0.choices[0].message.content }
             .eraseToAnyPublisher()
-    }
-    
-    func dallE(prompt: String) -> AnyPublisher<String, Error> {
-        let parameters = [
-            "prompt": prompt,
-            "n": 1] as [String : Any]
-        let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
-        let url = URL(string: dallEEndpoint)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = jsonData
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .tryMap { (data, response) -> Data in
-                guard let httpResponse = response as? HTTPURLResponse,
-                      200..<300 ~= httpResponse.statusCode else {
-                    throw URLError(.badServerResponse)
-                }
-                return data
-            }
-            .decode(type: DallEModel.self, decoder: JSONDecoder())
-            .map { $0.data[0].url }
-            .eraseToAnyPublisher()
-    }
-    
-    func isImagePrompt(prompt: String) -> Bool {
-        if prompt.contains("picture") ||
-            prompt.contains("photo") ||
-            prompt.contains("image") ||
-            prompt.contains("art") {return true}else{return false}
     }
 }
