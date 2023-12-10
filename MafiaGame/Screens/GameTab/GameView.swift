@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import MobileCoreServices
 
 struct GameView: View {
     
@@ -10,6 +11,7 @@ struct GameView: View {
     @State private var isUnfold = false
     @State var percent = 30
     @StateObject var vm = GameViewModel()
+    @StateObject var delegate = GameCharacterData()
     
     let dayGradient =  LinearGradient(stops: [
         .init(color: Color("timergrad1"), location: 0.1),
@@ -28,13 +30,13 @@ struct GameView: View {
         .init(color: Color("nightgrad1"), location: 0.1),
         .init(color: Color("nightgrad2"), location: 0.4),
         .init(color: Color("nightgrad3"), location: 0.85),
-       .init(color:
-        Color("nightgrad4"), location: 0.98)
+        .init(color:
+                Color("nightgrad4"), location: 0.98)
     ],
-                   startPoint: .trailing,
-                   endPoint:
+                                        startPoint: .trailing,
+                                        endPoint:
             .bottomLeading
-)
+    )
     
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: -16, alignment: nil),
@@ -228,6 +230,9 @@ struct GameView: View {
                                       .blur(radius: (1 -
                                                      getScrollOpacity(geometry: geo2))*3)
                                       .saturation(getScrollOpacity(geometry: geo2)*1.2)
+                                      .onDrag {
+                                          NSItemProvider(item: .some(URL(string: character.image)! as NSSecureCoding), typeIdentifier: String(kUTTypeURL))
+                                      }
                                 }
                                 .frame(
                                     width: geo.size.width * 0.35,
@@ -240,10 +245,67 @@ struct GameView: View {
                             .frame(height: 64)
                     }
                     .padding(.horizontal, 16)
-                    .padding(.bottom, geo.size.height/4)
+                    //.padding(.bottom, geo.size.height/4)
+                    ZStack {
+                        if delegate.selectedCharacters.isEmpty {
+                            Text("Add characters here")
+                                .fontWeight(.bold)
+                        }
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            
+                            HStack {
+                                
+                                // image is unique so assigning it as an id
+                                ForEach(delegate.selectedCharacters, id: \.image) { character in
+                                    if character.image != "" {
+                                        ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+                                            
+                                            
+                                            Image(character.image)
+                                                .resizable()
+                                                .frame(width: 100, height: 100)
+                                                .cornerRadius(15)
+                                            
+                                            // Remove Button
+                                            
+                                            Button {
+                                                // removing image from selected list
+                                                
+                                                // adding animation
+                                                withAnimation(.easeOut) {
+                                                    self.delegate.selectedCharacters.removeAll { (check) -> Bool in
+                                                        if check.image == character.image { return true }
+                                                        else { return false }
+                                                    }
+                                                }
+                                                
+                                            } label: {
+                                                Image(systemName: "xmark")
+                                                    .foregroundColor(.white)
+                                                    .padding(10)
+                                                    .background(.black)
+                                                    .clipShape(Circle())
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                                
+                                Spacer(minLength: 0)
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .frame(height: geo.size.height/8)
+                    .offset(y: -geo.size.height/8)
+                    .background(Color.green)
+                    .onDrop(of: [String(kUTTypeURL)], delegate: delegate)
+                  
                 }
                 .opacity((isUnfold ? 1 : 0))
                 .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
+                
+                   
             }
             .preferredColorScheme(.light)
         }

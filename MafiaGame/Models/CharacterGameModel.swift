@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Img: Identifiable {
+struct GameCharacterCell: Identifiable {
     
     var id: Int
     var image: String

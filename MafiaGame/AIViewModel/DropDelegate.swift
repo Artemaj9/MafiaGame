@@ -8,14 +8,10 @@
 import SwiftUI
 import MobileCoreServices
 
-class ImgData: ObservableObject, DropDelegate {
-    @Published var totalImages = [Img]()
-    @Published var selectedCharacters = [Img]()
-//    func appendImages() {
-//        for i in 1...14 {
-//            totalImages.append(Img(id: i, image: String(i)))
-//        }
-//    }
+class GameCharacterData: ObservableObject, DropDelegate {
+    @Published var totalImages = [GameCharacterCell]()
+    @Published var selectedCharacters = [GameCharacterCell]()
+
     
     func performDrop(info: DropInfo) -> Bool {
         
@@ -43,7 +39,7 @@ class ImgData: ObservableObject, DropDelegate {
                         
                         DispatchQueue.main.async {
                             withAnimation(.easeOut) {
-                                self.selectedCharacters.append(Img(id: self.selectedCharacters.count, image: "\(url!)"))
+                                self.selectedCharacters.append(GameCharacterCell(id: self.selectedCharacters.count, image: "\(url!)"))
                             }
                         }
                     }
