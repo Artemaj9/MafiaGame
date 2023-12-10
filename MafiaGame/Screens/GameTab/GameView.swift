@@ -126,7 +126,7 @@ struct GameView: View {
                     
                     HStack(spacing: 24) {
                         Button {
-                            isDay.toggle()
+                         phaseChange()
                          //   vm.animationTransition()
                         } label: {
                             Circle()
@@ -139,9 +139,7 @@ struct GameView: View {
                         }
             
                         Button {
-                            isDay.toggle()
-                            vm.animationTransition()
-                            vm.resetTimer()
+                            phaseChange()
                         } label: {
                             
                             Circle()
@@ -162,8 +160,7 @@ struct GameView: View {
                         }
                         
                         Button {
-                            isDay.toggle()
-                           // vm.resetTimer()
+                        phaseChange()
                         } label: {
                             Circle()
                                 .fill(.white)
@@ -256,6 +253,14 @@ struct GameView: View {
     }
     
     // MARK: - Functions
+    
+    func phaseChange() {
+        isDay.toggle()
+        vm.animationTransition()
+        if isDay {
+            vm.resetTimer()
+        }
+    }
 
     func getScrollOpacity(geometry: GeometryProxy) -> Double {
         let maxY = UIScreen.main.bounds.height

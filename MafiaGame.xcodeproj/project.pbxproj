@@ -64,6 +64,8 @@
 		AC6DBAAF2B21425400B2A6C3 /* AIOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAAE2B21425400B2A6C3 /* AIOnboardingView.swift */; };
 		AC6DBAB12B214BDC00B2A6C3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAB02B214BDC00B2A6C3 /* OnboardingModel.swift */; };
 		AC6DBAB32B2150AE00B2A6C3 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAB22B2150AE00B2A6C3 /* GameViewModel.swift */; };
+		AC776B6F2B260CFC00803D0B /* DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B6E2B260CFC00803D0B /* DropDelegate.swift */; };
+		AC776B712B260E7700803D0B /* CharacterGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B702B260E7700803D0B /* CharacterGameModel.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 		ACFD18862B23AA8300180D2E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD18852B23AA8300180D2E /* TimerView.swift */; };
@@ -131,6 +133,8 @@
 		AC6DBAAE2B21425400B2A6C3 /* AIOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIOnboardingView.swift; sourceTree = "<group>"; };
 		AC6DBAB02B214BDC00B2A6C3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		AC6DBAB22B2150AE00B2A6C3 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		AC776B6E2B260CFC00803D0B /* DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDelegate.swift; sourceTree = "<group>"; };
+		AC776B702B260E7700803D0B /* CharacterGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGameModel.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 		ACFD18852B23AA8300180D2E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				AC6DBA602B1E834100B2A6C3 /* CharInfoModel.swift */,
+				AC776B702B260E7700803D0B /* CharacterGameModel.swift */,
 				AC6DBAB02B214BDC00B2A6C3 /* OnboardingModel.swift */,
 				ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */,
 				ACFD18892B24736200180D2E /* DollarAnimatableProperties.swift */,
@@ -332,6 +337,7 @@
 			children = (
 				AC6DBA7A2B1FE5F300B2A6C3 /* HomeViewModel.swift */,
 				AC6DBAB22B2150AE00B2A6C3 /* GameViewModel.swift */,
+				AC776B6E2B260CFC00803D0B /* DropDelegate.swift */,
 			);
 			path = AIViewModel;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 				AC6AA5E92B1A6CBE009B404F /* StatsView.swift in Sources */,
 				AC6AA60C2B1A87B0009B404F /* CharacterCell.swift in Sources */,
 				AC6DBAB12B214BDC00B2A6C3 /* OnboardingModel.swift in Sources */,
+				AC776B6F2B260CFC00803D0B /* DropDelegate.swift in Sources */,
 				AC6DBA852B1FF27300B2A6C3 /* HomeView.swift in Sources */,
 				AC0B24272B1A4E8400BC7FAE /* CornerModifier.swift in Sources */,
 				AC6AA6142B1B2896009B404F /* TabbarRouter.swift in Sources */,
@@ -469,6 +476,7 @@
 				AC6AA6062B1A73E3009B404F /* View+InnerShadow.swift in Sources */,
 				AC6DBAAF2B21425400B2A6C3 /* AIOnboardingView.swift in Sources */,
 				AC6AA60A2B1A75B9009B404F /* StatCell.swift in Sources */,
+				AC776B712B260E7700803D0B /* CharacterGameModel.swift in Sources */,
 				ACFD188A2B24736200180D2E /* DollarAnimatableProperties.swift in Sources */,
 				AC6DBA812B1FE99600B2A6C3 /* SearchView.swift in Sources */,
 				AC6AA6122B1B270C009B404F /* TabBar.swift in Sources */,
