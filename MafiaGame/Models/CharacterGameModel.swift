@@ -9,6 +9,7 @@ import Foundation
 
 struct GameCharacterCell: Identifiable {
     
-    var id: Int
+    var id = UUID()
     var image: String
+    var name: String = ""
 }

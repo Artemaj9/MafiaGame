@@ -66,6 +66,8 @@
 		AC6DBAB32B2150AE00B2A6C3 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBAB22B2150AE00B2A6C3 /* GameViewModel.swift */; };
 		AC776B6F2B260CFC00803D0B /* DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B6E2B260CFC00803D0B /* DropDelegate.swift */; };
 		AC776B712B260E7700803D0B /* CharacterGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B702B260E7700803D0B /* CharacterGameModel.swift */; };
+		AC776B732B261DBC00803D0B /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B722B261DBC00803D0B /* CustomAlertView.swift */; };
+		AC776B752B262C4D00803D0B /* GameViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B742B262C4D00803D0B /* GameViewData.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 		ACFD18862B23AA8300180D2E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD18852B23AA8300180D2E /* TimerView.swift */; };
@@ -135,6 +137,8 @@
 		AC6DBAB22B2150AE00B2A6C3 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		AC776B6E2B260CFC00803D0B /* DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDelegate.swift; sourceTree = "<group>"; };
 		AC776B702B260E7700803D0B /* CharacterGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGameModel.swift; sourceTree = "<group>"; };
+		AC776B722B261DBC00803D0B /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		AC776B742B262C4D00803D0B /* GameViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewData.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 		ACFD18852B23AA8300180D2E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				AC6DBA592B1E556A00B2A6C3 /* DescriptionDetailCell.swift */,
+				AC776B722B261DBC00803D0B /* CustomAlertView.swift */,
 				AC6AA6092B1A75B9009B404F /* StatCell.swift */,
 				AC6AA63C2B1BCD91009B404F /* CharacterModel.swift */,
 				AC6DBA552B1DD64C00B2A6C3 /* CharacterCell2.swift */,
@@ -364,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0B24242B1A44AF00BC7FAE /* GameView.swift */,
+				AC776B742B262C4D00803D0B /* GameViewData.swift */,
 				AC6DBA6A2B1FDC3D00B2A6C3 /* EndGame */,
 			);
 			path = GameTab;
@@ -452,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC776B732B261DBC00803D0B /* CustomAlertView.swift in Sources */,
 				ACFD18882B23C7E500180D2E /* TimerShape.swift in Sources */,
 				AC6DBA582B1E536800B2A6C3 /* CharacterDetailView.swift in Sources */,
 				AC6AA6162B1B2952009B404F /* HelpView.swift in Sources */,
@@ -487,6 +494,7 @@
 				AC6DBA632B1EA3F500B2A6C3 /* CharacterCell4.swift in Sources */,
 				AC6DBA762B1FE23700B2A6C3 /* UIColor+Color.swift in Sources */,
 				AC6DBAAC2B212D5900B2A6C3 /* SearchAnimationHelper.swift in Sources */,
+				AC776B752B262C4D00803D0B /* GameViewData.swift in Sources */,
 				ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */,
 				AC6DBA742B1FE06100B2A6C3 /* AIAnswerModel.swift in Sources */,
 				ACFD18862B23AA8300180D2E /* TimerView.swift in Sources */,

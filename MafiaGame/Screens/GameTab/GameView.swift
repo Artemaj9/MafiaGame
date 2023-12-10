@@ -12,72 +12,7 @@ struct GameView: View {
     @State var percent = 30
     @StateObject var vm = GameViewModel()
     @StateObject var delegate = GameCharacterData()
-    
-    let dayGradient =  LinearGradient(stops: [
-        .init(color: Color("timergrad1"), location: 0.1),
-        .init(color: Color("timergrad2"), location: 0.4),
-        .init(color: Color("timergrad3"), location: 0.85),
-       .init(color:
-        Color("timergrad4"), location: 0.98)
-    ],
-                   startPoint: .trailing,
-                   endPoint:
-            .bottomLeading
-)
-    
-    
-    let nightGradient =  LinearGradient(stops: [
-        .init(color: Color("nightgrad1"), location: 0.1),
-        .init(color: Color("nightgrad2"), location: 0.4),
-        .init(color: Color("nightgrad3"), location: 0.85),
-        .init(color:
-                Color("nightgrad4"), location: 0.98)
-    ],
-                                        startPoint: .trailing,
-                                        endPoint:
-            .bottomLeading
-    )
-    
-    let columns: [GridItem] = [
-        GridItem(.flexible(), spacing: -16, alignment: nil),
-        GridItem(.flexible(), spacing: -16, alignment: nil),
-        GridItem(.flexible(), spacing: -16, alignment: nil)
-    ]
-    
-    let characters = [
-        CharacterModel(image: "citizen", number: "1", role: "CITIZEN", type: "citizen", description:
-    "Ordinary townspeople who don't have special abilities. Their main goal is to survive and help identify the Mafia for lynching during the day.", isDescription: false),
-        
-        CharacterModel(image: "doctor", number: "2", role: "DOCTOR", type: "citizen", description:
-    "Can protect other players from being eliminated by the Mafia at night. Typically they cannot protect the same person two nights in a row.", isDescription: false),
-        
-        CharacterModel(image: "sheriff", number: "3", role: "SHERIFF", type: "citizen", description:
-    "A variant of the Detective. They can investigate other players to find out if they are suspicious (Mafia or Serial Killer) or not.", isDescription: false),
-        
-        CharacterModel(image: "cop", number: "4", role: "COP", type: "citizen", description:
-    "Can investigate other players to determine their roles. They play a crucial role in guiding the citizens to make the right decisions.", isDescription: false),
-        
-        CharacterModel(image: "mafia", number: "5", role: "MAFIA",  type: "mafia", description:
-    "The main antagonists who secretly eliminate citizens at night. They know each other's identity and conspire to deceive the town during the day.", isDescription: false),
-        CharacterModel(image: "godfather", number: "6", role: "GODFATHER", type: "mafia", description:
-    "The leader of the Mafia. Appears as a Citizen when investigated by the Detective. Immune to the Vigilante's attack.", isDescription: false),
-        CharacterModel(image: "mafioso", number: "7", role: "MAFIOSO", type: "mafia", description:
-    "A member of the Mafia who carries out the killing. If no Mafioso is present, the Godfather will carry out the kill.", isDescription: false),
-        CharacterModel(image: "framer", number: "8", role: "FRAMER", type: "mafia", description:
-    "A Mafia role that can frame other players, causing them to appear as Mafia when investigated by the Detective.", isDescription: false),
-        CharacterModel(image: "bodyguard", number: "9", role: "BODYGUARD", type: "neutral", description:
-    "Can protect a player from attacks at night. If their protected player is attacked, the Bodyguard and the attacker die instead.", isDescription: false),
-        CharacterModel(image: "executioner", number: "10", role: "EXECUTIONER", type: "neutral", description:
-    "Their goal is to get a specific person lynched. If that person dies at night or survives the game, the Executioner becomes a Jester.", isDescription: false),
-        CharacterModel(image: "mistress", number: "11", role: "MISTRESS", type: "neutral", description:
-    "Can distract a player each night, blocking them from using their ability.", isDescription: false),
-        CharacterModel(image: "jester", number: "12", role: "JESTER", type: "neutral", description:
-    "Their goal is to trick the town into lynching them. If they are killed at night or survive the game, they lose.", isDescription: false),
-        CharacterModel(image: "vigilante", number: "13", role: "VIGILANTE", type: "neutral", description:
-    "A citizen who can choose to kill other players at night. Their ability is usually limited to a certain number of uses. They need to use this power wisely to not accidentally eliminate innocent citizens.", isDescription: false),
-        CharacterModel(image: "skiller", number: "14", role: "SERIAL KILLER", type: "neutral", description:
-    "An independent role that tries to be the last one standing by killing one player every night. Not aligned with either the Mafia or the Citizens.", isDescription: false)
-    ]
+    @State var characterName = ""
     
     var body: some View {
         ZStack {
@@ -86,7 +21,7 @@ struct GameView: View {
                     .resizable()
                     .ignoresSafeArea()
                     .animation(.easeInOut(duration: 1.5), value: isDay)
-            
+                
                 VStack {
                     Rectangle()
                         .fill(.white)
@@ -94,42 +29,41 @@ struct GameView: View {
                         .padding([.leading, .trailing], 12)
                         .frame(height: isUnfold ? geo.size.height * 0.85 : geo.size.height/10)
                         .animation(.easeInOut(duration: 1), value: isUnfold)
-    
+                    
                     ZStack {
                         RoundedRectangle(cornerRadius: 100)
                             .fill(.white)
                             .shadow(color: .black.opacity(0.4), radius: 8, x: 0, y: 0)
                             .frame(width: 70, height: 28)
                             .animation(.easeInOut(duration: 1), value: isUnfold)
-
+                        
                         Button {
                             isUnfold.toggle()
                         } label: {
                             Image(systemName: "chevron.down")
                                 .rotationEffect(.degrees(isUnfold ? 180 : 0))
-                            .foregroundColor(.black)
-                            .scaleEffect(1.3)
-                            .animation(.easeInOut(duration: 1)
-                                       , value: isUnfold)
+                                .foregroundColor(.black)
+                                .scaleEffect(1.3)
+                                .animation(.easeInOut(duration: 1)
+                                           , value: isUnfold)
                         }
                     }
                     .offset(y: -10)
                     
                     HStack {
-                      StatsView()
+                        StatsView()
                             .opacity(isUnfold ? 0 : 1)
                             .animation(.easeInOut(duration: 1), value: isUnfold)
                     }
                     .padding(.top, 8)
-            
+                    
                     Spacer()
                     Spacer()
                     Spacer()
                     
                     HStack(spacing: 24) {
                         Button {
-                         phaseChange()
-                         //   vm.animationTransition()
+                            phaseChange()
                         } label: {
                             Circle()
                                 .fill(.white)
@@ -139,7 +73,7 @@ struct GameView: View {
                                     Image("back")
                                 }
                         }
-            
+                        
                         Button {
                             phaseChange()
                         } label: {
@@ -147,22 +81,15 @@ struct GameView: View {
                             Circle()
                                 .fill(isDay ? dayGradient : nightGradient)
                                 .frame(width: 80)
-                               // .animation(.easeInOut(duration: 10), value: isDay)
                                 .shadow(color: isDay ? .black.opacity(0.64) : .white.opacity(0.44), radius: 4)
                                 .animation(.easeInOut(duration: 1), value: isDay)
                                 .overlay {
                                     Image(isDay ? "sunbtn" : "moonbtn")
-                                      //  .blur(radius: 2.0 * abs(sin( .pi/100*Double(vm.opacityCount))))
-                                       
                                 }
-                            #warning("Bug whe go to night or to day with timer!!!!!!!!!")
-                               // .hueRotation(Angle(degrees: -10*abs(sin( .pi/100*Double(vm.opacityCount)))))
-                              //  .opacity(abs(cos( .pi/100*Double(vm.opacityCount))))
-                             //   .saturation(1.0 * abs(cos( .pi/100*Double(vm.opacityCount))))
                         }
                         
                         Button {
-                        phaseChange()
+                            phaseChange()
                         } label: {
                             Circle()
                                 .fill(.white)
@@ -184,7 +111,7 @@ struct GameView: View {
                                     .font(Font.custom("Roboto-Medium", size: 18))
                                     .foregroundColor(.white)
                                     .shadow(color: .black, radius: 4)
-                            Spacer()
+                                Spacer()
                                 Button {
                                     if vm.timerIsOn {
                                         vm.isPaused.toggle()
@@ -203,7 +130,9 @@ struct GameView: View {
                         .offset(y: -geo.size.height/8 + 50)
                         .opacity(isDay ? 1 : 0)
                         .offset(y: isDay ? 0: 50)
+                        .offset(y: isUnfold ? 50 : 0)
                         .animation(.easeInOut(duration: 1.5), value: isDay)
+                        .animation(.easeInOut(duration: 1.5), value: isUnfold)
                 }
                 .ignoresSafeArea()
                 
@@ -226,13 +155,13 @@ struct GameView: View {
                                         .padding(4)
                                         .padding(.vertical, 4)
                                         .offset(x: 12)
-                                      .opacity(getScrollOpacity(geometry: geo2))
-                                      .blur(radius: (1 -
-                                                     getScrollOpacity(geometry: geo2))*3)
-                                      .saturation(getScrollOpacity(geometry: geo2)*1.2)
-                                      .onDrag {
-                                          NSItemProvider(item: .some(URL(string: character.image)! as NSSecureCoding), typeIdentifier: String(kUTTypeURL))
-                                      }
+                                        .opacity(getScrollOpacity(geometry: geo2))
+                                        .blur(radius: (1 -
+                                                       getScrollOpacity(geometry: geo2))*3)
+                                        .saturation(getScrollOpacity(geometry: geo2)*1.2)
+                                        .onDrag {
+                                            NSItemProvider(item: .some(URL(string: character.image)! as NSSecureCoding), typeIdentifier: String(kUTTypeURL))
+                                        }
                                 }
                                 .frame(
                                     width: geo.size.width * 0.35,
@@ -246,35 +175,40 @@ struct GameView: View {
                     }
                     .padding(.horizontal, 16)
                     //.padding(.bottom, geo.size.height/4)
-                    ZStack {
+                    ZStack(alignment: .bottom) {
                         if delegate.selectedCharacters.isEmpty {
                             Text("Add characters here")
                                 .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .shadow(color: .black.opacity(0.32), radius: 2)
+                                .offset(y: geo.size.height/10)
                         }
                         ScrollView(.horizontal, showsIndicators: false) {
                             
                             HStack {
-                                
                                 // image is unique so assigning it as an id
-                                ForEach(delegate.selectedCharacters, id: \.image) { character in
+                                ForEach(delegate.selectedCharacters) { character in
                                     if character.image != "" {
                                         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
                                             
-                                            
-                                            Image(character.image)
-                                                .resizable()
-                                                .frame(width: 100, height: 100)
-                                                .cornerRadius(15)
-                                            
+                                            ZStack(alignment: .bottom) {
+                                                Image(character.image)
+                                                    .resizable()
+                                                    .frame(width: 100, height: 100)
+                                                    .cornerRadius(15)
+                                                Text(character.name)
+                                                .font(Font.custom("Roboto-Black", size: 24))
+                                                .minimumScaleFactor(0.4)
+                                                .foregroundColor(.white)
+                                            }
+                                            .frame(width: 100, height: 100)
+                                           // .offset(y: geo.size.height/16)
                                             // Remove Button
                                             
                                             Button {
-                                                // removing image from selected list
-                                                
-                                                // adding animation
                                                 withAnimation(.easeOut) {
                                                     self.delegate.selectedCharacters.removeAll { (check) -> Bool in
-                                                        if check.image == character.image { return true }
+                                                        if check.id == character.id { return true }
                                                         else { return false }
                                                     }
                                                 }
@@ -286,7 +220,6 @@ struct GameView: View {
                                                     .background(.black)
                                                     .clipShape(Circle())
                                             }
-                                            
                                         }
                                     }
                                 }
@@ -296,22 +229,47 @@ struct GameView: View {
                         }
                         .padding(.horizontal)
                     }
-                    .frame(height: geo.size.height/8)
+                    .frame(width: geo.size.width, height: geo.size.height/4)
                     .offset(y: -geo.size.height/8)
-                    .background(Color.green)
+                    .background(Color.black.opacity(0.25))
                     .onDrop(of: [String(kUTTypeURL)], delegate: delegate)
-                  
                 }
                 .opacity((isUnfold ? 1 : 0))
                 .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
                 
-                   
+                
             }
             .preferredColorScheme(.light)
+            if delegate.showAlert {
+                CustomAlertView(
+                    title: "WRITE NAME",
+                    material: .ultraThin,
+                    primaryAction: {
+                        delegate.selectedCharacters[delegate.selectedCharacters.count - 1].name = characterName
+                        print(characterName)
+                        characterName = ""
+                        withAnimation {
+                            delegate.showAlert.toggle()
+                        }
+                    },
+                    primaryActionTitle: "OK",
+                    customContent:
+                        VStack {
+                            TextField("",text: $characterName)
+                                .font(Font.custom("Roboto-Black", size: 36))
+                                .foregroundColor(.white)
+                                .background(
+                                    Rectangle()
+                                        .fill(.black)
+                                    )
+                        }
+                )
+            }
         }
         .onAppear {
             vm.remainingTime = 90
         }
+        
     }
     
     // MARK: - Functions
