@@ -22,7 +22,7 @@ struct GameView: View {
                     .ignoresSafeArea()
                     .animation(.easeInOut(duration: 1.5), value: isDay)
                 
-                // /*
+                // /* Horizontal bootom stack
                 VStack {
                     ZStack {
                     //Spacer()
@@ -72,9 +72,8 @@ struct GameView: View {
                                     }
                                 }
                             }
-                            
-                            // Spacer(minLength: 0)
                         }
+                        .onDrop(of: [String(kUTTypeURL)], delegate: delegate)
                     }
                     .padding(.horizontal)
                     .offset(y: geo.size.height/8)
@@ -82,11 +81,59 @@ struct GameView: View {
                }
                 .frame(width: geo.size.width, height: geo.size.height, alignment: .bottom)
                .offset(y: -geo.size.height/4)
-                .background(Color.black.opacity(0.15))
+               .background(Color.black.opacity(0.15))
                .onDrop(of: [String(kUTTypeURL)], delegate: delegate)
                .opacity(isUnfold ? 1 : 0)
                .animation(.easeOut(duration: 2), value: isUnfold)
                   // */
+                
+                // new stack добавить карточки из selected
+                VStack(spacing: 0) {
+                
+                        ScrollView(showsIndicators: false) {
+                            Color.clear
+                                .frame(height: 12)
+                            LazyVGrid(
+                                columns: columns,
+                                alignment: .center,
+                                spacing: 0
+                            ) {
+                                
+                                ForEach(delegate.selectedCharacters) { character in
+                                    GeometryReader { geo2 in
+                                        ZStack {
+                                            Image(character.image)
+                                                .resizable()
+                                            // CharacterCell2(character: character)
+                                                .scaledToFill()
+                                                .scaleEffect(y: 1.5)
+                                                .frame(width: geo.size.width/4, height: geo.size.height/6)
+                                                .padding(4)
+                                                .padding(.vertical, 4)
+                                                .offset(x: 12)
+                                                .opacity(getScrollOpacity(geometry: geo2))
+                                                .blur(radius: (1 -
+                                                               getScrollOpacity(geometry: geo2))*3)
+                                                .saturation(getScrollOpacity(geometry: geo2)*1.2)
+                                            Text(character.name)
+                                        }
+                                    }
+                                    .frame(
+                                        width: geo.size.width * 0.35,
+                                        height: geo.size.width * 0.43,
+                                        alignment: .center
+                                    )
+                                }
+                            }
+                            Color.clear
+                                .frame(height: 64)
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, geo.size.height/3) // - влияет на сворачивание
+                }
+                .opacity((isUnfold || delegate.selectedCharacters.isEmpty ? 0 : 1))
+                .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
+                .offset(y: geo.size.height/6)
                 
                 VStack {
                     Rectangle()
@@ -244,67 +291,6 @@ struct GameView: View {
                         }
                         .padding(.horizontal, 16)
                         .padding(.bottom, geo.size.height/3) // - влияет на сворачивание
-                        
-                         /*
-                        
-                        ZStack(alignment: .bottom) {
-                            if delegate.selectedCharacters.isEmpty {
-                                Text("Add characters here")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .shadow(color: .black.opacity(0.32), radius: 2)
-                                    .offset(y: geo.size.height/10)
-                            }
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                // Row with characters
-                                HStack {
-                                    ForEach(delegate.selectedCharacters) { character in
-                                        if character.image != "" {
-                                            ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
-                                                
-                                                ZStack(alignment: .bottom) {
-                                                    Image(character.image)
-                                                        .resizable()
-                                                        .frame(width: 100, height: 100)
-                                                        .cornerRadius(15)
-                                                    Text(character.name)
-                                                        .font(Font.custom("Roboto-Black", size: 24))
-                                                        .minimumScaleFactor(0.4)
-                                                        .foregroundColor(.white)
-                                                }
-                                                .frame(width: 100, height: 100)
-                                                // .offset(y: geo.size.height/16)
-                                                // Remove Button
-                                                
-                                                Button {
-                                                    withAnimation(.easeOut) {
-                                                        self.delegate.selectedCharacters.removeAll { (check) -> Bool in
-                                                            if check.id == character.id { return true }
-                                                            else { return false }
-                                                        }
-                                                    }
-                                                    
-                                                } label: {
-                                                    Image(systemName: "xmark")
-                                                        .foregroundColor(.white)
-                                                        .padding(10)
-                                                        .background(.black)
-                                                        .clipShape(Circle())
-                                                }
-                                            }
-                                        }
-                                    }
-                                    
-                                    Spacer(minLength: 0)
-                                }
-                            }
-                            .padding(.horizontal)
-                        }
-                        .frame(width: geo.size.width, height: geo.size.height/16)
-                        .offset(y: geo.size.height/2)
-                        //  .background(Color.black.opacity(0.75))
-                        .onDrop(of: [String(kUTTypeURL)], delegate: delegate)
-                            */
                 }
                 .opacity((isUnfold ? 1 : 0))
                 .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
