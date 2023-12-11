@@ -30,7 +30,7 @@ struct GameView: View {
                         Text("Add characters here")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .shadow(color: .black.opacity(0.32), radius: 2)
+                            .shadow(color: .black.opacity(0.64), radius: 2)
                             .offset(y: geo.size.height/10)
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -85,6 +85,7 @@ struct GameView: View {
                 .background(Color.black.opacity(0.15))
                .onDrop(of: [String(kUTTypeURL)], delegate: delegate)
                .opacity(isUnfold ? 1 : 0)
+               .animation(.easeOut(duration: 2), value: isUnfold)
                   // */
                 
                 VStack {
@@ -92,7 +93,7 @@ struct GameView: View {
                         .fill(.white)
                         .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
                         .padding([.leading, .trailing], 12)
-                        .frame(height: isUnfold ? geo.size.height * 0.8 : geo.size.height/10)
+                        .frame(height: isUnfold ? geo.size.height * 0.75 : geo.size.height/10)
                         .animation(.easeInOut(duration: 1), value: isUnfold)
                     
                     ZStack {
@@ -116,7 +117,7 @@ struct GameView: View {
                     .offset(y: -10)
                     
                     HStack {
-                        StatsView()
+                        StatsView(vm: delegate)
                             .opacity(isUnfold ? 0 : 1)
                             .animation(.easeInOut(duration: 1), value: isUnfold)
                     }
@@ -361,7 +362,7 @@ struct GameView: View {
         
         let yInitial = 0.35 * maxY
         let yInitial2 = 0.01 * maxY
-        let yFinal = 0.50 * maxY
+        let yFinal = 0.60 * maxY
         let yFinal2 = -0.2 * maxY
         
         let k = 1 / (yInitial - yFinal)
