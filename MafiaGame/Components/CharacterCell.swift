@@ -126,4 +126,3 @@ struct CharacterCell: View {
     }
 }
 
-#warning("цвет фона карточек надо поправлять!")

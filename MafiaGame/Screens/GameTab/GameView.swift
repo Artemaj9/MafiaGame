@@ -87,6 +87,7 @@ struct GameView: View {
                .animation(.easeOut(duration: 2), value: isUnfold)
                   // */
                 
+                /*
                 // new stack добавить карточки из selected
                 VStack(spacing: 0) {
                 
@@ -134,7 +135,92 @@ struct GameView: View {
                 .opacity((isUnfold || delegate.selectedCharacters.isEmpty ? 0 : 1))
                 .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
                 .offset(y: geo.size.height/6)
+                 */
                 
+                // new stack 2
+                
+                VStack(spacing: 0) {
+                
+                        ScrollView(showsIndicators: false) {
+                            Color.clear
+                                .frame(height: 12)
+                            LazyVGrid(
+                                columns: columns,
+                                alignment: .center,
+                                spacing: 0//-30
+                            ) {
+                                
+                                ForEach(characters, id: \.self) { character in
+                                    GeometryReader { geo2 in
+                                        CharacterGameCell(character: character)
+                                            .scaledToFill()
+                                            .scaleEffect(y: 1.5)
+                                            .frame(width: geo.size.width/4, height: geo.size.height/6)
+                                            .padding(4)
+                                            .padding(.vertical, 4)
+                                            .offset(x: 12)
+                                            .opacity(getScrollOpacity(geometry: geo2))
+                                            .blur(radius: (1 -
+                                                           getScrollOpacity(geometry: geo2))*3)
+                                            .saturation(getScrollOpacity(geometry: geo2)*1.2)
+                                            .overlay {
+                                                ZStack(alignment: .top) {
+                                                    HStack(alignment: .top) {
+                                                        Rectangle()
+                                                            .fill(.white)
+                                                            .frame(width: 30, height: 30)
+                                                            .overlay(
+                                                                Image("x"))
+                                                            .onTapGesture {
+                                                                
+                                                            }
+                                                        Spacer()
+                                                        VStack {
+                                                            Rectangle()
+                                                                .fill(.white)
+                                                                .frame(width: 30, height: 30)
+                                                                .overlay(
+                                                                    Image("skull"))
+                                                                .onTapGesture {
+                                                                    
+                                                                }
+                                                            
+                                                            Rectangle()
+                                                                .fill(.white)
+                                                                .frame(width: 30, height: 30)
+                                                                .overlay(
+                                                                    Image("door"))
+                                                                .onTapGesture {}
+                                                        }
+                                                    }
+                                                    //.padding(4)
+                                                    
+                                                    .offset(x: 16)
+                                                    .offset(y: -geo.size.height/22)
+                                                }
+                                                .opacity(getScrollOpacity(geometry: geo2)*0.8)
+                                            }
+                                     
+                                    }
+                                    .frame(
+                                        width: geo.size.width * 0.35,
+                                        height: geo.size.width * 0.43,
+                                        alignment: .center
+                                    )
+                                }
+                            }
+                            Color.clear
+                                .frame(height: 64)
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, geo.size.height/3) // - влияет на сворачивание
+                }
+                .opacity((isUnfold ? 0 : 1))
+                .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
+                .offset(y: geo.size.height/6)
+                // end newstack2
+                
+                // whiteoard, timer, etc
                 VStack {
                     Rectangle()
                         .fill(.white)
@@ -251,6 +337,7 @@ struct GameView: View {
                 }
                 .ignoresSafeArea()
                 
+                //Stack on white sheet
                 VStack(spacing: 0) {
                 
                         ScrollView(showsIndicators: false) {

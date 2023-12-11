@@ -68,6 +68,7 @@
 		AC776B712B260E7700803D0B /* CharacterGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B702B260E7700803D0B /* CharacterGameModel.swift */; };
 		AC776B732B261DBC00803D0B /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B722B261DBC00803D0B /* CustomAlertView.swift */; };
 		AC776B752B262C4D00803D0B /* GameViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B742B262C4D00803D0B /* GameViewData.swift */; };
+		AC776B772B27AEC000803D0B /* CharacterGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B762B27AEC000803D0B /* CharacterGameCell.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 		ACFD18862B23AA8300180D2E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD18852B23AA8300180D2E /* TimerView.swift */; };
@@ -139,6 +140,7 @@
 		AC776B702B260E7700803D0B /* CharacterGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGameModel.swift; sourceTree = "<group>"; };
 		AC776B722B261DBC00803D0B /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		AC776B742B262C4D00803D0B /* GameViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewData.swift; sourceTree = "<group>"; };
+		AC776B762B27AEC000803D0B /* CharacterGameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGameCell.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 		ACFD18852B23AA8300180D2E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -271,9 +273,8 @@
 				AC6DBA5B2B1E64F900B2A6C3 /* CharacterCell3.swift */,
 				AC6DBA622B1EA3F500B2A6C3 /* CharacterCell4.swift */,
 				AC6AA60B2B1A87B0009B404F /* CharacterCell.swift */,
-				AC6DBA772B1FE42A00B2A6C3 /* MessageBubble.swift */,
-				AC6DBA862B1FF2C600B2A6C3 /* ChatBubble.swift */,
-				AC6DBAA22B20F6CF00B2A6C3 /* AvatarView.swift */,
+				AC776B762B27AEC000803D0B /* CharacterGameCell.swift */,
+				AC776B782B27B3E100803D0B /* Chat */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -373,6 +374,16 @@
 				AC6DBA6A2B1FDC3D00B2A6C3 /* EndGame */,
 			);
 			path = GameTab;
+			sourceTree = "<group>";
+		};
+		AC776B782B27B3E100803D0B /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AC6DBA862B1FF2C600B2A6C3 /* ChatBubble.swift */,
+				AC6DBAA22B20F6CF00B2A6C3 /* AvatarView.swift */,
+				AC6DBA772B1FE42A00B2A6C3 /* MessageBubble.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,6 +514,7 @@
 				ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */,
 				AC6DBAAA2B2119BB00B2A6C3 /* UIApplication.swift in Sources */,
 				AC0B24252B1A44AF00BC7FAE /* GameView.swift in Sources */,
+				AC776B772B27AEC000803D0B /* CharacterGameCell.swift in Sources */,
 				AC6DBAA82B210EEA00B2A6C3 /* Publishers+ext.swift in Sources */,
 				AC6DBAA32B20F6D000B2A6C3 /* AvatarView.swift in Sources */,
 				AC0B24222B1A2E7800BC7FAE /* SplashView.swift in Sources */,
