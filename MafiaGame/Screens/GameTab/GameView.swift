@@ -163,43 +163,6 @@ struct GameView: View {
                                             .blur(radius: (1 -
                                                            getScrollOpacity(geometry: geo2))*3)
                                             .saturation(getScrollOpacity(geometry: geo2)*1.2)
-                                            .overlay {
-                                                ZStack(alignment: .top) {
-                                                    HStack(alignment: .top) {
-                                                        Rectangle()
-                                                            .fill(.white)
-                                                            .frame(width: 30, height: 30)
-                                                            .overlay(
-                                                                Image("x"))
-                                                            .onTapGesture {
-                                                                
-                                                            }
-                                                        Spacer()
-                                                        VStack {
-                                                            Rectangle()
-                                                                .fill(.white)
-                                                                .frame(width: 30, height: 30)
-                                                                .overlay(
-                                                                    Image("skull"))
-                                                                .onTapGesture {
-                                                                    
-                                                                }
-                                                            
-                                                            Rectangle()
-                                                                .fill(.white)
-                                                                .frame(width: 30, height: 30)
-                                                                .overlay(
-                                                                    Image("door"))
-                                                                .onTapGesture {}
-                                                        }
-                                                    }
-                                                    //.padding(4)
-                                                    
-                                                    .offset(x: 16)
-                                                    .offset(y: -geo.size.height/22)
-                                                }
-                                                .opacity(getScrollOpacity(geometry: geo2)*0.8)
-                                            }
                                      
                                     }
                                     .frame(
@@ -306,7 +269,7 @@ struct GameView: View {
                     
                     TimerView(remainingTime: $vm.remainingTime)
                         .shadow(color: .black.opacity(0.32), radius: 4, x: 4, y: 0)
-                        .overlay{
+                        .overlay {
                             HStack {
                                 Text("\(vm.remainingTime/60):\(vm.remainingTime%60/10)\(vm.remainingTime%60%10)")
                                     .font(Font.custom("Roboto-Medium", size: 18))

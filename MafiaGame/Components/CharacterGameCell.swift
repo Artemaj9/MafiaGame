@@ -31,6 +31,7 @@ struct CharacterGameCell: View {
             GeometryReader { geo in
                 VStack() {
                     ZStack(alignment: .top) {
+                        
                         Image(character.image)
                             .resizable()
                             .scaledToFill()
@@ -110,7 +111,61 @@ struct CharacterGameCell: View {
                             .shadow(color: .black, radius: 6)
                             .offset(y: 0.4 * geo.size.height)
                             .opacity(isBusted || isLeft ? 1 : 0)
+                        
+                        HStack(alignment: .top) {
+                            Button {
+                                // add some functions
+                            } label: {
+                                ZStack {
+                                    Rectangle()
+                                        .fill(.white)
+                                        .frame(width: 30, height: 30/1.5)
+                                    
+                                    Image("x")
+                                        .scaleEffect(y: 1/1.5)
+                                }
+                            }
+
+                       
+                               
+                            Spacer()
+                            VStack(spacing: 0) {
+                                ZStack {
+                                    Rectangle()
+                                        .fill(isBusted ? Color("mainSkull") : .white)
+                                        .frame(width: 30, height: 30/1.5)
+                                    Image("skull")
+                                        .scaleEffect(y: 1/1.5)
+                                }
+                                .shadow(color: isBusted ? Color("mainSkull").opacity(0.64) : .white.opacity(0.64), radius: 4)
+                                    .onTapGesture {
+                                        isBusted.toggle()
+                                    }
+                                ZStack {
+                                    Rectangle()
+                                        .fill(isLeft ? .black : .white)
+                                        .frame(width: 30, height: 30/1.5)
+                                    
+                                    if isLeft {
+                                        Image("door")
+                                            .colorInvert()
+                                    } else {
+                                        Image("door")
+                                    }
+                                     
+                                }
+                                    .onTapGesture {
+                                        isLeft.toggle()
+                                        
+                                    }
+                                    
+                            }
+                        }
+                        .padding(18)
+                        .offset(y: -geo.size.height/22)
                     }
+                    .animation(.easeIn, value: isBusted)
+                    .animation(.easeIn, value: isLeft)
                 }
             }
         }
