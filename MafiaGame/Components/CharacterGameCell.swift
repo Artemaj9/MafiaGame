@@ -31,8 +31,7 @@ struct CharacterGameCell: View {
     @State var isLeft = false
     @Binding var busted: Int
     @EnvironmentObject var gameCharacterData: GameCharacterData
-   // @ObservedObject var delegate: GameCharacterData
-  //  @Binding var citizens: Int
+
     let type: String
   
     init(id: UUID, image: String, myGradient: Gradient = Gradient(
@@ -130,17 +129,21 @@ struct CharacterGameCell: View {
                             .frame(width: geo.size.width*0.7, height: geo.size.height/5)
                            
                             .overlay(
+                                
                                 VStack {
                                     Text(name)
-                                        .font(Font.custom("Roboto-Black", size: 15))
-                                        .foregroundColor(.white)
-                                        .shadow(color: .black, radius: 4)
+                                            .font(Font.custom("Roboto-Black", size: 15))
+                                            .foregroundColor(.white)
+                                            .shadow(color: .black, radius: 4)
+
                                     Text(image.uppercased())
                                         .font(Font.custom("Roboto-Bold", size: 12))
                                         .foregroundColor(.white)
                                         .shadow(color: .black, radius: 4)
-                                
                                 }
+                                    .onTapGesture {
+                                        gameCharacterData.showAlert = true
+                                    }
                             )
                             .offset(y: 0.65 * geo.size.width)
         
@@ -159,6 +162,13 @@ struct CharacterGameCell: View {
                                         if check.id == id { return true }
                                         else { return false }
                                     }
+                                    if type == "mafia" {
+                                        gameCharacterData.mafiaCount -= 1
+                                    }
+                                    if type == "citizen" {
+                                        gameCharacterData.citizenCount -= 1
+                                    }
+                                    gameCharacterData.checkGame()
                                 }
                             } label: {
                                 ZStack {
@@ -170,8 +180,6 @@ struct CharacterGameCell: View {
                                         .scaleEffect(y: 1/1.5)
                                 }
                             }
-
-                       
                                
                             Spacer()
                             VStack(spacing: 0) {
@@ -185,8 +193,14 @@ struct CharacterGameCell: View {
                                 .shadow(color: isBusted ? Color("mainSkull").opacity(0.64) : .white.opacity(0.64), radius: 4)
                                     .onTapGesture {
                                         busted += isBusted ? -1 : 1
-                                        
                                         isBusted.toggle()
+                                        if type == "mafia" {
+                                            gameCharacterData.mafiaCount += isBusted ? -1 : 1
+                                        }
+                                        if type == "citizen" {
+                                            gameCharacterData.citizenCount += isBusted ? -1 : 1
+                                        }
+                                        gameCharacterData.checkGame()
                                     }
                                 ZStack {
                                     Rectangle()
@@ -203,7 +217,13 @@ struct CharacterGameCell: View {
                                 }
                                     .onTapGesture {
                                         isLeft.toggle()
-                                        
+                                        if type == "mafia" {
+                                            gameCharacterData.mafiaCount += isLeft ? -1 : 1
+                                        }
+                                        if type == "citizen" {
+                                            gameCharacterData.citizenCount += isLeft ? -1 : 1
+                                        }
+                                        gameCharacterData.checkGame()
                                     }
                                     
                             }

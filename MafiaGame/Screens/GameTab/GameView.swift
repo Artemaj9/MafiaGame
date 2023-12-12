@@ -326,17 +326,17 @@ struct GameView: View {
 
         }
             Button {
-                vm.startGame()
+                delegate.startGame()
             } label: {
                 Text("Start Game")
                     .font(Font.custom("Roboto-Black", size: 36))
                     .foregroundColor(.white)
                     .shadow(color: isDay ? .black.opacity(0.64) : .white.opacity(0.64), radius: 4)
             }
-            .opacity(delegate.selectedCharacters.count >= 3 && !vm.isGame ? 1 : 0)
+            .opacity(delegate.selectedCharacters.count >= 3 && !delegate.isGame ? 1 : 0)
             .offset(x: isUnfold ?  -400 : 0)
             .animation(.spring(),value: isUnfold)
-            .animation(.easeInOut,value: vm.isGame)
+            .animation(.easeInOut,value: delegate.isGame)
             
           
         }

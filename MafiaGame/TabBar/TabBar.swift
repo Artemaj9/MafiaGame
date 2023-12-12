@@ -7,6 +7,7 @@ import SwiftUI
 struct TabBar: View {
     
     @StateObject var tabbarRouter = TabbarRouter()
+    @EnvironmentObject var gameCharacterData: GameCharacterData
     @Namespace private var namespace
     @State var localSelection: Page = .game
 
@@ -20,8 +21,24 @@ struct TabBar: View {
     var contentView: some View {
         switch tabbarRouter.currentPage {
         case .game:
-            GameView()
-                .environmentObject(tabbarRouter)
+            if gameCharacterData.endGame == 1 {
+                GreenWinsView()
+                    .environmentObject(gameCharacterData)
+                    .environmentObject(tabbarRouter)
+            } else if gameCharacterData.endGame == -1 {
+                
+                MafiaWinsView()
+                    .environmentObject(gameCharacterData)
+                    .environmentObject(tabbarRouter)
+            } else {
+                      
+                GameView()
+                    .environmentObject(gameCharacterData)
+                    .environmentObject(tabbarRouter)
+
+                }
+         
+            
         case .city:
             CityView()
                 .environmentObject(tabbarRouter)

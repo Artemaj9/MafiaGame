@@ -10,6 +10,7 @@ struct GreenWinsView: View {
     @State var textOpacity: Double = 0
     @State var degrees: Double = -35
     @State var radiusFactor: Double = 0
+    @EnvironmentObject var gameModel: GameCharacterData
     
     var body: some View {
         GeometryReader { geo in
@@ -57,7 +58,7 @@ struct GreenWinsView: View {
                     .animation(.easeIn(duration: 3), value: saturation)
                     
                     Button {
-                        
+                        gameModel.resetGame()
                     } label: {
                         Text("Press to continue")
                             .font(Font.custom("Roboto-Black", size: 32))
@@ -151,8 +152,8 @@ struct GreenWinsView: View {
 }
 
 
-struct GreenWinsView_Previews: PreviewProvider {
-    static var previews: some View {
-        GreenWinsView()
-    }
-}
+//struct GreenWinsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GreenWinsView()
+//    }
+//}

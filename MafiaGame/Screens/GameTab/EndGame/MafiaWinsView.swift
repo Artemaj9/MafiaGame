@@ -16,6 +16,7 @@ struct MafiaWinsView: View {
     @State var dollarOffsetY: Double = 0
     @State var dollarAngle: Double = 0
     var dollars = Array(repeating: Int.random(in: 1...4), count: 10)
+    @EnvironmentObject var gameModel: GameCharacterData
     
     var body: some View {
         GeometryReader { geo in
@@ -95,7 +96,7 @@ struct MafiaWinsView: View {
                     .saturation(saturation)
                     .animation(.easeIn(duration: 3), value: saturation)
                     Button {
-                        
+                        gameModel.resetGame()
                     } label: {
                         Text("Press to continue")
                             .font(Font.custom("Roboto-Black", size: 32))

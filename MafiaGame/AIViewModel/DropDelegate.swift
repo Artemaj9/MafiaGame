@@ -14,8 +14,36 @@ class GameCharacterData: ObservableObject, DropDelegate {
     @Published var showAlert = false
     @Published var mafiaCount = 0
     @Published var citizenCount = 0
+    @Published var isGame = false
+    @Published var endGame = 0
+    
+    func startGame() {
+        isGame = true
+        mafiaCount = selectedCharacters.filter { $0.type == "mafia" }.count
+        citizenCount = selectedCharacters.filter { $0.type == "citizen" }.count
+        print("BIG GAME BEGIN!")
+        print("MAfia Count : \(mafiaCount)")
+        print("Citizen count: \(citizenCount)")
+    }
 
-
+    func resetGame() {
+       isGame = false
+       selectedCharacters.removeAll()
+       endGame = 0
+       citizenCount = 0
+       mafiaCount = 0
+    }
+    
+    
+    func checkGame()   {
+        if isGame && mafiaCount == citizenCount {
+            endGame = -1
+        }
+        
+        if isGame && mafiaCount == 0 {
+            endGame = 1
+        }
+    }
     
     func performDrop(info: DropInfo) -> Bool {
         
