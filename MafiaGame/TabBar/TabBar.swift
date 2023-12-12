@@ -21,6 +21,7 @@ struct TabBar: View {
     var contentView: some View {
         switch tabbarRouter.currentPage {
         case .game:
+            
             if gameCharacterData.endGame == 1 {
                 GreenWinsView()
                     .environmentObject(gameCharacterData)
@@ -31,13 +32,14 @@ struct TabBar: View {
                     .environmentObject(gameCharacterData)
                     .environmentObject(tabbarRouter)
             } else {
-                      
+                
                 GameView()
                     .environmentObject(gameCharacterData)
                     .environmentObject(tabbarRouter)
-
-                }
-         
+                
+            }
+            
+            
             
         case .city:
             CityView()

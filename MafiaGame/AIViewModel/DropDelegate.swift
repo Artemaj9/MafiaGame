@@ -16,6 +16,7 @@ class GameCharacterData: ObservableObject, DropDelegate {
     @Published var citizenCount = 0
     @Published var isGame = false
     @Published var endGame = 0
+    @Published var isEnd = false
     
     func startGame() {
         isGame = true
@@ -27,21 +28,28 @@ class GameCharacterData: ObservableObject, DropDelegate {
     }
 
     func resetGame() {
-       isGame = false
-       selectedCharacters.removeAll()
-       endGame = 0
-       citizenCount = 0
-       mafiaCount = 0
+        isGame = false
+        selectedCharacters.removeAll()
+        endGame = 0
+        citizenCount = 0
+        mafiaCount = 0
+        isEnd = false
     }
     
     
     func checkGame()   {
-        if isGame && mafiaCount == citizenCount {
-            endGame = -1
+        if isGame && mafiaCount >= citizenCount {
+            isEnd = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.endGame = -1
+            }
         }
         
         if isGame && mafiaCount == 0 {
-            endGame = 1
+            isEnd =  true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.endGame = 1
+            }
         }
     }
     

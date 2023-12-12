@@ -7,16 +7,22 @@ import MobileCoreServices
 
 struct GameView: View {
     
-    @State private var isDay = false
+    @State private var isDay = true
     @State private var isUnfold = false
     @State var percent = 30
     @StateObject var vm = GameViewModel()
     @EnvironmentObject var delegate: GameCharacterData
     @State var characterName = ""
     @State var busted = 0
+  //  @State var endGame: Bool
     
     var body: some View {
+      //  NavigationView {
         ZStack {
+//                NavigationLink("", destination: GreenWinsView().navigationBarHidden(true),
+//                               isActive: $delegate.isEnd)
+//                .ignoresSafeArea()
+                
             GeometryReader { geo in
                 Image(isDay ? "bgday" : "bgnight")
                     .resizable()
@@ -337,13 +343,29 @@ struct GameView: View {
             .offset(x: isUnfold ?  -400 : 0)
             .animation(.spring(),value: isUnfold)
             .animation(.easeInOut,value: delegate.isGame)
-            
           
+//            if delegate.endGame == -1 {
+//                MafiaWinsView()
+//                    .ignoresSafeArea()
+//                    .opacity(delegate.endGame == -1 ? 1 : 0)
+//            }
+//            if delegate.endGame == 1 {
+//                GreenWinsView()
+//                    .ignoresSafeArea()
+//                    .opacity(delegate.endGame == 1 ? 1 : 0)
+//            }
         }
+       // .opacity(delegate.isEnd ? 0 : 1)
+        //.animation(.easeInOut, value: delegate.isEnd)
         .onAppear {
             vm.remainingTime = 90
         }
-        
+   
+      //  }
+//        .ignoresSafeArea()
+//.navigationViewStyle(.stack)
+
+
     }
     
     // MARK: - Functions

@@ -15,7 +15,9 @@ struct MafiaWinsView: View {
     @State var dollarOneDegree: Double = 0
     @State var dollarOffsetY: Double = 0
     @State var dollarAngle: Double = 0
+    @State var transitionOpacity: Double = 0
     var dollars = Array(repeating: Int.random(in: 1...4), count: 10)
+    
     @EnvironmentObject var gameModel: GameCharacterData
     
     var body: some View {
@@ -182,6 +184,7 @@ struct MafiaWinsView: View {
 
                 }
             }
+         
             .drawingGroup()
             .onAppear {
                 vm.updateDolars()
@@ -191,6 +194,7 @@ struct MafiaWinsView: View {
                 radiusFactor = 1
                 dollarAngle = 360
                 dollarOffsetY = 5000
+                transitionOpacity = 1
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     textOpacity = 0.8
                     dollarOneOffset = 1300
