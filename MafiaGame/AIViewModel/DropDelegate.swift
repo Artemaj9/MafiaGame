@@ -12,6 +12,8 @@ class GameCharacterData: ObservableObject, DropDelegate {
     @Published var totalImages = [GameCharacterCell]()
     @Published var selectedCharacters = [GameCharacterCell]()
     @Published var showAlert = false
+    @Published var mafiaCount = 0
+    @Published var citizenCount = 0
 
 
     

@@ -11,8 +11,9 @@ struct GameView: View {
     @State private var isUnfold = false
     @State var percent = 30
     @StateObject var vm = GameViewModel()
-    @StateObject var delegate = GameCharacterData()
+    @EnvironmentObject var delegate: GameCharacterData
     @State var characterName = ""
+    @State var busted = 0
     
     var body: some View {
         ZStack {
@@ -36,7 +37,7 @@ struct GameView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         // Row with characters
                         HStack {
-                            ForEach(delegate.selectedCharacters) { character in
+                            ForEach(delegate.selectedCharacters.reversed()) { character in
                                 if character.image != "" {
                                     ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
                                         
@@ -101,7 +102,7 @@ struct GameView: View {
                                 
                                 ForEach(delegate.selectedCharacters) { character in
                                     GeometryReader { geo2 in
-                                        CharacterGameCell(id: character.id, image: character.image, name: character.name)
+                                        CharacterGameCell(id: character.id, image: character.image, name: character.name, busted: $busted)
                                             .scaledToFill()
                                             .scaleEffect(y: 1.5)
                                             .frame(width: geo.size.width/4, height: geo.size.height/6)
@@ -162,7 +163,7 @@ struct GameView: View {
                     .offset(y: -10)
                     
                     HStack {
-                        StatsView(vm: delegate)
+                        StatsView(vm: delegate, busted: $busted)
                             .opacity(isUnfold ? 0 : 1)
                             .animation(.easeInOut(duration: 1), value: isUnfold)
                     }
@@ -322,7 +323,22 @@ struct GameView: View {
                         }
                 )
             }
+
         }
+            Button {
+                vm.startGame()
+            } label: {
+                Text("Start Game")
+                    .font(Font.custom("Roboto-Black", size: 36))
+                    .foregroundColor(.white)
+                    .shadow(color: isDay ? .black.opacity(0.64) : .white.opacity(0.64), radius: 4)
+            }
+            .opacity(delegate.selectedCharacters.count >= 3 && !vm.isGame ? 1 : 0)
+            .offset(x: isUnfold ?  -400 : 0)
+            .animation(.spring(),value: isUnfold)
+            .animation(.easeInOut,value: vm.isGame)
+            
+          
         }
         .onAppear {
             vm.remainingTime = 90

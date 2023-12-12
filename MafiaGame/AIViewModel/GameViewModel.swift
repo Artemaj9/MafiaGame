@@ -14,7 +14,17 @@ class GameViewModel: ObservableObject {
     @Published var timerIsOn = false
     @Published var isPaused = true
     @Published var opacityCount = 0
+    @Published var isGame = false
+    
     private var cancellables = Set<AnyCancellable>()
+    
+    
+    
+    func startGame() {
+        isGame = true
+        print("BIG GAME BEGIN!")
+    }
+    
     
     func setUpTimer() {
         timerIsOn = true

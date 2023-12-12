@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct MafiaGameApp: App {
+    
+    @StateObject var gameCharacterData = GameCharacterData()
     var body: some Scene {
         WindowGroup {
             TabBar()
+                .environmentObject(gameCharacterData)
         }
     }
 }

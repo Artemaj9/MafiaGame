@@ -23,26 +23,34 @@ struct CharacterGameCell: View {
             Color("strokeGrad2")
         ]
     )
+    
     //var isDescription = true
-   
+
     var name = ""
     @State var isBusted = false
     @State var isLeft = false
+    @Binding var busted: Int
+    @EnvironmentObject var gameCharacterData: GameCharacterData
+   // @ObservedObject var delegate: GameCharacterData
+  //  @Binding var citizens: Int
     let type: String
+  
     init(id: UUID, image: String, myGradient: Gradient = Gradient(
         colors: [
             Color("strokeGrad4"),
             Color("strokeGrad3"),
             Color("strokeGrad2")
         ]
-    ), name: String = "", isBusted: Bool = false, isLeft: Bool = false) {
+    ), name: String = "", isBusted: Bool = false, isLeft: Bool = false, busted: Binding<Int>) {
         self.id = id
         self.image = image
         self.myGradient = myGradient
         self.name = name
-        
+        self._busted =  busted
+      //  self._delegate = delegate
+   
         switch image {
-        case "citizen","doctor", "sherif", "cop":
+        case "citizen","doctor", "sheriff", "cop":
             self.type = "citizen"
             
         case "mafia","godfather", "mafioso","framer":
@@ -145,7 +153,13 @@ struct CharacterGameCell: View {
                         
                         HStack(alignment: .top) {
                             Button {
-                                // add some functions
+                               
+                                withAnimation(.easeOut) {
+                                   gameCharacterData.selectedCharacters.removeAll { (check) -> Bool in
+                                        if check.id == id { return true }
+                                        else { return false }
+                                    }
+                                }
                             } label: {
                                 ZStack {
                                     Rectangle()
@@ -170,6 +184,8 @@ struct CharacterGameCell: View {
                                 }
                                 .shadow(color: isBusted ? Color("mainSkull").opacity(0.64) : .white.opacity(0.64), radius: 4)
                                     .onTapGesture {
+                                        busted += isBusted ? -1 : 1
+                                        
                                         isBusted.toggle()
                                     }
                                 ZStack {
@@ -200,7 +216,6 @@ struct CharacterGameCell: View {
                 }
             }
         }
-        
     }
 }
 
