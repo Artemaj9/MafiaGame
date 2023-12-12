@@ -70,6 +70,11 @@
 		AC776B752B262C4D00803D0B /* GameViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B742B262C4D00803D0B /* GameViewData.swift */; };
 		AC776B772B27AEC000803D0B /* CharacterGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B762B27AEC000803D0B /* CharacterGameCell.swift */; };
 		AC776B7A2B27DC8C00803D0B /* CharacterModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B792B27DC8C00803D0B /* CharacterModel2.swift */; };
+		AC776B822B28FD1500803D0B /* mafiaWins.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC776B7E2B28FD1500803D0B /* mafiaWins.mp3 */; };
+		AC776B832B28FD1500803D0B /* citizenWins.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC776B7F2B28FD1500803D0B /* citizenWins.mp3 */; };
+		AC776B842B28FD1500803D0B /* coolnight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC776B802B28FD1500803D0B /* coolnight.mp3 */; };
+		AC776B852B28FD1500803D0B /* dayBack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC776B812B28FD1500803D0B /* dayBack.mp3 */; };
+		AC776B872B28FD8300803D0B /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B862B28FD8300803D0B /* SoundPlayer.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 		ACFD18862B23AA8300180D2E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD18852B23AA8300180D2E /* TimerView.swift */; };
@@ -143,6 +148,11 @@
 		AC776B742B262C4D00803D0B /* GameViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewData.swift; sourceTree = "<group>"; };
 		AC776B762B27AEC000803D0B /* CharacterGameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGameCell.swift; sourceTree = "<group>"; };
 		AC776B792B27DC8C00803D0B /* CharacterModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel2.swift; sourceTree = "<group>"; };
+		AC776B7E2B28FD1500803D0B /* mafiaWins.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mafiaWins.mp3; sourceTree = "<group>"; };
+		AC776B7F2B28FD1500803D0B /* citizenWins.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = citizenWins.mp3; sourceTree = "<group>"; };
+		AC776B802B28FD1500803D0B /* coolnight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coolnight.mp3; sourceTree = "<group>"; };
+		AC776B812B28FD1500803D0B /* dayBack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dayBack.mp3; sourceTree = "<group>"; };
+		AC776B862B28FD8300803D0B /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 		ACFD18852B23AA8300180D2E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -191,8 +201,7 @@
 				AC6AA6102B1B26FC009B404F /* TabBar */,
 				AC6AA6082B1A759A009B404F /* Components */,
 				AC0B24282B1A4EC300BC7FAE /* Extensions */,
-				AC0B24172B1A2BC400BC7FAE /* Assets.xcassets */,
-				AC6AA5EA2B1A6F9F009B404F /* Roboto */,
+				AC776B7C2B28FC5B00803D0B /* Resources */,
 				AC0B24192B1A2BC400BC7FAE /* Preview Content */,
 			);
 			path = MafiaGame;
@@ -298,9 +307,9 @@
 			isa = PBXGroup;
 			children = (
 				AC6DBA602B1E834100B2A6C3 /* CharInfoModel.swift */,
-				AC776B702B260E7700803D0B /* CharacterGameModel.swift */,
 				AC6DBAB02B214BDC00B2A6C3 /* OnboardingModel.swift */,
 				ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */,
+				AC776B702B260E7700803D0B /* CharacterGameModel.swift */,
 				ACFD18892B24736200180D2E /* DollarAnimatableProperties.swift */,
 			);
 			path = Models;
@@ -389,6 +398,28 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		AC776B7C2B28FC5B00803D0B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AC776B7D2B28FC7600803D0B /* Sounds */,
+				AC6AA5EA2B1A6F9F009B404F /* Roboto */,
+				AC0B24172B1A2BC400BC7FAE /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AC776B7D2B28FC7600803D0B /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				AC776B862B28FD8300803D0B /* SoundPlayer.swift */,
+				AC776B7F2B28FD1500803D0B /* citizenWins.mp3 */,
+				AC776B802B28FD1500803D0B /* coolnight.mp3 */,
+				AC776B812B28FD1500803D0B /* dayBack.mp3 */,
+				AC776B7E2B28FD1500803D0B /* mafiaWins.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -448,15 +479,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC6AA6032B1A6F9F009B404F /* Roboto-Thin.ttf in Resources */,
+				AC776B832B28FD1500803D0B /* citizenWins.mp3 in Resources */,
 				AC6AA6002B1A6F9F009B404F /* LICENSE.txt in Resources */,
 				AC6AA6042B1A6F9F009B404F /* Roboto-Black.ttf in Resources */,
 				AC6AA6022B1A6F9F009B404F /* Roboto-Bold.ttf in Resources */,
 				AC0B241B2B1A2BC400BC7FAE /* Preview Assets.xcassets in Resources */,
 				AC0B24182B1A2BC400BC7FAE /* Assets.xcassets in Resources */,
 				AC6AA5FD2B1A6F9F009B404F /* Roboto-BoldItalic.ttf in Resources */,
+				AC776B842B28FD1500803D0B /* coolnight.mp3 in Resources */,
 				AC6AA5FA2B1A6F9F009B404F /* Roboto-Regular.ttf in Resources */,
 				AC6AA5FC2B1A6F9F009B404F /* Roboto-ThinItalic.ttf in Resources */,
 				AC6AA5FE2B1A6F9F009B404F /* Roboto-LightItalic.ttf in Resources */,
+				AC776B822B28FD1500803D0B /* mafiaWins.mp3 in Resources */,
+				AC776B852B28FD1500803D0B /* dayBack.mp3 in Resources */,
 				AC6AA6012B1A6F9F009B404F /* Roboto-BlackItalic.ttf in Resources */,
 				AC6AA5F92B1A6F9F009B404F /* Roboto-Light.ttf in Resources */,
 				AC6AA5FF2B1A6F9F009B404F /* Roboto-Italic.ttf in Resources */,
@@ -494,6 +529,7 @@
 				AC6DBA832B1FF14C00B2A6C3 /* ScrollHeaderView.swift in Sources */,
 				AC6AA6392B1BA5B7009B404F /* TabModel.swift in Sources */,
 				AC6DBA562B1DD64C00B2A6C3 /* CharacterCell2.swift in Sources */,
+				AC776B872B28FD8300803D0B /* SoundPlayer.swift in Sources */,
 				AC6DBA672B1FD89800B2A6C3 /* OpenAIAPI.swift in Sources */,
 				AC6AA6062B1A73E3009B404F /* View+InnerShadow.swift in Sources */,
 				AC6DBAAF2B21425400B2A6C3 /* AIOnboardingView.swift in Sources */,

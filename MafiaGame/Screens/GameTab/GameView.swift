@@ -14,14 +14,9 @@ struct GameView: View {
     @EnvironmentObject var delegate: GameCharacterData
     @State var characterName = ""
     @State var busted = 0
-  //  @State var endGame: Bool
     
     var body: some View {
-      //  NavigationView {
         ZStack {
-//                NavigationLink("", destination: GreenWinsView().navigationBarHidden(true),
-//                               isActive: $delegate.isEnd)
-//                .ignoresSafeArea()
                 
             GeometryReader { geo in
                 Image(isDay ? "bgday" : "bgnight")
@@ -29,10 +24,9 @@ struct GameView: View {
                     .ignoresSafeArea()
                     .animation(.easeInOut(duration: 1.5), value: isDay)
                 
-                // /* Horizontal bootom stack
+                // Horizontal bottom stack
                 VStack {
                     ZStack {
-                    //Spacer()
                     if delegate.selectedCharacters.isEmpty {
                         Text("Add characters here")
                             .fontWeight(.bold)
@@ -66,7 +60,6 @@ struct GameView: View {
                                                     else { return false }
                                                 }
                                             }
-                                            
                                         } label: {
                                             Image(systemName: "xmark")
                                                 .foregroundColor(.white)
@@ -80,7 +73,7 @@ struct GameView: View {
                         }
                         .onDrop(of: [String(kUTTypeURL)], delegate: delegate)
                     }
-                    .padding(.horizontal)
+                   // .padding(.horizontal)
                     .offset(y: geo.size.height/8)
                 }
                }
@@ -90,9 +83,7 @@ struct GameView: View {
                .onDrop(of: [String(kUTTypeURL)], delegate: delegate)
                .opacity(isUnfold ? 1 : 0)
                .animation(.easeOut(duration: 2), value: isUnfold)
-                  // */
-            
-                
+    
                 // new stack 2
                 
                 VStack(spacing: 0) {
@@ -103,7 +94,7 @@ struct GameView: View {
                             LazyVGrid(
                                 columns: columns,
                                 alignment: .center,
-                                spacing: 0//-30
+                                spacing: 0
                             ) {
                                 
                                 ForEach(delegate.selectedCharacters) { character in
@@ -115,7 +106,7 @@ struct GameView: View {
                                             .padding(4)
                                             .padding(.vertical, 4)
                                             .offset(x: 12)
-                                            .opacity(getScrollOpacity(geometry: geo2))
+                                            .opacity(getScrollOpacityNew(geometry: geo2))
                                             .blur(radius: (1 -
                                                            getScrollOpacity(geometry: geo2))*3)
                                             .saturation(getScrollOpacity(geometry: geo2)*1.2)
@@ -132,14 +123,12 @@ struct GameView: View {
                                 .frame(height: 124)
                         }
                         .padding(.horizontal, 16)
-                        .padding(.bottom, geo.size.height/3) // - влияет на сворачивание
+                        .padding(.bottom, geo.size.height/3)
                 }
                 .opacity((isUnfold ? 0 : 1))
                 .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
                 .offset(y: geo.size.height/6)
-                // end newstack2
                 
-                // whiteoard, timer, etc
                 VStack {
                     Rectangle()
                         .fill(.white)
@@ -195,7 +184,6 @@ struct GameView: View {
                         Button {
                             phaseChange()
                         } label: {
-                            
                             Circle()
                                 .fill(isDay ? dayGradient : nightGradient)
                                 .frame(width: 80)
@@ -208,6 +196,7 @@ struct GameView: View {
                         
                         Button {
                             phaseChange()
+                            
                         } label: {
                             Circle()
                                 .fill(.white)
@@ -231,7 +220,9 @@ struct GameView: View {
                                     .font(Font.custom("Roboto-Medium", size: 18))
                                     .foregroundColor(.white)
                                     .shadow(color: .black, radius: 4)
+                                
                                 Spacer()
+                                
                                 Button {
                                     if vm.timerIsOn {
                                         vm.isPaused.toggle()
@@ -258,16 +249,15 @@ struct GameView: View {
                 
                 //Stack on white sheet
                 VStack(spacing: 0) {
-                
                         ScrollView(showsIndicators: false) {
                             Color.clear
                                 .frame(height: 12)
+                            
                             LazyVGrid(
                                 columns: columns,
                                 alignment: .center,
                                 spacing: -30
                             ) {
-                                
                                 ForEach(characters, id: \.self) { character in
                                     GeometryReader { geo2 in
                                         CharacterCell2(character: character)
@@ -300,17 +290,16 @@ struct GameView: View {
                 }
                 .opacity((isUnfold ? 1 : 0))
                 .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
-            
-                
-                
+        
             .preferredColorScheme(.light)
             if delegate.showAlert {
                 CustomAlertView(
                     title: "WRITE NAME",
                     material: .ultraThin,
                     primaryAction: {
-                        delegate.selectedCharacters[delegate.selectedCharacters.count - 1].name = characterName
-                        print(characterName)
+                        delegate.selectedCharacters[delegate.elementToChange].name = characterName
+                        print("\(delegate.elementToChange) : \(characterName)")
+                        
                         characterName = ""
                         withAnimation {
                             delegate.showAlert.toggle()
@@ -329,43 +318,28 @@ struct GameView: View {
                         }
                 )
             }
-
         }
             Button {
                 delegate.startGame()
+                isDay = false
+                playSound(key: "coolnight", player: &player)
+                delegate.checkGame()
             } label: {
                 Text("Start Game")
                     .font(Font.custom("Roboto-Black", size: 36))
                     .foregroundColor(.white)
                     .shadow(color: isDay ? .black.opacity(0.64) : .white.opacity(0.64), radius: 4)
             }
-            .opacity(delegate.selectedCharacters.count >= 3 && !delegate.isGame ? 1 : 0)
+            .opacity(
+                delegate.selectedCharacters.count >= 3 && !delegate.isGame ? 1 : 0)
             .offset(x: isUnfold ?  -400 : 0)
             .animation(.spring(),value: isUnfold)
             .animation(.easeInOut,value: delegate.isGame)
-          
-//            if delegate.endGame == -1 {
-//                MafiaWinsView()
-//                    .ignoresSafeArea()
-//                    .opacity(delegate.endGame == -1 ? 1 : 0)
-//            }
-//            if delegate.endGame == 1 {
-//                GreenWinsView()
-//                    .ignoresSafeArea()
-//                    .opacity(delegate.endGame == 1 ? 1 : 0)
-//            }
         }
-       // .opacity(delegate.isEnd ? 0 : 1)
-        //.animation(.easeInOut, value: delegate.isEnd)
         .onAppear {
             vm.remainingTime = 90
+            playSound(key: "dayBack", player: &player)
         }
-   
-      //  }
-//        .ignoresSafeArea()
-//.navigationViewStyle(.stack)
-
-
     }
     
     // MARK: - Functions
@@ -373,6 +347,7 @@ struct GameView: View {
     func phaseChange() {
         isDay.toggle()
         vm.animationTransition()
+        playSound(key: isDay ? "dayBack" : "coolnight", player: &player)
         if isDay {
             vm.resetTimer()
         }
@@ -402,7 +377,35 @@ struct GameView: View {
         }
         return opacity
     }
+    
+    func getScrollOpacityNew(geometry: GeometryProxy) -> Double {
+        let maxY = UIScreen.main.bounds.height
+        let currentY = geometry.frame(in: .global).minY
+        let opacity: Double
+        
+        let yInitial = 0.4 * maxY
+        let yInitial2 = 0.25 * maxY
+        let yFinal = 0.60 * maxY
+        let yFinal2 = 0.1 * maxY
+        
+        let k = 1 / (yInitial - yFinal)
+        let kTop = 1 / (yInitial2 - yFinal2)
+        let b = -k * yFinal
+        let bTop = -kTop * yFinal2
+        
+        if currentY < yInitial && currentY > yInitial2 {
+            opacity = 1
+        } else if currentY >= yInitial {
+            opacity = k * currentY + b
+        } else {
+            opacity = kTop * currentY + bTop
+        }
+        return opacity
+    }
 }
+
+
+
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {

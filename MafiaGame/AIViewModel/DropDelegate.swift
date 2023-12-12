@@ -17,6 +17,7 @@ class GameCharacterData: ObservableObject, DropDelegate {
     @Published var isGame = false
     @Published var endGame = 0
     @Published var isEnd = false
+    @Published var elementToChange = 0
     
     func startGame() {
         isGame = true
@@ -36,7 +37,6 @@ class GameCharacterData: ObservableObject, DropDelegate {
         isEnd = false
     }
     
-    
     func checkGame()   {
         if isGame && mafiaCount >= citizenCount {
             isEnd = true
@@ -53,6 +53,11 @@ class GameCharacterData: ObservableObject, DropDelegate {
         }
     }
     
+func setElementToChange(id: UUID) {
+    elementToChange = selectedCharacters.firstIndex { $0.id == id } ?? 0
+    print(elementToChange)
+    }
+    
     func performDrop(info: DropInfo) -> Bool {
         
         showAlert = true
@@ -66,6 +71,8 @@ class GameCharacterData: ObservableObject, DropDelegate {
                         DispatchQueue.main.async {
                             withAnimation(.easeOut) {
                                 self.selectedCharacters.append(GameCharacterCell(id: UUID(), image: "\(url!)"))
+                                self.elementToChange = self.selectedCharacters.count - 1
+                                print(self.elementToChange)
                             }
                         }
                     }

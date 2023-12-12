@@ -24,11 +24,13 @@ struct TabBar: View {
             
             if gameCharacterData.endGame == 1 {
                 GreenWinsView()
+                    .ignoresSafeArea()
                     .environmentObject(gameCharacterData)
                     .environmentObject(tabbarRouter)
             } else if gameCharacterData.endGame == -1 {
                 
                 MafiaWinsView()
+                    .ignoresSafeArea()
                     .environmentObject(gameCharacterData)
                     .environmentObject(tabbarRouter)
             } else {

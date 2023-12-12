@@ -143,6 +143,7 @@ struct CharacterGameCell: View {
                                 }
                                     .onTapGesture {
                                         gameCharacterData.showAlert = true
+                                        gameCharacterData.setElementToChange(id: id)
                                     }
                             )
                             .offset(y: 0.65 * geo.size.width)
@@ -153,6 +154,7 @@ struct CharacterGameCell: View {
                             .shadow(color: .black, radius: 6)
                             .offset(y: 0.4 * geo.size.height)
                             .opacity(isBusted || isLeft ? 1 : 0)
+                            .zIndex(1)
                         
                         HStack(alignment: .top) {
                             Button {
@@ -225,11 +227,16 @@ struct CharacterGameCell: View {
                                         }
                                         gameCharacterData.checkGame()
                                     }
-                                    
                             }
                         }
                         .padding(18)
                         .offset(y: -geo.size.height/22)
+                        Image("edit")
+                            .resizable()
+                            .frame(width: 20, height: 12)
+                            .offset(y: geo.size.height*0.7)
+                            .offset(x: geo.size.width*0.3)
+                            .colorInvert()
                     }
                     .animation(.easeIn, value: isBusted)
                     .animation(.easeIn, value: isLeft)

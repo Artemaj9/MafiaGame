@@ -142,6 +142,7 @@ struct GreenWinsView: View {
                 saturation = 1
                 degrees = -45
                 radiusFactor = 1
+                playSound(key: "citizenWins", player: &player)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     textOpacity = 0.64
                 }

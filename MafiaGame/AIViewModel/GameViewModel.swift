@@ -22,7 +22,7 @@ class GameViewModel: ObservableObject {
         isPaused = false
         remainingTime = 90
         Timer
-            .publish(every: 0.1, on: .main, in: .common)
+            .publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink { [unowned self] _ in
                 if !isPaused {
@@ -30,7 +30,6 @@ class GameViewModel: ObservableObject {
                 }
                 print(remainingTime)
             
-
                 if remainingTime <= 0 || !timerIsOn {
                     for item in cancellables {
                         item.cancel()

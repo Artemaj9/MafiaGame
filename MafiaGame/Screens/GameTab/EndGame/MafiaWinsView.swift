@@ -49,7 +49,6 @@ struct MafiaWinsView: View {
                         .offset(y:  -geo.size.height * 0.3)
                         .animation(.easeInOut(duration: 7), value: radiusFactor)
                         .mask {
-                            
                             Image("rays")
                                 .offset(y:  -geo.size.height * 0.3)
                         }
@@ -67,7 +66,6 @@ struct MafiaWinsView: View {
                         .offset(x: dollar.initialXOffset, y: dollar.initialYOffset + dollarOneOffset * dollar.speed)
 .animation(.easeOut(duration: 175), value: dollarOneOffset)
 .animation(.easeOut(duration: 175), value: dollarOneDegree )
-                 
                 }
                 
                 Image("framer")
@@ -84,7 +82,6 @@ struct MafiaWinsView: View {
                     .frame(height: geo.size.height/2)
                     .offset(x: geo.size.width/2.7, y: 0 )
                 
-                    
                 VStack {
                     Group {
                         Text("MAFIA")
@@ -110,7 +107,6 @@ struct MafiaWinsView: View {
                 .offset(y: -geo.size.height * 0.3)
                 
                 Group {
-            
                     
                     Image("mafia")
                         .resizable()
@@ -120,8 +116,6 @@ struct MafiaWinsView: View {
                         .offset(x: -geo.size.width/2.6, y: geo.size.height/10)
                         .hueRotation(.degrees(-10))
                         .saturation(1.5)
-                    
-                   
                     
                     Image("godfather")
                         .resizable()
@@ -144,18 +138,16 @@ struct MafiaWinsView: View {
                     .saturation(saturation)
                     .animation(.easeInOut(duration: 7), value: saturation)
                 }
+                .hueRotation(.degrees(90))
                 
                 Image("mafiacar")
-                   
                     .resizable()
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                   
                     .frame(width: geo.size.width, height: geo.size.height/4, alignment: .bottomLeading)
                     .scaleEffect(0.6, anchor: .leading)
                     .saturation(1)
-                    .hueRotation(.degrees(-15))
+                    .hueRotation(.degrees(85))
                     .offset(x:-geo.size.width/10, y: geo.size.height/4.2)
-                   
                     .shadow(color: .black, radius: 40, x: 25, y: 45)
                     .colorMultiply(Color("multiplyColor"))
                 
@@ -166,8 +158,7 @@ struct MafiaWinsView: View {
                     .offset(x: geo.size.width/8)
                     .offset(y: geo.size.height/3.7)
                     .shadow(color: .black, radius: 20, x: 15, y: 35)
-                    .hueRotation(.degrees(10))
-                
+                    .hueRotation(.degrees(80))
                 
                 ForEach(vm.avtodollars, id: \.self) { dollar in
                     Image("dollar" + String(dollar.number))
@@ -181,10 +172,8 @@ struct MafiaWinsView: View {
                         .offset(x: dollar.initialXOffset, y: dollar.initialYOffset + dollarOneOffset * dollar.speed)
 .animation(.easeOut(duration: 250), value: dollarOneOffset)
 .animation(.easeOut(duration: 250), value: dollarOneDegree )
-
                 }
             }
-         
             .drawingGroup()
             .onAppear {
                 vm.updateDolars()
@@ -195,6 +184,8 @@ struct MafiaWinsView: View {
                 dollarAngle = 360
                 dollarOffsetY = 5000
                 transitionOpacity = 1
+                playSound(key: "mafiaWins", player: &player)
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     textOpacity = 0.8
                     dollarOneOffset = 1300

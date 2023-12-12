@@ -48,7 +48,7 @@ struct TimerView: View {
                    
                     .frame(width: geometry.size.width)
                     .offset(x:  -geometry.size.width * (1 - CGFloat(remainingTime)/90))
-                    .animation(.easeIn(duration: 0.01), value: remainingTime)
+                    .animation(.linear(duration: 1), value: remainingTime)
                     .drawingGroup()
             }
         }
