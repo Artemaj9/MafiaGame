@@ -13,6 +13,7 @@ class GameCharacterData: ObservableObject, DropDelegate {
     @Published var selectedCharacters = [GameCharacterCell]()
     @Published var showAlert = false
 
+
     
     func performDrop(info: DropInfo) -> Bool {
         

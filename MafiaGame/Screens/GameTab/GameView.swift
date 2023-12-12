@@ -84,56 +84,7 @@ struct GameView: View {
                .opacity(isUnfold ? 1 : 0)
                .animation(.easeOut(duration: 2), value: isUnfold)
                   // */
-                
-                /*
-                // new stack добавить карточки из selected
-                VStack(spacing: 0) {
-                
-                        ScrollView(showsIndicators: false) {
-                            Color.clear
-                                .frame(height: 12)
-                            LazyVGrid(
-                                columns: columns,
-                                alignment: .center,
-                                spacing: 0
-                            ) {
-                                
-                                ForEach(delegate.selectedCharacters) { character in
-                                    GeometryReader { geo2 in
-                                        ZStack {
-                                            Image(character.image)
-                                                .resizable()
-                                            // CharacterCell2(character: character)
-                                                .scaledToFill()
-                                                .scaleEffect(y: 1.5)
-                                                .frame(width: geo.size.width/4, height: geo.size.height/6)
-                                                .padding(4)
-                                                .padding(.vertical, 4)
-                                                .offset(x: 12)
-                                                .opacity(getScrollOpacity(geometry: geo2))
-                                                .blur(radius: (1 -
-                                                               getScrollOpacity(geometry: geo2))*3)
-                                                .saturation(getScrollOpacity(geometry: geo2)*1.2)
-                                            Text(character.name)
-                                        }
-                                    }
-                                    .frame(
-                                        width: geo.size.width * 0.35,
-                                        height: geo.size.width * 0.43,
-                                        alignment: .center
-                                    )
-                                }
-                            }
-                            Color.clear
-                                .frame(height: 64)
-                        }
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, geo.size.height/3) // - влияет на сворачивание
-                }
-                .opacity((isUnfold || delegate.selectedCharacters.isEmpty ? 0 : 1))
-                .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
-                .offset(y: geo.size.height/6)
-                 */
+            
                 
                 // new stack 2
                 
@@ -148,9 +99,9 @@ struct GameView: View {
                                 spacing: 0//-30
                             ) {
                                 
-                                ForEach(characters, id: \.self) { character in
+                                ForEach(delegate.selectedCharacters) { character in
                                     GeometryReader { geo2 in
-                                        CharacterGameCell(character: character)
+                                        CharacterGameCell(id: character.id, image: character.image, name: character.name)
                                             .scaledToFill()
                                             .scaleEffect(y: 1.5)
                                             .frame(width: geo.size.width/4, height: geo.size.height/6)
@@ -171,7 +122,7 @@ struct GameView: View {
                                 }
                             }
                             Color.clear
-                                .frame(height: 64)
+                                .frame(height: 124)
                         }
                         .padding(.horizontal, 16)
                         .padding(.bottom, geo.size.height/3) // - влияет на сворачивание

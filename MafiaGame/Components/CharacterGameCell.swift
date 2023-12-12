@@ -13,7 +13,9 @@ import SwiftUI
 
 struct CharacterGameCell: View {
     
-    let character: CharacterModel
+  //  let character: CharacterModel
+    let id: UUID
+    let image: String
     var myGradient = Gradient(
         colors: [
             Color("strokeGrad4"),
@@ -22,9 +24,35 @@ struct CharacterGameCell: View {
         ]
     )
     //var isDescription = true
+   
     var name = ""
     @State var isBusted = false
     @State var isLeft = false
+    let type: String
+    init(id: UUID, image: String, myGradient: Gradient = Gradient(
+        colors: [
+            Color("strokeGrad4"),
+            Color("strokeGrad3"),
+            Color("strokeGrad2")
+        ]
+    ), name: String = "", isBusted: Bool = false, isLeft: Bool = false) {
+        self.id = id
+        self.image = image
+        self.myGradient = myGradient
+        self.name = name
+        
+        switch image {
+        case "citizen","doctor", "sherif", "cop":
+            self.type = "citizen"
+            
+        case "mafia","godfather", "mafioso","framer":
+            self.type = "mafia"
+        case "bodyuard","executioner","mistress","jester","vigilante":
+            self.type = "neutral"
+        default:
+            self.type = "neutral"
+        }
+}
   
    // var type: Team = .mafia
     
@@ -35,7 +63,7 @@ struct CharacterGameCell: View {
                 VStack() {
                     ZStack(alignment: .top) {
                         
-                        Image(character.image)
+                        Image(image)
                             .resizable()
                             .scaledToFill()
                             .saturation(isBusted ? 0 : 1)
@@ -58,12 +86,12 @@ struct CharacterGameCell: View {
                                 
                                 ZStack {
                                     Color.black
-                                    RadialGradient(colors: [Color(character.type + "Bg"),.black], center: .center, startRadius: 80, endRadius: 190)
-                                    Color(character.type + "Bg").opacity(0.4)
+                                    RadialGradient(colors: [Color(type + "Bg"),.black], center: .center, startRadius: 80, endRadius: 190)
+                                    Color(type + "Bg").opacity(0.4)
                                     
                                     RadialGradient(colors: [.black.opacity(0),.black.opacity(0.3) ], center: .center, startRadius: 10, endRadius: 90)
                                         .mask {
-                                            Image(character.image + "Rays")
+                                            Image(image + "Rays")
                                                 .resizable()
                                                 .scaledToFit()
                                         }
@@ -72,7 +100,7 @@ struct CharacterGameCell: View {
                                         .blur(radius: 10)
                                         .offset(y: -24)
                                         .mask {
-                                            Image(character.image + "Figure")
+                                            Image(image + "Figure")
                                                 .resizable()
                                                 .blur(radius: 2)
                                                 .scaledToFit()
@@ -84,10 +112,10 @@ struct CharacterGameCell: View {
                         Rectangle()
                             .fill(
                                 LinearGradient(gradient: Gradient(colors: [
-                                    Color(character.type + "Color2").opacity(0),
-                                    Color(character.type + "Color2"),
-                                    Color(character.type + "Color2"),
-                                    Color(character.type + "Color2").opacity(0)]),
+                                    Color(type + "Color2").opacity(0),
+                                    Color(type + "Color2"),
+                                    Color(type + "Color2"),
+                                    Color(type + "Color2").opacity(0)]),
                                                startPoint: .leading,
                                                endPoint: .trailing)
                             )
@@ -95,11 +123,11 @@ struct CharacterGameCell: View {
                            
                             .overlay(
                                 VStack {
-                                    Text("Daldon")
+                                    Text(name)
                                         .font(Font.custom("Roboto-Black", size: 15))
                                         .foregroundColor(.white)
                                         .shadow(color: .black, radius: 4)
-                                    Text(character.role)
+                                    Text(image.uppercased())
                                         .font(Font.custom("Roboto-Bold", size: 12))
                                         .foregroundColor(.white)
                                         .shadow(color: .black, radius: 4)
