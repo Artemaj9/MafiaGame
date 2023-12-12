@@ -51,8 +51,6 @@ struct GameView: View {
                                                 .foregroundColor(.white)
                                         }
                                         .frame(width: 100, height: 100)
-                                        // .offset(y: geo.size.height/16)
-                                        // Remove Button
                                         
                                         Button {
                                             withAnimation(.easeOut) {

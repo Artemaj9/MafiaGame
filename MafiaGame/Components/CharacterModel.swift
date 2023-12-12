@@ -9,7 +9,7 @@ import Foundation
 
 struct CharacterModel: Hashable {
     let image: String
-    let number: String
+    let number: String 
     let role: String
     let type: String
     let description: String

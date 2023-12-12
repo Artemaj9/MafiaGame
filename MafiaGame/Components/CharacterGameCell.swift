@@ -21,9 +21,12 @@ struct CharacterGameCell: View {
             Color("strokeGrad2")
         ]
     )
-    var isDescription = true
+    //var isDescription = true
+    var name = ""
     @State var isBusted = false
-    @State var isLeft = true
+    @State var isLeft = false
+  
+   // var type: Team = .mafia
     
     var body: some View {
         ZStack {
@@ -172,3 +175,4 @@ struct CharacterGameCell: View {
         
     }
 }
+

@@ -73,3 +73,20 @@ let columns: [GridItem] = [
     GridItem(.flexible(), spacing: -16, alignment: nil),
     GridItem(.flexible(), spacing: -16, alignment: nil)
 ]
+
+//func characterGameCellConstructor (image: String, name: String) -> CharacterGameCell {
+//    switch image {
+//    case "citizen","doctor", "sherif", "cop":
+//        return CharacterGameCell(character: CharacterModel(image: image, number: "0", role: image.uppercased(), type: "citizen", description: ""), name: name)
+//
+//    case "mafia","godfather", "mafioso","framer":
+//        return CharacterGameCell(character: CharacterModel(image: image, number: "0", role: image.uppercased(), type: "mafia", description: ""), name: name)
+//       
+//
+//    case "bodyuard","executioner","mistress","jester","vigilante":
+//        return CharacterGameCell(character: CharacterModel(image: image, number: "0", role: image.uppercased(), type: "neutral", description: ""), name: name)
+//
+//    default:
+//        return CharacterGameCell(character: CharacterModel(image: image, number: "0", role: "SERIAL KILLER", type: "neutral", description: ""), name: name)
+//    }
+//}
