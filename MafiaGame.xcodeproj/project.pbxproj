@@ -71,6 +71,8 @@
 		AC776B872B28FD8300803D0B /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B862B28FD8300803D0B /* SoundPlayer.swift */; };
 		AC776B892B292F0000803D0B /* NewSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B882B292F0000803D0B /* NewSplashView.swift */; };
 		AC776B8E2B29407A00803D0B /* pricedown.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC776B8D2B29407900803D0B /* pricedown.otf */; };
+		AC776B902B29435F00803D0B /* NewOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B8F2B29435F00803D0B /* NewOnboardingView.swift */; };
+		AC776B922B2946A500803D0B /* StrokeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B912B2946A500803D0B /* StrokeText.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 		ACFD18862B23AA8300180D2E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD18852B23AA8300180D2E /* TimerView.swift */; };
@@ -145,6 +147,8 @@
 		AC776B862B28FD8300803D0B /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		AC776B882B292F0000803D0B /* NewSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSplashView.swift; sourceTree = "<group>"; };
 		AC776B8D2B29407900803D0B /* pricedown.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pricedown.otf; sourceTree = "<group>"; };
+		AC776B8F2B29435F00803D0B /* NewOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOnboardingView.swift; sourceTree = "<group>"; };
+		AC776B912B2946A500803D0B /* StrokeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeText.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 		ACFD18852B23AA8300180D2E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			children = (
 				AC0B24212B1A2E7800BC7FAE /* SplashView.swift */,
 				AC776B882B292F0000803D0B /* NewSplashView.swift */,
+				AC776B8F2B29435F00803D0B /* NewOnboardingView.swift */,
 				AC6DBB412B23A2D200B2A6C3 /* GameTab */,
 				AC6DBA6B2B1FDCAA00B2A6C3 /* CityTab */,
 				AC6DBAAD2B21422100B2A6C3 /* HelpTab */,
@@ -224,6 +229,7 @@
 			children = (
 				AC6DBAA62B210E8400B2A6C3 /* KeyboardFeatures */,
 				AC0B24262B1A4E8400BC7FAE /* CornerModifier.swift */,
+				AC776B912B2946A500803D0B /* StrokeText.swift */,
 				AC6AA6052B1A73E3009B404F /* View+InnerShadow.swift */,
 				AC6DBA5D2B1E7BC700B2A6C3 /* AnimationStyle.swift */,
 				AC6DBA752B1FE23700B2A6C3 /* UIColor+Color.swift */,
@@ -509,6 +515,7 @@
 				AC6DBA852B1FF27300B2A6C3 /* HomeView.swift in Sources */,
 				AC0B24272B1A4E8400BC7FAE /* CornerModifier.swift in Sources */,
 				AC6AA6142B1B2896009B404F /* TabbarRouter.swift in Sources */,
+				AC776B922B2946A500803D0B /* StrokeText.swift in Sources */,
 				AC6DBA832B1FF14C00B2A6C3 /* ScrollHeaderView.swift in Sources */,
 				AC6AA6392B1BA5B7009B404F /* TabModel.swift in Sources */,
 				AC6DBA562B1DD64C00B2A6C3 /* CharacterCell2.swift in Sources */,
@@ -524,6 +531,7 @@
 				AC6AA63D2B1BCD91009B404F /* CharacterModel.swift in Sources */,
 				AC6DBA872B1FF2C600B2A6C3 /* ChatBubble.swift in Sources */,
 				AC6DBA6E2B1FDF2E00B2A6C3 /* ChatModel.swift in Sources */,
+				AC776B902B29435F00803D0B /* NewOnboardingView.swift in Sources */,
 				AC6DBA7B2B1FE5F300B2A6C3 /* HomeViewModel.swift in Sources */,
 				AC6DBA632B1EA3F500B2A6C3 /* CharacterCell4.swift in Sources */,
 				AC6DBA762B1FE23700B2A6C3 /* UIColor+Color.swift in Sources */,
