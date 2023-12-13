@@ -70,6 +70,7 @@
 		AC776B852B28FD1500803D0B /* dayBack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC776B812B28FD1500803D0B /* dayBack.mp3 */; };
 		AC776B872B28FD8300803D0B /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B862B28FD8300803D0B /* SoundPlayer.swift */; };
 		AC776B892B292F0000803D0B /* NewSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B882B292F0000803D0B /* NewSplashView.swift */; };
+		AC776B8E2B29407A00803D0B /* pricedown.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC776B8D2B29407900803D0B /* pricedown.otf */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 		ACFD18862B23AA8300180D2E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD18852B23AA8300180D2E /* TimerView.swift */; };
@@ -143,7 +144,7 @@
 		AC776B812B28FD1500803D0B /* dayBack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dayBack.mp3; sourceTree = "<group>"; };
 		AC776B862B28FD8300803D0B /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		AC776B882B292F0000803D0B /* NewSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSplashView.swift; sourceTree = "<group>"; };
-		AC776B8A2B29330300803D0B /* pricedown.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pricedown.otf; sourceTree = "<group>"; };
+		AC776B8D2B29407900803D0B /* pricedown.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pricedown.otf; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 		ACFD18852B23AA8300180D2E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -230,9 +231,10 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		AC6AA5EA2B1A6F9F009B404F /* Roboto */ = {
+		AC6AA5EA2B1A6F9F009B404F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				AC776B8D2B29407900803D0B /* pricedown.otf */,
 				AC6AA5EB2B1A6F9F009B404F /* Roboto-Medium.ttf */,
 				AC6AA5EC2B1A6F9F009B404F /* Roboto-Light.ttf */,
 				AC6AA5ED2B1A6F9F009B404F /* Roboto-Regular.ttf */,
@@ -241,7 +243,7 @@
 				AC6AA5F62B1A6F9F009B404F /* Roboto-Thin.ttf */,
 				AC6AA5F72B1A6F9F009B404F /* Roboto-Black.ttf */,
 			);
-			path = Roboto;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		AC6AA6072B1A7579009B404F /* Views */ = {
@@ -388,7 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				AC776B7D2B28FC7600803D0B /* Sounds */,
-				AC6AA5EA2B1A6F9F009B404F /* Roboto */,
+				AC6AA5EA2B1A6F9F009B404F /* Fonts */,
 				AC0B24172B1A2BC400BC7FAE /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -402,7 +404,6 @@
 				AC776B802B28FD1500803D0B /* coolnight.mp3 */,
 				AC776B812B28FD1500803D0B /* dayBack.mp3 */,
 				AC776B7E2B28FD1500803D0B /* mafiaWins.mp3 */,
-				AC776B8A2B29330300803D0B /* pricedown.otf */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -468,6 +469,7 @@
 				AC6AA6032B1A6F9F009B404F /* Roboto-Thin.ttf in Resources */,
 				AC776B832B28FD1500803D0B /* citizenWins.mp3 in Resources */,
 				AC6AA6002B1A6F9F009B404F /* LICENSE.txt in Resources */,
+				AC776B8E2B29407A00803D0B /* pricedown.otf in Resources */,
 				AC6AA6042B1A6F9F009B404F /* Roboto-Black.ttf in Resources */,
 				AC6AA6022B1A6F9F009B404F /* Roboto-Bold.ttf in Resources */,
 				AC0B241B2B1A2BC400BC7FAE /* Preview Assets.xcassets in Resources */,
