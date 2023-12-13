@@ -170,6 +170,9 @@ struct CharacterGameCell: View {
                                     if type == "citizen" {
                                         gameCharacterData.citizenCount -= 1
                                     }
+                                    if isBusted {
+                                        gameCharacterData.busted -= 1
+                                    }
                                     gameCharacterData.checkGame()
                                 }
                             } label: {

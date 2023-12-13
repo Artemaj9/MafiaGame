@@ -13,7 +13,7 @@ struct GameView: View {
     @StateObject var vm = GameViewModel()
     @EnvironmentObject var delegate: GameCharacterData
     @State var characterName = ""
-    @State var busted = 0
+   // @State var busted = 0
     
     var body: some View {
         ZStack {
@@ -99,7 +99,7 @@ struct GameView: View {
                                 
                                 ForEach(delegate.selectedCharacters) { character in
                                     GeometryReader { geo2 in
-                                        CharacterGameCell(id: character.id, image: character.image, name: character.name, busted: $busted)
+                                        CharacterGameCell(id: character.id, image: character.image, name: character.name, busted: $delegate.busted)
                                             .scaledToFill()
                                             .scaleEffect(y: 1.5)
                                             .frame(width: geo.size.width/4, height: geo.size.height/6)
@@ -158,7 +158,7 @@ struct GameView: View {
                     .offset(y: -10)
                     
                     HStack {
-                        StatsView(vm: delegate, busted: $busted)
+                        StatsView(vm: delegate, busted: $delegate.busted)
                             .opacity(isUnfold ? 0 : 1)
                             .animation(.easeInOut(duration: 1), value: isUnfold)
                     }

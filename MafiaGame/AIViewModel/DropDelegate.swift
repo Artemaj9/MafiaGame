@@ -18,6 +18,7 @@ class GameCharacterData: ObservableObject, DropDelegate {
     @Published var endGame = 0
     @Published var isEnd = false
     @Published var elementToChange = 0
+    @Published var busted = 0
     
     func startGame() {
         isGame = true
@@ -34,6 +35,7 @@ class GameCharacterData: ObservableObject, DropDelegate {
         endGame = 0
         citizenCount = 0
         mafiaCount = 0
+        busted = 0
         isEnd = false
     }
     
