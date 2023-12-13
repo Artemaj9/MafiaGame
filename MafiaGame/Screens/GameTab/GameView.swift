@@ -12,7 +12,7 @@ struct GameView: View {
     @State private var isUnfold = false
     @State var percent = 30
     @StateObject var vm = GameViewModel()
-    @EnvironmentObject var gameLoic: GameControlModel
+    @EnvironmentObject var gameLogic: GameControlModel
     @State var characterName = ""
     
     var body: some View {
@@ -27,7 +27,7 @@ struct GameView: View {
                 // Horizontal bottom stack
                 VStack {
                     ZStack {
-                    if gameLoic.selectedCharacters.isEmpty {
+                    if gameLogic.selectedCharacters.isEmpty {
                         Text("Add characters here")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -37,7 +37,7 @@ struct GameView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         // Row with characters
                         HStack {
-                            ForEach(gameLoic.selectedCharacters.reversed()) { character in
+                            ForEach(gameLogic.selectedCharacters.reversed()) { character in
                                 if character.image != "" {
                                     ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
                                         
@@ -55,7 +55,7 @@ struct GameView: View {
                                         
                                         Button {
                                             withAnimation(.easeOut) {
-                                                self.gameLoic.selectedCharacters.removeAll { (check) -> Bool in
+                                                self.gameLogic.selectedCharacters.removeAll { (check) -> Bool in
                                                     if check.id == character.id { return true }
                                                     else { return false }
                                                 }
@@ -71,7 +71,7 @@ struct GameView: View {
                                 }
                             }
                         }
-                        .onDrop(of: [UTType.url], delegate: gameLoic)
+                        .onDrop(of: [UTType.url], delegate: gameLogic)
                     }
                     .offset(y: geo.size.height/8)
                 }
@@ -79,7 +79,7 @@ struct GameView: View {
                 .frame(width: geo.size.width, height: geo.size.height, alignment: .bottom)
                .offset(y: -geo.size.height/4)
                .background(Color.black.opacity(0.15))
-               .onDrop(of: [UTType.url], delegate: gameLoic)
+               .onDrop(of: [UTType.url], delegate: gameLogic)
                .opacity(isUnfold ? 1 : 0)
                .animation(.easeOut(duration: 2), value: isUnfold)
     
@@ -94,9 +94,9 @@ struct GameView: View {
                                 spacing: 0
                             ) {
                                 
-                                ForEach(gameLoic.selectedCharacters) { character in
+                                ForEach(gameLogic.selectedCharacters) { character in
                                     GeometryReader { geo2 in
-                                        CharacterGameCell(id: character.id, image: character.image, name: character.name, busted: $gameLoic.busted)
+                                        CharacterGameCell(id: character.id, image: character.image, name: character.name, busted: $gameLogic.busted)
                                             .scaledToFill()
                                             .scaleEffect(y: 1.5)
                                             .frame(width: geo.size.width/4, height: geo.size.height/6)
@@ -143,6 +143,8 @@ struct GameView: View {
                         
                         Button {
                             isUnfold.toggle()
+                            gameLogic.peopleInGame = gameLogic.selectedCharacters.count - gameLogic.busted - gameLogic.leftCount + gameLogic.bustedAndLeft
+                            
                         } label: {
                             Image(systemName: "chevron.down")
                                 .rotationEffect(.degrees(isUnfold ? 180 : 0))
@@ -155,7 +157,7 @@ struct GameView: View {
                     .offset(y: -10)
                     
                     HStack {
-                        StatsView(vm: gameLoic, busted: $gameLoic.busted)
+                        StatsView(vm: gameLogic, busted: $gameLogic.busted)
                             .opacity(isUnfold ? 0 : 1)
                             .animation(.easeInOut(duration: 1), value: isUnfold)
                     }
@@ -288,16 +290,16 @@ struct GameView: View {
                 .animation(.easeIn(duration: isUnfold ? 2 : 0.5), value: isUnfold)
         
             .preferredColorScheme(.light)
-            if gameLoic.showAlert {
+            if gameLogic.showAlert {
                 CustomAlertView(
                     title: "WRITE NAME",
                     material: .ultraThin,
                     primaryAction: {
-                        gameLoic.selectedCharacters[gameLoic.elementToChange].name = characterName
+                        gameLogic.selectedCharacters[gameLogic.elementToChange].name = characterName
                         
                         characterName = ""
                         withAnimation {
-                            gameLoic.showAlert.toggle()
+                            gameLogic.showAlert.toggle()
                         }
                     },
                     primaryActionTitle: "OK",
@@ -315,10 +317,10 @@ struct GameView: View {
             }
         }
             Button {
-                gameLoic.startGame()
+                gameLogic.startGame()
                 isDay = false
                 playSound(key: "coolnight", player: &player)
-                gameLoic.checkGame()
+                gameLogic.checkGame()
             } label: {
                 Text("Start Game")
                     .font(Font.custom("Roboto-Black", size: 36))
@@ -326,10 +328,10 @@ struct GameView: View {
                     .shadow(color: isDay ? .black.opacity(0.64) : .white.opacity(0.64), radius: 4)
             }
             .opacity(
-                gameLoic.selectedCharacters.count >= 3 && !gameLoic.isGame ? 1 : 0)
+                gameLogic.selectedCharacters.count >= 3 && !gameLogic.isGame ? 1 : 0)
             .offset(x: isUnfold ?  -400 : 0)
             .animation(.spring(),value: isUnfold)
-            .animation(.easeInOut,value: gameLoic.isGame)
+            .animation(.easeInOut,value: gameLogic.isGame)
         }
         .onAppear {
             vm.remainingTime = 90

@@ -20,6 +20,9 @@ class GameControlModel: ObservableObject, DropDelegate {
     @Published var busted = 0
     @Published var splash = true
     @Published var animeCount = 0.0
+    @Published var peopleInGame = 0
+    @Published var leftCount = 0
+    @Published var bustedAndLeft = 0
     @AppStorage("firstStart") var firstStart = true
     private var cancellables = Set<AnyCancellable>()
     
@@ -27,6 +30,7 @@ class GameControlModel: ObservableObject, DropDelegate {
         isGame = true
         mafiaCount = selectedCharacters.filter { $0.type == "mafia" }.count
         citizenCount = selectedCharacters.filter { $0.type == "citizen" }.count
+        peopleInGame = selectedCharacters.count - busted - leftCount + bustedAndLeft
     }
 
     func resetGame() {
@@ -59,6 +63,7 @@ class GameControlModel: ObservableObject, DropDelegate {
     func checkGame()   {
         if isGame && mafiaCount >= citizenCount {
             isEnd = true
+            resetGame()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.endGame = -1
             }
@@ -66,10 +71,12 @@ class GameControlModel: ObservableObject, DropDelegate {
         
         if isGame && mafiaCount == 0 {
             isEnd =  true
+            resetGame()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.endGame = 1
             }
         }
+        peopleInGame = selectedCharacters.count - busted - leftCount + bustedAndLeft
     }
     
 func setElementToChange(id: UUID) {

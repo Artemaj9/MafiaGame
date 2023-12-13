@@ -36,7 +36,6 @@ struct CharacterGameCell: View {
         self.myGradient = myGradient
         self.name = name
         self._busted =  busted
-      //  self._delegate = delegate
    
         switch image {
         case "citizen","doctor", "sheriff", "cop":
@@ -154,14 +153,21 @@ struct CharacterGameCell: View {
                                         if check.id == id { return true }
                                         else { return false }
                                     }
-                                    if type == "mafia" {
+                                    if type == "mafia" && !isBusted && !isLeft {
                                         gameCharacterData.mafiaCount -= 1
                                     }
-                                    if type == "citizen" {
+                                    if type == "citizen" && !isBusted && !isLeft {
                                         gameCharacterData.citizenCount -= 1
                                     }
                                     if isBusted {
                                         gameCharacterData.busted -= 1
+                                    }
+                                    
+                                    if isLeft {
+                                        gameCharacterData.leftCount -= 1
+                                    }
+                                    if isBusted && isLeft {
+                                        gameCharacterData.bustedAndLeft -= 1
                                     }
                                     gameCharacterData.checkGame()
                                 }
@@ -187,13 +193,16 @@ struct CharacterGameCell: View {
                                 }
                                 .shadow(color: isBusted ? Color("mainSkull").opacity(0.64) : .white.opacity(0.64), radius: 4)
                                     .onTapGesture {
-                                        busted += isBusted ? -1 : 1
+                                        gameCharacterData.busted += isBusted ? -1 : 1
                                         isBusted.toggle()
-                                        if type == "mafia" {
+                                        if type == "mafia" && !isLeft {
                                             gameCharacterData.mafiaCount += isBusted ? -1 : 1
                                         }
-                                        if type == "citizen" {
+                                        if type == "citizen" && !isLeft {
                                             gameCharacterData.citizenCount += isBusted ? -1 : 1
+                                        }
+                                        if isLeft {
+                                            gameCharacterData.bustedAndLeft += isBusted ? 1 : -1
                                         }
                                         gameCharacterData.checkGame()
                                     }
@@ -211,13 +220,21 @@ struct CharacterGameCell: View {
                                      
                                 }
                                     .onTapGesture {
+                                        
                                         isLeft.toggle()
-                                        if type == "mafia" {
+                                        if type == "mafia", !isBusted {
                                             gameCharacterData.mafiaCount += isLeft ? -1 : 1
                                         }
-                                        if type == "citizen" {
+                                        if type == "citizen", !isBusted {
                                             gameCharacterData.citizenCount += isLeft ? -1 : 1
                                         }
+                                        
+                                        gameCharacterData.leftCount += isLeft ? 1 : -1
+                                        if  isBusted {
+                                            gameCharacterData.bustedAndLeft += isLeft ? 1 : -1
+                                        }
+                                    
+                                        
                                         gameCharacterData.checkGame()
                                     }
                             }

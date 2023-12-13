@@ -18,7 +18,7 @@ struct StatsView: View {
             
             Spacer()
             
-            StatCell(mainColor: "mainUsers", bgColor: "bgUsers", shadowColor: "shadowUsers", value: String(vm.selectedCharacters.count), icon: "group")
+            StatCell(mainColor: "mainUsers", bgColor: "bgUsers", shadowColor: "shadowUsers", value: String(vm.peopleInGame), icon: "group")
         }
         .padding(12)
     }

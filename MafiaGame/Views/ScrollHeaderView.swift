@@ -14,7 +14,7 @@ struct ScrollHeaderView: View {
     @State private var offsetXFourth = -192.0;
     @State private var opacityFourtht = 0.0;
     @Binding var searchText: String
-    //@Binding var showHelpQuestions = true
+  
     let defaultQuestions = [
         "What should I do as a Doctor in Mafia?",
         "As a Sheriff, who should I investigate first?",
