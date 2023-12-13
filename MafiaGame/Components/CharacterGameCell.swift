@@ -1,13 +1,6 @@
 //
 //  CharacterGameCell.swift
-//  MafiaGame
-//
-//  Created by Artem on 11.12.2023.
-//
-
-//
-//  CharacterCell2.swift
-//
+//  
 
 import SwiftUI
 
@@ -60,8 +53,6 @@ struct CharacterGameCell: View {
             self.type = "neutral"
         }
 }
-  
-   // var type: Team = .mafia
     
     var body: some View {
         ZStack {
