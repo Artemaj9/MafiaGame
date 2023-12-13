@@ -29,7 +29,6 @@ class GameViewModel: ObservableObject {
                 if !isPaused {
                     remainingTime -= 1
                 }
-                print(remainingTime)
             
                 if remainingTime <= 0 || !timerIsOn {
                     for item in cancellables {

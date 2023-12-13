@@ -299,7 +299,6 @@ struct GameView: View {
                     material: .ultraThin,
                     primaryAction: {
                         gameLoic.selectedCharacters[gameLoic.elementToChange].name = characterName
-                        print("\(gameLoic.elementToChange) : \(characterName)")
                         
                         characterName = ""
                         withAnimation {

@@ -2,7 +2,6 @@
 //  NewOnboardingView.swift
 //
 
-
 import SwiftUI
 
 struct NewOnboardingView: View {
@@ -33,7 +32,6 @@ struct NewOnboardingView: View {
                     
                     Button {
                         vm.firstStart = false
-                        print("tap")
                     } label: {
                         Text("PROCEED")
                             .padding(.vertical, 8)

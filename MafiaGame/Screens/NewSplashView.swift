@@ -2,7 +2,6 @@
 //  NewSplashView.swift
 //  
 
-
 import Foundation
 
 import SwiftUI

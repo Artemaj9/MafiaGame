@@ -27,9 +27,6 @@ class GameControlModel: ObservableObject, DropDelegate {
         isGame = true
         mafiaCount = selectedCharacters.filter { $0.type == "mafia" }.count
         citizenCount = selectedCharacters.filter { $0.type == "citizen" }.count
-        print("BIG GAME BEGIN!")
-        print("MAfia Count : \(mafiaCount)")
-        print("Citizen count: \(citizenCount)")
     }
 
     func resetGame() {
@@ -77,22 +74,18 @@ class GameControlModel: ObservableObject, DropDelegate {
     
 func setElementToChange(id: UUID) {
     elementToChange = selectedCharacters.firstIndex { $0.id == id } ?? 0
-    print(elementToChange)
     }
     
     func performDrop(info: DropInfo) -> Bool {
         
         showAlert = true
-        // adding images to bottom view...
         for provider in info.itemProviders(for: [UTType.url]) {
             if provider.canLoadObject(ofClass: URL.self) {
                 let _ = provider.loadObject(ofClass: URL.self) { (url, error) in
-                    print(url!)
                         DispatchQueue.main.async {
                             withAnimation(.easeOut) {
                                 self.selectedCharacters.append(GameCharacterCell(id: UUID(), image: "\(url!)"))
                                 self.elementToChange = self.selectedCharacters.count - 1
-                                print(self.elementToChange)
                             }
                         }
                     }

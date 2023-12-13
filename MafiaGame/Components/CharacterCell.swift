@@ -24,7 +24,6 @@ struct CharacterCell: View {
                         ZStack(alignment: .top) {
                             Image(character.image)
                                 .resizable()
-                                //.scaledToFit()
                                 .overlay {
                                     ZStack(alignment: .top) {
                                         Rectangle()
@@ -97,7 +96,6 @@ struct CharacterCell: View {
                                         .shadow(color: .black, radius: 4)
                                 )
                                 .offset(y: 0.75 * geo.size.width)
-                                //.offset(y: 0.65 * geo.size.height)
                         }
 
                         if character.isDescription {
@@ -115,12 +113,8 @@ struct CharacterCell: View {
                         Color(character.type + "Color")
                             .padding(4)
                     }
-                    .onAppear {
-                        print(geo.size.width)
-                    }
                 }
             }
-            
         }
     }
 }

@@ -50,7 +50,6 @@ struct HomeView: View {
                         UIApplication.shared.endEditing()
                     }
                     
-                    
                     SearchView(searchText: $searchText, keyboardHeight: $keyboardHeight)
                         .environmentObject(vm)
                         .offset(y:-geo.size.height/10)
@@ -58,7 +57,6 @@ struct HomeView: View {
                 .offset(y: keyboardHeight > 1 ? -keyboardHeight + geo.size.height/10 + 8: 0)
 
                 .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0
-                    print(self.keyboardHeight)
                 }
                 .animation(.spring(), value: keyboardHeight)
                 .padding(8)
