@@ -28,8 +28,8 @@ class GameControlModel: ObservableObject, DropDelegate {
     
     func startGame() {
         isGame = true
-        mafiaCount = selectedCharacters.filter { $0.type == "mafia" }.count
-        citizenCount = selectedCharacters.filter { $0.type == "citizen" }.count
+      //  mafiaCount = selectedCharacters.filter { $0.type == "mafia" }.count
+       // citizenCount = selectedCharacters.filter { $0.type == "citizen" }.count
         peopleInGame = selectedCharacters.count - busted - leftCount + bustedAndLeft
     }
 
@@ -39,6 +39,8 @@ class GameControlModel: ObservableObject, DropDelegate {
         endGame = 0
         citizenCount = 0
         mafiaCount = 0
+        bustedAndLeft = 0
+        leftCount = 0
         busted = 0
         isEnd = false
     }

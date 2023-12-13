@@ -142,10 +142,12 @@ struct GameView: View {
                             .animation(.easeInOut(duration: 1), value: isUnfold)
                         
                         Button {
-                            isUnfold.toggle()
-                            gameLogic.peopleInGame = gameLogic.selectedCharacters.count - gameLogic.busted - gameLogic.leftCount + gameLogic.bustedAndLeft
-                            if gameLogic.citizenCount == 0 {
-                                gameLogic.citizenCount = gameLogic.selectedCharacters.filter { $0.type == "citizen" }.count
+                            if !gameLogic.isGame {
+                                isUnfold.toggle()
+                                gameLogic.peopleInGame = gameLogic.selectedCharacters.count - gameLogic.busted - gameLogic.leftCount + gameLogic.bustedAndLeft
+                                    gameLogic.citizenCount = gameLogic.selectedCharacters.filter { $0.type == "citizen" }.count
+                            
+                                    gameLogic.mafiaCount = gameLogic.selectedCharacters.filter { $0.type == "mafia" }.count
                             }
                             
                         } label: {
@@ -331,7 +333,7 @@ struct GameView: View {
                     .shadow(color: isDay ? .black.opacity(0.64) : .white.opacity(0.64), radius: 4)
             }
             .opacity(
-                gameLogic.selectedCharacters.count >= 3 && !gameLogic.isGame ? 1 : 0)
+                gameLogic.selectedCharacters.count >= 3 && !gameLogic.isGame && (gameLogic.citizenCount > 0 || gameLogic.mafiaCount > 0) ? 1 : 0)
             .offset(x: isUnfold ?  -400 : 0)
             .animation(.spring(),value: isUnfold)
             .animation(.easeInOut,value: gameLogic.isGame)

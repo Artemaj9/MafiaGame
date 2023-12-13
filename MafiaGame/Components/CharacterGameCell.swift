@@ -193,18 +193,20 @@ struct CharacterGameCell: View {
                                 }
                                 .shadow(color: isBusted ? Color("mainSkull").opacity(0.64) : .white.opacity(0.64), radius: 4)
                                     .onTapGesture {
-                                        gameCharacterData.busted += isBusted ? -1 : 1
-                                        isBusted.toggle()
-                                        if type == "mafia" && !isLeft {
-                                            gameCharacterData.mafiaCount += isBusted ? -1 : 1
+                                        if gameCharacterData.isGame {
+                                            gameCharacterData.busted += isBusted ? -1 : 1
+                                            isBusted.toggle()
+                                            if type == "mafia" && !isLeft {
+                                                gameCharacterData.mafiaCount += isBusted ? -1 : 1
+                                            }
+                                            if type == "citizen" && !isLeft {
+                                                gameCharacterData.citizenCount += isBusted ? -1 : 1
+                                            }
+                                            if isLeft {
+                                                gameCharacterData.bustedAndLeft += isBusted ? 1 : -1
+                                            }
+                                            gameCharacterData.checkGame()
                                         }
-                                        if type == "citizen" && !isLeft {
-                                            gameCharacterData.citizenCount += isBusted ? -1 : 1
-                                        }
-                                        if isLeft {
-                                            gameCharacterData.bustedAndLeft += isBusted ? 1 : -1
-                                        }
-                                        gameCharacterData.checkGame()
                                     }
                                 ZStack {
                                     Rectangle()
@@ -220,22 +222,23 @@ struct CharacterGameCell: View {
                                      
                                 }
                                     .onTapGesture {
-                                        
-                                        isLeft.toggle()
-                                        if type == "mafia", !isBusted {
-                                            gameCharacterData.mafiaCount += isLeft ? -1 : 1
+                                        if gameCharacterData.isGame {
+                                            isLeft.toggle()
+                                            if type == "mafia", !isBusted {
+                                                gameCharacterData.mafiaCount += isLeft ? -1 : 1
+                                            }
+                                            if type == "citizen", !isBusted {
+                                                gameCharacterData.citizenCount += isLeft ? -1 : 1
+                                            }
+                                            
+                                            gameCharacterData.leftCount += isLeft ? 1 : -1
+                                            if  isBusted {
+                                                gameCharacterData.bustedAndLeft += isLeft ? 1 : -1
+                                            }
+                                            
+                                            
+                                            gameCharacterData.checkGame()
                                         }
-                                        if type == "citizen", !isBusted {
-                                            gameCharacterData.citizenCount += isLeft ? -1 : 1
-                                        }
-                                        
-                                        gameCharacterData.leftCount += isLeft ? 1 : -1
-                                        if  isBusted {
-                                            gameCharacterData.bustedAndLeft += isLeft ? 1 : -1
-                                        }
-                                    
-                                        
-                                        gameCharacterData.checkGame()
                                     }
                             }
                         }
