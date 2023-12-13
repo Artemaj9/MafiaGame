@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct NewOnboardingView: View {
+    
+    @EnvironmentObject var vm: GameCharacterData
+    
     var body: some View {
         ZStack {
             Image("bgnight")
@@ -29,7 +32,7 @@ struct NewOnboardingView: View {
                         .background(Color("textbg").opacity(0.8))
                         .offset(y: geo.size.height*0.24)
                     Button {
-                        print("")
+                        vm.firstStart = false
                     } label: {
                         Text("PROCEED")
                             .padding(.vertical, 8)

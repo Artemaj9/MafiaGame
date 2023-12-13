@@ -41,8 +41,6 @@ struct TabBar: View {
                 
             }
             
-            
-            
         case .city:
             CityView()
                 .environmentObject(tabbarRouter)

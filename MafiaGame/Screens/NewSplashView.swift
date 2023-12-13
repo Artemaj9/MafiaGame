@@ -11,7 +11,7 @@ import SwiftUI
 
 struct NewSplashView: View {
     
-    //  @State var saturation = 0.6
+    @EnvironmentObject var vm: GameCharacterData
     @State var saturation = 0.6
     
     var body: some View {
@@ -25,6 +25,11 @@ struct NewSplashView: View {
             .onAppear {
                 saturation = 1
             }
+            .opacity(sin(2*vm.animeCount))
+            .saturation(1 + vm.animeCount)
+        }
+        .onAppear {
+            vm.animeTimer()
         }
     }
 }

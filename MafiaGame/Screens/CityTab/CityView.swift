@@ -38,37 +38,37 @@ struct CityView: View {
     ]
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.black.ignoresSafeArea()
-                
-                Image("nightBg")
-                
-                ScrollView(showsIndicators: false) {
-                    Text("Characters")
-                        .font(Font.custom("Roboto-Bold", size: 33))
-                        .foregroundColor(Color("cityTitle"))
-                        .shadow(color: .white, radius: 2)
+            NavigationView {
+                ZStack {
+                    Color.black.ignoresSafeArea()
                     
-                    VStack(spacing: 4) {
-                        ForEach(characters, id: \.self) { character in
-                            NavigationLink {
-                                CharacterDetailView(num: Int(character.number)!)
-                            } label: {
-                                CharacterCell(character: character)
-                                    .frame(minHeight: 300, idealHeight: 480, maxHeight: 550, alignment: .center
-                                    )
+                    Image("nightBg")
+                    
+                    ScrollView(showsIndicators: false) {
+                        Text("Characters")
+                            .font(Font.custom("Roboto-Bold", size: 33))
+                            .foregroundColor(Color("cityTitle"))
+                            .shadow(color: .white, radius: 2)
+                        
+                        VStack(spacing: 4) {
+                            ForEach(characters, id: \.self) { character in
+                                NavigationLink {
+                                    CharacterDetailView(num: Int(character.number)!)
+                                } label: {
+                                    CharacterCell(character: character)
+                                        .frame(minHeight: 300, idealHeight: 480, maxHeight: 550, alignment: .center
+                                        )
+                                }
                             }
                         }
+                        
+                        Color.clear
+                            .frame(height: 64)
                     }
-                    
-                    Color.clear
-                        .frame(height: 64)
                 }
+                .preferredColorScheme(.dark)
             }
-            .preferredColorScheme(.dark)
-        }
-        .navigationViewStyle(.stack)
+            .navigationViewStyle(.stack)
     }
 }
 

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MobileCoreServices
+import Combine
 
 class GameCharacterData: ObservableObject, DropDelegate {
     @Published var totalImages = [GameCharacterCell]()
@@ -19,6 +20,10 @@ class GameCharacterData: ObservableObject, DropDelegate {
     @Published var isEnd = false
     @Published var elementToChange = 0
     @Published var busted = 0
+    @Published var splash = true
+    @Published var animeCount = 0.0
+    @AppStorage("firstStart") var firstStart = true
+    private var cancellables = Set<AnyCancellable>()
     
     func startGame() {
         isGame = true
@@ -38,6 +43,23 @@ class GameCharacterData: ObservableObject, DropDelegate {
         busted = 0
         isEnd = false
     }
+    func animeTimer() {
+        Timer
+            .publish(every: 0.05, on: .main, in: .common)
+            .autoconnect()
+            .sink { [unowned self] _ in
+                animeCount += 0.05
+            
+                if animeCount >= 1  {
+                    splash = false
+                    for item in cancellables {
+                        item.cancel()
+                    }
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
     
     func checkGame()   {
         if isGame && mafiaCount >= citizenCount {

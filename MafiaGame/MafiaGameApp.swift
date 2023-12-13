@@ -11,10 +11,19 @@ import SwiftUI
 struct MafiaGameApp: App {
     
     @StateObject var gameCharacterData = GameCharacterData()
+    
     var body: some Scene {
         WindowGroup {
-            TabBar()
-                .environmentObject(gameCharacterData)
+            if gameCharacterData.splash {
+                NewSplashView()
+                    .environmentObject(gameCharacterData)
+            } else if !gameCharacterData.firstStart {
+                TabBar()
+                    .environmentObject(gameCharacterData)
+            } else {
+                NewOnboardingView()
+                    .environmentObject(gameCharacterData)
+            }
         }
     }
 }
