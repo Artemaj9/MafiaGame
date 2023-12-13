@@ -47,7 +47,7 @@ struct CharacterDetailView: View {
                     .padding(.top, 16)
                 }
                 .background {
-                    Color("citizenBg").opacity(0.44)
+                    Color(num <= 4 ? "citizenBg" : num <= 8 ? "mafiaBg" : "neutralBg" ).opacity(0.44)
                         .padding(.horizontal, 12)
                         .offset(x: 5)
                 }

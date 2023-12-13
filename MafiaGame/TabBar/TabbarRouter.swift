@@ -5,7 +5,7 @@
 import SwiftUI
 
 class TabbarRouter: ObservableObject {
-    @Published var currentPage: Page = .game
+    @Published var currentPage: Page = .city
 }
 
 enum Page {

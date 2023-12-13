@@ -7,7 +7,7 @@ import Combine
 
 struct HomeView: View {
     
-    @StateObject var vm = HomeViewModel()
+    @StateObject var vm = MainAiViewModel()
     
     @State private var showHeader = true
     @State private var keyboardHeight: CGFloat = 0

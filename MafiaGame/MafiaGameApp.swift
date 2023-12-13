@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct MafiaGameApp: App {
     
-    @StateObject var gameCharacterData = GameCharacterData()
+    @StateObject var gameCharacterData = GameControlModel()
     
     var body: some Scene {
         WindowGroup {

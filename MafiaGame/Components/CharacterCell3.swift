@@ -24,8 +24,6 @@ struct CharacterCell3: View {
                         ZStack(alignment: .top) {
                             Image(character.image)
                                 .resizable()
-                               // .scaledToFit()
-                               // .frame(width: geo.size.width*0.9)
                                 .overlay {
                                     ZStack(alignment: .top) {
                                         Rectangle()
@@ -49,7 +47,6 @@ struct CharacterCell3: View {
                                                         presentationMode.dismiss()
                                                     }
                                                 }
-                                               // .foregroundColor(.black)
                                             Spacer()
                                             Rectangle()
                                                 .fill(.white)
@@ -113,10 +110,8 @@ struct CharacterCell3: View {
                     }
                     .frame(maxWidth: geo.size.width)
                 }
-          //  }
         }
     }
 }
 
-#warning("цвет фона карточек надо поправлять!")
 

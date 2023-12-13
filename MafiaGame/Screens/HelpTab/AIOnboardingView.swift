@@ -50,7 +50,7 @@ struct AIOnboardingView: View {
                     ZStack {
                         Rectangle()
                             .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.045)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("whitecity"))
                             .shadow(color: .black.opacity(0.64), radius: 2)
                         
                         Text("NEXT")

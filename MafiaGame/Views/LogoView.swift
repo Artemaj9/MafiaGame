@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LogoView: View {
+    @State var opacity = 0
     var body: some View {
         ZStack {
             GeometryReader { geo in
@@ -114,7 +115,12 @@ struct LogoView: View {
                 
             }
         }
+        .onAppear {
+            opacity = 1
+        }
+        .animation(.easeInOut(duration: 0.8), value: opacity)
     }
+        
 }
 
 struct LogoView_Previews: PreviewProvider {

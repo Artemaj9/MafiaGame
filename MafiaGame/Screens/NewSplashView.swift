@@ -1,9 +1,7 @@
 //
 //  NewSplashView.swift
-//  MafiaGame
-//
-//  Created by Artem on 13.12.2023.
-//
+//  
+
 
 import Foundation
 
@@ -11,8 +9,8 @@ import SwiftUI
 
 struct NewSplashView: View {
     
-    @EnvironmentObject var vm: GameCharacterData
-    @State var saturation = 0.6
+    @EnvironmentObject var vm: GameControlModel
+    @State var saturation = 0.0
     
     var body: some View {
         ZStack {
@@ -25,8 +23,6 @@ struct NewSplashView: View {
             .onAppear {
                 saturation = 1
             }
-            .opacity(sin(2*vm.animeCount))
-            .saturation(1 + vm.animeCount)
         }
         .onAppear {
             vm.animeTimer()

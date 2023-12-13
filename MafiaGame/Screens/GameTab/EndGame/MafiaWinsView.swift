@@ -18,7 +18,7 @@ struct MafiaWinsView: View {
     @State var transitionOpacity: Double = 0
     var dollars = Array(repeating: Int.random(in: 1...4), count: 10)
     
-    @EnvironmentObject var gameModel: GameCharacterData
+    @EnvironmentObject var gameModel: GameControlModel
     
     var body: some View {
         GeometryReader { geo in

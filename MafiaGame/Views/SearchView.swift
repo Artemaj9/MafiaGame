@@ -6,7 +6,7 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @EnvironmentObject var vm : HomeViewModel
+    @EnvironmentObject var vm : MainAiViewModel
     @StateObject var animationHelper = AnimationHelper()
     @FocusState var isFocused: Bool
     @Binding var searchText: String
@@ -141,6 +141,6 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView(searchText: .constant(""), keyboardHeight: .constant(0))
-            .environmentObject(HomeViewModel())
+            .environmentObject(MainAiViewModel())
     }
 }

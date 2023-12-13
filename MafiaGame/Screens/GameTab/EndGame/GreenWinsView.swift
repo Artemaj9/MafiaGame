@@ -10,7 +10,7 @@ struct GreenWinsView: View {
     @State var textOpacity: Double = 0
     @State var degrees: Double = -35
     @State var radiusFactor: Double = 0
-    @EnvironmentObject var gameModel: GameCharacterData
+    @EnvironmentObject var gameModel: GameControlModel
     
     var body: some View {
         GeometryReader { geo in
@@ -49,7 +49,7 @@ struct GreenWinsView: View {
                     Group {
                         Text("CITIZENS")
                             .font(Font.custom("Roboto-Black", size: 36))
-                        Text("WINS")
+                        Text("WIN")
                             .font(Font.custom("Roboto-Black", size: 88))
                     }
                     .foregroundColor(Color("citizenWinsColor"))

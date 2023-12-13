@@ -5,8 +5,7 @@
 import SwiftUI
 
 struct CharacterGameCell: View {
-    
-  //  let character: CharacterModel
+
     let id: UUID
     let image: String
     var myGradient = Gradient(
@@ -17,13 +16,11 @@ struct CharacterGameCell: View {
         ]
     )
     
-    //var isDescription = true
-
     var name = ""
     @State var isBusted = false
     @State var isLeft = false
     @Binding var busted: Int
-    @EnvironmentObject var gameCharacterData: GameCharacterData
+    @EnvironmentObject var gameCharacterData: GameControlModel
 
     let type: String
   
@@ -127,7 +124,7 @@ struct CharacterGameCell: View {
                                             .foregroundColor(.white)
                                             .shadow(color: .black, radius: 4)
 
-                                    Text(image.uppercased())
+                                    Text( image != "skiller" ? image.uppercased() : "SERIAL KILLER")
                                         .font(Font.custom("Roboto-Bold", size: 12))
                                         .foregroundColor(.white)
                                         .shadow(color: .black, radius: 4)

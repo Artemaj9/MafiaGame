@@ -7,9 +7,9 @@ import SwiftUI
 struct TabBar: View {
     
     @StateObject var tabbarRouter = TabbarRouter()
-    @EnvironmentObject var gameCharacterData: GameCharacterData
+    @EnvironmentObject var gameCharacterData: GameControlModel
     @Namespace private var namespace
-    @State var localSelection: Page = .game
+    @State var localSelection: Page = .city
 
     let tabs = [
         TabModel(iconname: "tbGame", text: "Game", assignedPage: .game),
@@ -38,7 +38,6 @@ struct TabBar: View {
                 GameView()
                     .environmentObject(gameCharacterData)
                     .environmentObject(tabbarRouter)
-                
             }
             
         case .city:

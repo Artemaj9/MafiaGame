@@ -5,7 +5,7 @@
 import Foundation
 import Combine
 
-class HomeViewModel: ObservableObject {
+class MainAiViewModel: ObservableObject {
     private let openAIAPI = OpenAIAPI()
     
     @Published var messages: [ChatModel] = []

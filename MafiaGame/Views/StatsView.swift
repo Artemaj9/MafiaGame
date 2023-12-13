@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct StatsView: View {
-    @ObservedObject var vm: GameCharacterData
+    @ObservedObject var vm: GameControlModel
     @Binding var busted: Int
     
     var body: some View {
@@ -26,7 +26,7 @@ struct StatsView: View {
 
 struct StatsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatsView(vm: GameCharacterData(), busted: .constant(0))
+        StatsView(vm: GameControlModel(), busted: .constant(0))
     }
 }
 
