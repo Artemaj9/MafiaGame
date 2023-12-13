@@ -28,29 +28,8 @@ struct ScrollHeaderView: View {
     var body: some View {
         VStack(alignment: .leading) {
             firstHeaderBubble
-            
-//            ForEach(defaultQuestions, id: \.self) { question in
-//                Button {
-//                    searchText = question
-//                } label: {
-//                    Text(question)
-//                        .font(Font.custom("Roboto-Medium", size: 16))
-//                        .foregroundColor(.black)
-//                        .padding(4)
-//                        .background {
-//                            Rectangle()
-//                                .fill(.white)
-//                                .cornerRadius(100)
-//                        }
-//                }
-//                    }
-//            .opacity(searchText.count > 5 ? 0 : 1)
-//            .animation(.easeOut, value: searchText.count)
-                }
-       // .offset(y: 200)
-      //  .padding(.leading, -12)
-          //  }
-      //  }
+        }
+   
         .onAppear{
             withAnimation(.spring().delay(0.29)){
                 opacityFirst = 1

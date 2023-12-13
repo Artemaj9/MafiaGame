@@ -14,7 +14,6 @@ struct GameView: View {
     @StateObject var vm = GameViewModel()
     @EnvironmentObject var gameLoic: GameControlModel
     @State var characterName = ""
-   // @State var busted = 0
     
     var body: some View {
         ZStack {
@@ -74,7 +73,6 @@ struct GameView: View {
                         }
                         .onDrop(of: [UTType.url], delegate: gameLoic)
                     }
-                   // .padding(.horizontal)
                     .offset(y: geo.size.height/8)
                 }
                }
@@ -85,8 +83,6 @@ struct GameView: View {
                .opacity(isUnfold ? 1 : 0)
                .animation(.easeOut(duration: 2), value: isUnfold)
     
-                // new stack 2
-                
                 VStack(spacing: 0) {
                 
                         ScrollView(showsIndicators: false) {
@@ -269,8 +265,6 @@ struct GameView: View {
                                             .padding(.vertical, 4)
                                             .offset(x: 12)
                                             .opacity(getScrollOpacity(geometry: geo2))
-                                            .blur(radius: (1 -
-                                                           getScrollOpacity(geometry: geo2))*3)
                                             .saturation(getScrollOpacity(geometry: geo2)*1.2)
                                             .onDrag {
                                                 NSItemProvider(item: .some(URL(string: character.image)! as NSSecureCoding), typeIdentifier: UTType.url.identifier)

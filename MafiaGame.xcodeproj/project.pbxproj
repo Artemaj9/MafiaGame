@@ -37,7 +37,6 @@
 		AC6DBA5C2B1E64F900B2A6C3 /* CharacterCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA5B2B1E64F900B2A6C3 /* CharacterCell3.swift */; };
 		AC6DBA5E2B1E7BC700B2A6C3 /* AnimationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA5D2B1E7BC700B2A6C3 /* AnimationStyle.swift */; };
 		AC6DBA612B1E834100B2A6C3 /* CharInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA602B1E834100B2A6C3 /* CharInfoModel.swift */; };
-		AC6DBA632B1EA3F500B2A6C3 /* CharacterCell4.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA622B1EA3F500B2A6C3 /* CharacterCell4.swift */; };
 		AC6DBA672B1FD89800B2A6C3 /* OpenAIAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA662B1FD89800B2A6C3 /* OpenAIAPI.swift */; };
 		AC6DBA6E2B1FDF2E00B2A6C3 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA6D2B1FDF2E00B2A6C3 /* ChatModel.swift */; };
 		AC6DBA702B1FDF7900B2A6C3 /* ChatGPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBA6F2B1FDF7900B2A6C3 /* ChatGPTModel.swift */; };
@@ -114,7 +113,6 @@
 		AC6DBA5B2B1E64F900B2A6C3 /* CharacterCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell3.swift; sourceTree = "<group>"; };
 		AC6DBA5D2B1E7BC700B2A6C3 /* AnimationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationStyle.swift; sourceTree = "<group>"; };
 		AC6DBA602B1E834100B2A6C3 /* CharInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharInfoModel.swift; sourceTree = "<group>"; };
-		AC6DBA622B1EA3F500B2A6C3 /* CharacterCell4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell4.swift; sourceTree = "<group>"; };
 		AC6DBA662B1FD89800B2A6C3 /* OpenAIAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIAPI.swift; sourceTree = "<group>"; };
 		AC6DBA6D2B1FDF2E00B2A6C3 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		AC6DBA6F2B1FDF7900B2A6C3 /* ChatGPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTModel.swift; sourceTree = "<group>"; };
@@ -278,7 +276,6 @@
 				AC6AA63C2B1BCD91009B404F /* CharacterModel.swift */,
 				AC6DBA552B1DD64C00B2A6C3 /* CharacterCell2.swift */,
 				AC6DBA5B2B1E64F900B2A6C3 /* CharacterCell3.swift */,
-				AC6DBA622B1EA3F500B2A6C3 /* CharacterCell4.swift */,
 				AC6AA60B2B1A87B0009B404F /* CharacterCell.swift */,
 				AC776B742B262C4D00803D0B /* GameViewData.swift */,
 				AC776B762B27AEC000803D0B /* CharacterGameCell.swift */,
@@ -540,7 +537,6 @@
 				AC6DBA6E2B1FDF2E00B2A6C3 /* ChatModel.swift in Sources */,
 				AC776B902B29435F00803D0B /* NewOnboardingView.swift in Sources */,
 				AC6DBA7B2B1FE5F300B2A6C3 /* MainAiViewModel.swift in Sources */,
-				AC6DBA632B1EA3F500B2A6C3 /* CharacterCell4.swift in Sources */,
 				AC6DBA762B1FE23700B2A6C3 /* UIColor+Color.swift in Sources */,
 				AC6DBAAC2B212D5900B2A6C3 /* SearchAnimationHelper.swift in Sources */,
 				AC776B752B262C4D00803D0B /* GameViewData.swift in Sources */,

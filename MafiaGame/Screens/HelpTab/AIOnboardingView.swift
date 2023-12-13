@@ -2,7 +2,6 @@
 //  AIOnboardingView.swift
 //  
 
-
 import SwiftUI
 
 struct AIOnboardingView: View {

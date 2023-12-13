@@ -59,10 +59,11 @@ struct CharacterCell: View {
                                         
                                         RadialGradient(colors: [.black.opacity(0),.black.opacity(0.3) ], center: .center, startRadius: 10, endRadius: 90)
                                             .mask {
-                                                Image(character.image + "Rays")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                
+                                                if character.image != "cop" {
+                                                    Image("rays")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                }
                                             }
                                         
                                         RadialGradient(colors: [Color("cubeGrad"),Color("cubeGrad").opacity(0.32),Color("cubeGrad").opacity(0) ], center: .center, startRadius: 1, endRadius: 190)
