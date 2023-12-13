@@ -144,6 +144,9 @@ struct GameView: View {
                         Button {
                             isUnfold.toggle()
                             gameLogic.peopleInGame = gameLogic.selectedCharacters.count - gameLogic.busted - gameLogic.leftCount + gameLogic.bustedAndLeft
+                            if gameLogic.citizenCount == 0 {
+                                gameLogic.citizenCount = gameLogic.selectedCharacters.filter { $0.type == "citizen" }.count
+                            }
                             
                         } label: {
                             Image(systemName: "chevron.down")

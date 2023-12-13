@@ -14,7 +14,7 @@ struct StatsView: View {
             
             Spacer()
             
-            StatCell(mainColor: "mainSmile", bgColor: "bgSmile", shadowColor: "shadowSmile", value: String(vm.selectedCharacters.filter{$0.type == "citizen"}.count), icon: "smile")
+            StatCell(mainColor: "mainSmile", bgColor: "bgSmile", shadowColor: "shadowSmile", value: String(vm.citizenCount), icon: "smile")
             
             Spacer()
             
