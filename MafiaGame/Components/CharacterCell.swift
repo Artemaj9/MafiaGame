@@ -15,7 +15,6 @@ struct CharacterCell: View {
         ]
     )
     var isDescription = true
-   // @State var isDescription = true
     var body: some View {
         VStack(alignment: .center) {
             ZStack {
@@ -125,4 +124,3 @@ struct CharacterCell: View {
         }
     }
 }
-

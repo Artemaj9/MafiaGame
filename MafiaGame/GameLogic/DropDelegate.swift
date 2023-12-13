@@ -3,8 +3,9 @@
 //  
 
 import SwiftUI
-import MobileCoreServices
 import Combine
+import MobileCoreServices
+import UniformTypeIdentifiers
 
 class GameControlModel: ObservableObject, DropDelegate {
     @Published var totalImages = [GameCharacterCell]()
@@ -83,7 +84,7 @@ func setElementToChange(id: UUID) {
         
         showAlert = true
         // adding images to bottom view...
-        for provider in info.itemProviders(for: [String(kUTTypeURL)]) {
+        for provider in info.itemProviders(for: [UTType.url]) {
             if provider.canLoadObject(ofClass: URL.self) {
                 let _ = provider.loadObject(ofClass: URL.self) { (url, error) in
                     print(url!)

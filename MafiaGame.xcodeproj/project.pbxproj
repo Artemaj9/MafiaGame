@@ -218,8 +218,8 @@
 				AC0B24212B1A2E7800BC7FAE /* SplashView.swift */,
 				AC776B882B292F0000803D0B /* NewSplashView.swift */,
 				AC776B8F2B29435F00803D0B /* NewOnboardingView.swift */,
-				AC6DBB412B23A2D200B2A6C3 /* GameTab */,
 				AC6DBA6B2B1FDCAA00B2A6C3 /* CityTab */,
+				AC6DBB412B23A2D200B2A6C3 /* GameTab */,
 				AC6DBAAD2B21422100B2A6C3 /* HelpTab */,
 			);
 			path = Screens;

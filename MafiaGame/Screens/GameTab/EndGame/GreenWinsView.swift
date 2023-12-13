@@ -151,10 +151,3 @@ struct GreenWinsView: View {
         }
     }
 }
-
-
-//struct GreenWinsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GreenWinsView()
-//    }
-//}

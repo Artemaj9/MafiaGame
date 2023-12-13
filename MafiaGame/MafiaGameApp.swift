@@ -1,8 +1,5 @@
 //
 //  MafiaGameApp.swift
-//  MafiaGame
-//
-//  Created by Artem on 01.12.2023.
 //
 
 import SwiftUI

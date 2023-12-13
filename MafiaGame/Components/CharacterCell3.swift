@@ -113,5 +113,3 @@ struct CharacterCell3: View {
         }
     }
 }
-
-

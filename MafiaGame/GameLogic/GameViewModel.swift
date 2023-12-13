@@ -21,6 +21,7 @@ class GameViewModel: ObservableObject {
         timerIsOn = true
         isPaused = false
         remainingTime = 90
+        
         Timer
             .publish(every: 1, on: .main, in: .common)
             .autoconnect()

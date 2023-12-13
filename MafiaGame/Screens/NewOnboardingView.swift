@@ -1,9 +1,7 @@
 //
 //  NewOnboardingView.swift
-//  MafiaGame
 //
-//  Created by Artem on 13.12.2023.
-//
+
 
 import SwiftUI
 
@@ -32,6 +30,7 @@ struct NewOnboardingView: View {
                         .multilineTextAlignment(.center)
                         .background(Color("textbg").opacity(0.8))
                         .offset(y: geo.size.height*0.22)
+                    
                     Button {
                         vm.firstStart = false
                         print("tap")
@@ -48,12 +47,12 @@ struct NewOnboardingView: View {
                             }
                     }
                     .offset(y: geo.size.height*0.45)
-
                 }
             }
         }
     }
 }
+
 struct NewOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         NewOnboardingView()

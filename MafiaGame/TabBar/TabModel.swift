@@ -2,7 +2,6 @@
 //  TabModel.swift
 //
 
-
 import Foundation
 
 struct TabModel: Hashable {

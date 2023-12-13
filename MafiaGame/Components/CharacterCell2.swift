@@ -92,5 +92,3 @@ struct CharacterCell2: View {
         }
     }
 }
-
-#warning("цвет фона карточек надо поправлять!")

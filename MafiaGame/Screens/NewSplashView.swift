@@ -28,10 +28,4 @@ struct NewSplashView: View {
             vm.animeTimer()
         }
     }
-}
-        
-struct NewSplashView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewSplashView(saturation: 0.2)
-    }
-}
+}        
