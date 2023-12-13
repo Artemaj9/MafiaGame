@@ -73,6 +73,7 @@
 		AC776B8E2B29407A00803D0B /* pricedown.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC776B8D2B29407900803D0B /* pricedown.otf */; };
 		AC776B902B29435F00803D0B /* NewOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B8F2B29435F00803D0B /* NewOnboardingView.swift */; };
 		AC776B922B2946A500803D0B /* StrokeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B912B2946A500803D0B /* StrokeText.swift */; };
+		AC776B962B294E3900803D0B /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC776B952B294E3900803D0B /* LogoView.swift */; };
 		ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */; };
 		ACE9DD502B1D415300C5E1D6 /* DollarAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */; };
 		ACFD18862B23AA8300180D2E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD18852B23AA8300180D2E /* TimerView.swift */; };
@@ -149,6 +150,7 @@
 		AC776B8D2B29407900803D0B /* pricedown.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pricedown.otf; sourceTree = "<group>"; };
 		AC776B8F2B29435F00803D0B /* NewOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOnboardingView.swift; sourceTree = "<group>"; };
 		AC776B912B2946A500803D0B /* StrokeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeText.swift; sourceTree = "<group>"; };
+		AC776B952B294E3900803D0B /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		ACE9DD4B2B1D2CD400C5E1D6 /* MafiaWinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaWinsView.swift; sourceTree = "<group>"; };
 		ACE9DD4F2B1D415300C5E1D6 /* DollarAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAnimationViewModel.swift; sourceTree = "<group>"; };
 		ACFD18852B23AA8300180D2E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				AC6AA5E82B1A6CBE009B404F /* StatsView.swift */,
+				AC776B952B294E3900803D0B /* LogoView.swift */,
 				ACFD18852B23AA8300180D2E /* TimerView.swift */,
 				ACFD18872B23C7E500180D2E /* TimerShape.swift */,
 				AC6DBA7E2B1FE87D00B2A6C3 /* HeaderView.swift */,
@@ -543,6 +546,7 @@
 				AC6DBAB32B2150AE00B2A6C3 /* GameViewModel.swift in Sources */,
 				AC6DBA782B1FE42A00B2A6C3 /* MessageBubble.swift in Sources */,
 				ACE9DD4C2B1D2CD400C5E1D6 /* MafiaWinsView.swift in Sources */,
+				AC776B962B294E3900803D0B /* LogoView.swift in Sources */,
 				AC6DBAAA2B2119BB00B2A6C3 /* UIApplication.swift in Sources */,
 				AC0B24252B1A44AF00BC7FAE /* GameView.swift in Sources */,
 				AC776B772B27AEC000803D0B /* CharacterGameCell.swift in Sources */,
