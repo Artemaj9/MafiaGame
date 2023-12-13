@@ -263,12 +263,13 @@ struct GameView: View {
                                             .frame(width: geo.size.width/4, height: geo.size.height/6)
                                             .padding(4)
                                             .padding(.vertical, 4)
-                                            .offset(x: 12)
-                                            .opacity(getScrollOpacity(geometry: geo2))
-                                            .saturation(getScrollOpacity(geometry: geo2)*1.2)
                                             .onDrag {
                                                 NSItemProvider(item: .some(URL(string: character.image)! as NSSecureCoding), typeIdentifier: UTType.url.identifier)
                                             }
+                                            .offset(x: 12)
+                                            .opacity(getScrollOpacity(geometry: geo2))
+                                            .saturation(getScrollOpacity(geometry: geo2)*1.2)
+                                         
                                     }
                                     .frame(
                                         width: geo.size.width * 0.35,
