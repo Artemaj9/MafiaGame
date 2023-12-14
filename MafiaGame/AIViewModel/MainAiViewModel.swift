@@ -16,7 +16,7 @@ class MainAiViewModel: ObservableObject {
         
         if !isAI{
             autoAIResponse()
-            sendChatGPTRequest(prompt: message)
+            sendChatGPTRequest(prompt: message + " your role is an assistant in the board game mafia")
         }
     }
     
