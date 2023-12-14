@@ -8,8 +8,8 @@ import Combine
 class OpenAIAPI {
     private let chatGTPEndpoint = "https://api.openai.com/v1/chat/completions"
     
-    private let token = 
-     "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"
+    private let token = ""
+    //"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"
     
     func chatGPT(prompt: String) -> AnyPublisher<String, Error> {
         let messageModel = ["role": "user", "content": prompt]
